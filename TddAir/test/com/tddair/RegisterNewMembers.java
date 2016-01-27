@@ -2,6 +2,7 @@ package com.tddair;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,5 +40,21 @@ public class RegisterNewMembers {
 		assertTrue("bob".equalsIgnoreCase( member.getIdentifier()));
 		assertTrue("bob@abc.com".equalsIgnoreCase(member.getEmail()));
 	}
+	
+	// note that this test is not represented in the feature file -- Too much an edge case to go there.
+	@Test
+	public void whenOnlyEmailEnteredRecordAllEmailsAnyway(){
+		Membership subject = new Membership();
+		
+		subject.enroll("bob", "bob@abc.com");
+		subject.enroll("", "joe@abc.com");
+		subject.enroll("", "sue@abc.com");
+	
+		assertTrue(subject.isEmailRecorded("sue@abc.com"));
+		assertTrue(subject.isEmailRecorded("joe@abc.com"));
+		assertFalse(subject.isEmailRecorded("bob@abc.com"));
+	}
+
+	
 	
 }
