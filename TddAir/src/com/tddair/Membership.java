@@ -6,6 +6,10 @@ public class Membership {
 		
 		return 0;
 	}
+
+	public void enroll(String name, String email) {
+				
+	}
 	
 
 

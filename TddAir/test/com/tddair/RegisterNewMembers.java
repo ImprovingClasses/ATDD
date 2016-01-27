@@ -11,10 +11,20 @@ public class RegisterNewMembers {
 	}
 
 	@Test
-	public void whenNoMembershipCountIsZero() {
+	public void whenMembershipCountIsZero() {
 		Membership subject = new Membership();
 		
 		assertEquals( 0,  subject.enrollmentCount());
 	}
 
+	@Test
+	public void whenMembershipCountIsOne(){
+		Membership subject = new Membership();
+		
+		subject.enroll("bob", "bob@abc.com");
+		
+		assertEquals( 1, subject.enrollmentCount());
+		
+	}
+	
 }
