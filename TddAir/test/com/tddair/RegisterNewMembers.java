@@ -54,7 +54,20 @@ public class RegisterNewMembers {
 		assertTrue(subject.isEmailRecorded("joe@abc.com"));
 		assertFalse(subject.isEmailRecorded("bob@abc.com"));
 	}
+	
+	// nulls should never be sent to the class  -- just throw if they are.
+	@Test(expected=IllegalArgumentException.class)
+	public void whenIdentifierNull(){
+		Membership subject = new Membership();
+		
+		subject.enroll(null, "bob@abc.com");
+	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void whenEmailNull(){
+		Membership subject = new Membership();
+		subject.enroll("bob", null);
+	}
 	
 	
 }

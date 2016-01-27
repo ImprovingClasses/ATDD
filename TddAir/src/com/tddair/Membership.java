@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Test;
+
 public class Membership {
 	
 	Map<String, Member> members = new HashMap<String, Member>();
@@ -16,6 +18,11 @@ public class Membership {
 	}
 
 	public void enroll(String memberIdentifier, String email) {
+
+		if( memberIdentifier == null || email == null){
+			throw new IllegalArgumentException();
+		}
+		
 		if(memberIdentifier.isEmpty()){
 			emailRecords.add(email);
 			return;
