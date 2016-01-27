@@ -1,9 +1,8 @@
 package com.tddair;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class RegisterNewMembers {
 
@@ -13,7 +12,9 @@ public class RegisterNewMembers {
 
 	@Test
 	public void whenNoMembershipCountIsZero() {
-		fail("Not yet implemented");
+		Membership subject = new Membership();
+		
+		assertEquals( 0,  subject.enrollmentCount());
 	}
 
 }
