@@ -17,7 +17,7 @@ public class Membership {
 		return members.size();
 	}
 
-	public void enroll(String memberIdentifier, String email) {
+	public boolean enroll(String memberIdentifier, String email) {
 
 		if( memberIdentifier == null || email == null){
 			throw new IllegalArgumentException();
@@ -25,9 +25,13 @@ public class Membership {
 		
 		if(memberIdentifier.isEmpty()){
 			emailRecords.add(email);
-			return;
+			return false;
 		}
-		members.put( memberIdentifier, new Member(memberIdentifier, email));		
+		if (members.containsKey(memberIdentifier)){
+			return false;
+		}
+		members.put( memberIdentifier, new Member(memberIdentifier, email));
+		return true;
 	}
 
 	public Member getMember(String memberIdentifier) {

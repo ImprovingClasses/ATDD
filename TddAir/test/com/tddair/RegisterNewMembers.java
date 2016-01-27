@@ -1,8 +1,8 @@
 package com.tddair;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -69,5 +69,13 @@ public class RegisterNewMembers {
 		subject.enroll("bob", null);
 	}
 	
+	
+	@Test
+	public void whenExistingMemberIdentifierIsUsedThenDontAddMember(){
+		Membership subject = new Membership();
+		subject.enroll("bob", "bob@abc.com");
+		assertFalse( subject.enroll("bob", "sue@abc.com"));
+		
+	}
 	
 }
