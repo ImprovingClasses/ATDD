@@ -18,7 +18,10 @@ public class Membership {
 	}
 
 	public boolean enroll(String memberIdentifier, String email) {
-
+		return enroll(memberIdentifier, email, 0);
+	}
+	
+	public boolean enroll(String memberIdentifier, String email, int miles) {
 		if( memberIdentifier == null || email == null){
 			throw new IllegalArgumentException();
 		}
@@ -30,8 +33,12 @@ public class Membership {
 		if (members.containsKey(memberIdentifier)){
 			return false;
 		}
-		members.put( memberIdentifier, new Member(memberIdentifier, email));
+		members.put( memberIdentifier, new Member(memberIdentifier, email, miles));
 		return true;
+	}
+	
+	public void enroll(Member member) {
+		members.put(member.getIdentifier(), member);
 	}
 
 	public Member getMember(String memberIdentifier) {
@@ -42,5 +49,14 @@ public class Membership {
 	public boolean isEmailRecorded(String emailAddress) {
 		return emailRecords.contains(emailAddress);
 	}
+
+
+
+	public void completeFlight(String memberIdentifier, int miles) {
+		Member member = members.get(memberIdentifier);
+		member.addMiles(miles);
+	}
+
+
 
 }
