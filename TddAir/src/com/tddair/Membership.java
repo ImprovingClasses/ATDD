@@ -27,7 +27,11 @@ public class Membership {
 
 	}
 	
-	public void addMemberX(Member member) {
+	
+	public void addMember(Member member) throws Exception {
+		if (members.get(member.getId()) != null) {
+			throw new Exception("Duplicate Member!");
+		}
 		members.put(member.getId(), member);
 	}
 	

@@ -22,11 +22,19 @@ public class RegisterMemberTest {
 	
 	@Test
 	public void RetrieveByMemberIdentifierReturnsmatch() {
+		
 		Membership membership = new Membership();
 		Member member = new Member();
 		member.setId("bob@test.com");
-		membership.addMemberX(member);
+		boolean thrown = false;
+		try {			
+			membership.addMember(member);
+		}
+		catch(Exception ex) {
+			thrown = true;
+		}
 		Assert.assertEquals(member, membership.getMemberById(member.getId()));
+		//Assert.assertTrue(thrown);
 	}
 	
 	@Test
@@ -35,8 +43,15 @@ public class RegisterMemberTest {
 		Membership membership = new Membership();
 		Member member = new Member();
 		member.setId("User1");
-		membership.addMemberX(member);
+		boolean thrown = false;
+		try {			
+			membership.addMember(member);
+		}
+		catch(Exception ex) {
+			thrown = true;
+		}
 		Assert.assertEquals(null, membership.getMemberById("User2"));
+		//Assert.assertTrue(thrown);
 		
 	}
 	
@@ -47,13 +62,13 @@ public class RegisterMemberTest {
 		
 		try {
 			
-		Membership membership = new Membership();
-		Member member = new Member();
-		member.setId("yada");
-		membership.addMemberX(member);
-		Member member2 = new Member();
-		member2.setId("yada");
-		membership.addMemberX(member2);
+			Membership membership = new Membership();
+			Member member = new Member();
+			member.setId("yada");
+			membership.addMember(member);
+			Member member2 = new Member();
+			member2.setId("yada");
+			membership.addMember(member2);
 		}
 		catch(Exception ex) {
 			thrown = true;
