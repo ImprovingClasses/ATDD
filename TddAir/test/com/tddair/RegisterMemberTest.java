@@ -25,7 +25,8 @@ public class RegisterMemberTest {
 		Membership membership = new Membership();
 		Member member = new Member();
 		member.setId("bob@test.com");
-		Assert.assertEquals(member, membership.GetMemberById(member.getId()));
+		membership.addMemberX(member);
+		Assert.assertEquals(member, membership.getMemberById(member.getId()));
 	}
 	
 	@Test
@@ -34,9 +35,31 @@ public class RegisterMemberTest {
 		Membership membership = new Membership();
 		Member member = new Member();
 		member.setId("User1");
-		membership.AddMember(member);
-		Assert.assertEquals(null, membership.FindMemberById("User2"));
+		membership.addMemberX(member);
+		Assert.assertEquals(null, membership.getMemberById("User2"));
 		
+	}
+	
+	
+	@Test
+	public void checkForDuplicateMemberOnRegister() {
+		boolean thrown = false;
+		
+		try {
+			
+		Membership membership = new Membership();
+		Member member = new Member();
+		member.setId("yada");
+		membership.addMemberX(member);
+		Member member2 = new Member();
+		member2.setId("yada");
+		membership.addMemberX(member2);
+		}
+		catch(Exception ex) {
+			thrown = true;
+		}
+		
+		Assert.assertTrue(thrown);
 	}
 	
 
