@@ -13,10 +13,18 @@ public class RegisterMemberTest {
 	}
 	
 	@Test
-	public void whenMemberCountIsOne() {
-		Membership membership = new Membership();
-		membership.setCount(1);
-		Assert.assertEquals(1, membership.getCount());	
+	public void whenMemberCountIsOne(){
+		try {
+
+			Membership membership = new Membership();
+			Member member = new Member();
+			member.setUserName("yada");
+			member.setEmail("yada@yada.com");
+			membership.addMember(member);
+			Assert.assertEquals(1, membership.getCount());
+		} catch (Exception ex) {
+
+		}
 	}
 	
 	
@@ -25,7 +33,7 @@ public class RegisterMemberTest {
 		
 		Membership membership = new Membership();
 		Member member = new Member();
-		member.setId("bob@test.com");
+		member.setUserName("bob@test.com");
 		boolean thrown = false;
 		try {			
 			membership.addMember(member);
@@ -33,7 +41,7 @@ public class RegisterMemberTest {
 		catch(Exception ex) {
 			thrown = true;
 		}
-		Assert.assertEquals(member, membership.getMemberById(member.getId()));
+		Assert.assertEquals(member, membership.getMemberById(member.getUserName()));
 		//Assert.assertTrue(thrown);
 	}
 	
@@ -42,7 +50,7 @@ public class RegisterMemberTest {
 		
 		Membership membership = new Membership();
 		Member member = new Member();
-		member.setId("User1");
+		member.setUserName("User1");
 		boolean thrown = false;
 		try {			
 			membership.addMember(member);
@@ -64,10 +72,10 @@ public class RegisterMemberTest {
 			
 			Membership membership = new Membership();
 			Member member = new Member();
-			member.setId("yada");
+			member.setUserName("yada");
 			membership.addMember(member);
 			Member member2 = new Member();
-			member2.setId("yada");
+			member2.setUserName("yada");
 			membership.addMember(member2);
 		}
 		catch(Exception ex) {

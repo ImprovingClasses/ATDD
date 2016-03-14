@@ -56,7 +56,13 @@ Then "steve" is "added" to our list
 Scenario: Empty username
 When Entered username is ""
 And Entered email is "bob@yada.com"
+And member is added
 Then "" is "added" to our list
+
+Scenario: Empty username
+When member registers with username "" and email "bob@yada.com"
+Then "" is "added" to our list
+
 
 Scenario: Empty email
 When Entered username is "bob"

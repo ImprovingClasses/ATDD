@@ -7,15 +7,9 @@ public class Membership {
 	
 	
 	private Map<String, Member> members = new HashMap<String, Member>();
-	
-	private int count = 0;
 
 	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
+		return members.size();
 	}
 	
 
@@ -29,10 +23,10 @@ public class Membership {
 	
 	
 	public void addMember(Member member) throws Exception {
-		if (members.get(member.getId()) != null) {
+		if (members.get(member.getUserName()) != null) {
 			throw new Exception("Duplicate Member!");
 		}
-		members.put(member.getId(), member);
+		members.put(member.getUserName(), member);
 	}
 	
 
