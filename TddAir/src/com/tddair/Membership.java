@@ -12,7 +12,12 @@ public class Membership {
 		this.count = count;
 	}
 	
-	
+
+	public Member GetMemberById(String id) {
+		Member member = new Member();
+		member.setId(id);
+		return member;
+	}
 	
 
 }
