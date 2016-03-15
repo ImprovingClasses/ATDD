@@ -12,6 +12,12 @@ public class Member {
 	private String username;
 	private String email;
 	private String status = "Red";
+	private int miles = 0;
+	
+	public int getMiles()
+	{
+		return miles;
+	}
 
 	public String getUserName() {
 		return username;

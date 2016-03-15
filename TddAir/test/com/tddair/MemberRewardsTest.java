@@ -14,4 +14,12 @@ public class MemberRewardsTest {
 		Assert.assertEquals(0, member.getMiles());
 		
 	}
+	
+	@Test
+	public void VerifyAddMiles() {
+		Member member = new Member("bob@test.com","bob");
+		member.AddMiles(1000);
+		Assert.assertEquals(1000, member.getMiles());
+		
+	}
 }
