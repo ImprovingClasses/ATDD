@@ -58,6 +58,22 @@ public class MemberRewardsTest {
 	}
 	
 	
+	@Test
+	public void testAddingFlightToMember() {
+		try {
+			Member member = new Member("bob", "bob@test.com");
+			Membership membership = new Membership();
+			membership.addMember(member);
+			FlightDao dao = new FlightDao();
+			Flight flight = dao.getFlightBy("777");
+			membership.addFlightForMember(member, dao.getFlightBy("777"));
+			Assert.assertEquals(flight.getMileage(), member.getMiles());
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
 	
 	
 }
