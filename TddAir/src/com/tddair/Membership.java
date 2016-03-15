@@ -23,10 +23,40 @@ public class Membership {
 	
 	
 	public void addMember(Member member) throws Exception {
-		if (members.get(member.getUserName()) != null) {
-			throw new Exception("Duplicate Member!");
+		
+		if(member == null) {
+			throw new Exception("Cannot create null Member");
 		}
+		
+		Member existingMember = members.get(member.getUserName());
+		if (existingMember != null) {
+			// We allow a duplicate username IF the email address is different
+			if (member.getEmail().equals(existingMember.getEmail())) {
+
+				throw new Exception("Duplicate Member!");
+			}
+		}
+		
+		
+		
 		members.put(member.getUserName(), member);
+	}
+	
+	
+	public boolean memberAlreadyRegistered(Member newMember) {
+
+		boolean result = false;
+
+		Member existingMember = members.get(newMember.getUserName());
+		if (existingMember != null) {
+			// We allow a duplicate username IF the email address is different
+			if (newMember.getEmail().equals(existingMember.getEmail())) {
+
+				result = true;
+			}
+		}
+			return result;
+		
 	}
 	
 
