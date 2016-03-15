@@ -11,7 +11,7 @@ public class MemberRewardsTest {
 	
 		Member member = new Member("bob@test.com", "bob");		
 		Assert.assertEquals("Red", member.getStatus());
-		
+		Assert.assertEquals(0, member.getMiles());
 		
 	}
 }
