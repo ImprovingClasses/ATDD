@@ -4,14 +4,16 @@ public class Member {
 	
 	public Member() {}
 	
-	public Member(String email, String username) {
+	public Member(String username, String email) {
 		this.username = username;
 		this.email = email;
 	}
 	
+	public enum statusCodes { RED, GREEN, BLUE, GOLDEN }
+	
 	private String username;
 	private String email;
-	private String status = "Red";
+	private statusCodes status = statusCodes.RED;
 	private int miles = 0;
 	
 	public int getMiles()
@@ -20,11 +22,23 @@ public class Member {
 	}
 	
 	public void addMiles(int newMiles) {
+		
 		miles += newMiles;
-		if (miles < 25000)
-			status = "Red";
-		else if (miles >= 25000 && miles < 50000)
-			status = "Green";
+		
+		if (miles < 25000) {
+			status = statusCodes.RED;
+		}
+		else if (miles >= 25000 && miles < 50000) {
+			status = statusCodes.GREEN;
+		}
+		else if (miles >= 50000 && miles < 75000) {
+			status = statusCodes.BLUE;
+		}
+		else if (miles >= 75000) {
+			status = statusCodes.GOLDEN;
+		}
+		
+		System.out.println(status.toString());
 		
 	}
 
@@ -44,12 +58,8 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getStatus() {
+	public statusCodes getStatus() {
 		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	
 	
