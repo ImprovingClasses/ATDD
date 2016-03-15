@@ -66,8 +66,27 @@ public class MemberRewardsTest {
 			membership.addMember(member);
 			FlightDao dao = new FlightDao();
 			Flight flight = dao.getFlightBy("777");
-			membership.addFlightForMember(member, dao.getFlightBy("777"));
-			Assert.assertEquals(flight.getMileage(), member.getMiles());
+			//System.out.println("Flight " + flight.getFullFlightNumber() + " :: " + flight.getMileage());
+			membership.addFlightForMember(member, flight);
+			Assert.assertEquals(9, member.getMiles());
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void testNoMilesForMember_TwoWeeks() {
+		try {
+			Member member = new Member("bob", "bob@test.com");
+			member.addMiles(1);
+			Membership membership = new Membership();
+			membership.addMember(member);
+			FlightDao dao = new FlightDao();
+			Flight flight = dao.getFlightBy("242");
+			//System.out.println("Flight " + flight.getFullFlightNumber() + " :: " + flight.getMileage());
+			membership.addFlightForMember(member, flight);
+			Assert.assertEquals(1, member.getMiles());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

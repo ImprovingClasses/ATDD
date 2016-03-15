@@ -25,6 +25,12 @@ public class MemberRewardsSteps {
 	    membership = new Membership();
 	    membership.addMember(member);
 	}
+	
+	@When("^Member \"([^\"]*)\" flies <flightMiles>$")
+	public void member_flies_flightMiles(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 
 
 	@When("^Member \"([^\"]*)\" flies (\\d+)$")

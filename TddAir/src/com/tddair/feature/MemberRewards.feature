@@ -20,9 +20,9 @@
 Feature: Title of your feature
 	I want to use this template for my feature file
 
-Scenario: New member
-When Member registers username "bob" yada
-Then Member status is "RED" and miles are equal to "0"
+##Scenario: New member
+##When Member registers username "bob" yada
+##Then Member status is "RED" and miles are equal to "0"
 
 Scenario Outline: Upgrade to Green
 Given Existing Member <name> has <start> miles
@@ -32,6 +32,11 @@ Then Member status is <status> and miles are equal to <end>
 
 
 Examples:
-    | name  	|start	| flightMiles |  end	|  status		|
-    | "bob"		|0			|0						|	0			|"RED"			|
-    | "bob"		|24000	|1500					|25500	|"GREEN"		|
+    | name  	|start	| flightMiles 	|  end	|  status		|
+    | "bob"		|0			|0				|	0			|"RED"			|
+    | "bob"		|24000	|1500			|25500	|"GREEN"		|
+    | "bob"		|48000	|2000			|50000	|"BLUE"			|
+    | "bob"		|74000	|1000			|75000	|"GOLDEN"		|
+    | "bob"		|0			|25000		|25000	|"GREEN"		|
+    | "bob"		|24000	|27000		|51000	|"BLUE"			|
+    | "bob"		|23000	|200			|23200	|"RED"			|

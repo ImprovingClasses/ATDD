@@ -16,7 +16,7 @@ public class FlightDao {
 		addFlight("ORD", "AXP", 1750, "TDD", 1172);
 		addFlight("LAX", "MSP", 25000, "TDD", 25000);
 		addFlight("JFK", "JFK", 27000, "TDD", 1);
-		addFlight("DFW", "DFW", 2, "TDD", 901);
+		addFlight("DFW", "DFW", 200, "TDD", 901);
 	}
 	
 	public Flight getFlightBy(String flightNumber) {
