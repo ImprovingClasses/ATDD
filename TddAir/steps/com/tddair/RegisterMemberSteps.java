@@ -1,11 +1,8 @@
 package com.tddair;
-import com.tddair.Member;
-
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import junit.framework.Assert;
 
 public class RegisterMemberSteps {
 	
@@ -13,41 +10,33 @@ public class RegisterMemberSteps {
 	Membership membership = new Membership();
 
 	
-	@When("^Entered username is \"([^\"]*)\"$")
-	public void entered_username_is(String arg1) throws Throwable {
-		
-		member.setUserName(arg1);
-	    
+	@When("^User registers username \"([^\"]*)\" and email \"([^\"]*)\"$")
+	public void user_registers_username_and_email(String arg1, String arg2) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 
-	@When("^Entered email is \"([^\"]*)\"$")
-	public void entered_email_is(String arg1) throws Throwable {
-
-		member.setEmail(arg1);
+	@When("^member is added$")
+	public void member_is_added() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 
-	@Then("^\"([^\"]*)\" is \"([^\"]*)\" to our list$")
-	public void is_to_our_list(String arg1, String arg2) throws Throwable {
-
-		if(arg2.equals("added")) {
-			membership.addMember(member);
-			Member addedMember = membership.getMemberById(member.getUserName());
-			Assert.assertNotNull(addedMember);
-		}
-		else {
-			Member addedMember = membership.getMemberById(member.getUserName());
-			Assert.assertNull(addedMember);
-		}
-
+	@Then("^\"([^\"]*)\" is added to our list$")
+	public void is_added_to_our_list(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 
-	@Given("^Existing username is \"([^\"]*)\"$")
-	public void existing_username_is(String arg1) throws Throwable {
-	    
+	@Given("^Existing username is \"([^\"]*)\" and email is \"([^\"]*)\"$")
+	public void existing_username_is_and_email_is(String arg1, String arg2) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 
-	@Given("^Existing email is \"([^\"]*)\"$")
-	public void existing_email_is(String arg1) throws Throwable {
-	    
+	@Then("^\"([^\"]*)\" is not added to our list$")
+	public void is_not_added_to_our_list(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 }

@@ -18,74 +18,62 @@
 
 #Sample Feature Definition Template
 
-Feature: Title of your feature
-	I want to use this template for my feature file
-
+Feature: Membership Rewards Registration Scenarios
 
 Scenario: Add the first user
-When Entered username is "bob"
-	And Entered email is "bob@yada.com"
-Then "bob" is "added" to our list
+When User registers username "bob" and email "bob@yada.com"
+And member is added
+Then "bob" is added to our list
 
 Scenario: Duplicate user
-Given Existing username is "bob"
-And Existing email is "bob@yada.com"
-When Entered username is "bob"
-And Entered email is "steve@yada.com"
-Then "bob" is "not added" to our list
+Given Existing username is "bob" and email is "bob@yada.com"
+When User registers username "bob" and email "steve@yada.com"
+And member is added
+Then "bob" is not added to our list
 
 Scenario: New unique user
-Given Existing username is "bob"
-And Existing email is "bob@yada.com"
-When Entered username is "bobby"
-And Entered email is "joe@yada.com"
-Then "bobby" is "added" to our list
+Given Existing username is "bob" and email is "bob@yada.com"
+When User registers username "bobby" and email "joe@yada.com"
+And member is added
+Then "bobby" is added to our list
 
 Scenario: Invalid email address
-When Entered username is "bob"
-And Entered email is "yada"
-Then "bob" is "added" to our list
+When User registers username "bob" and email "yada"
+And member is added
+Then "bob" is added to our list
 
 Scenario: Unique username, duplicate email
-Given Existing username is "bob"
-And Existing email is "bob@yada.com"
-When Entered username is "steve"
-And Entered email is "bob@yada.com"
-Then "steve" is "added" to our list
-
-Scenario: Empty username
-When Entered username is ""
-And Entered email is "bob@yada.com"
+Given Existing username is "bob" and email is "bob@yada.com"
+When User registers username "steve" and email "bob@yada.com"
 And member is added
-Then "" is "added" to our list
+Then "steve" is added to our list
 
 Scenario: Empty username
-When member registers with username "" and email "bob@yada.com"
-Then "" is "added" to our list
-
+When User registers username "" and email "bob@yada.com"
+And member is added
+Then "" is added to our list
 
 Scenario: Empty email
-When Entered username is "bob"
-And Entered email is ""
-Then "bob" is "not added" to our list
+When User registers username "bob" and email ""
+And member is added
+Then "bob" is not added to our list
 
 Scenario: Duplicate empty username
-Given Existing username is ""
-And Existing email is "bob@yada.com"
-When Entered username is ""
-And Entered email is "steve@yada.com"
-Then "" is "added" to our list
+Given Existing username is "" and email is "bob@yada.com"
+When User registers username "" and email "steve@yada.com"
+And member is added
+Then "" is added to our list
 
 Scenario: All input empty
-When Entered username is ""
-And Entered email is ""
-Then "" is "not added" to our list
+When User registers username "" and email ""
+And member is added
+Then "" is not added to our list
 
 
 Scenario Outline: Switcheroo
-When Entered username is "bob@yada.com"
-And Entered email is "bob"
-Then "bob@yada.com" is "added" to our list
+When User registers username "bob@yada.com" and email "bob"
+And member is added
+Then "bob@yada.com" is added to our list
 
 Examples:
     | name  |value | status |
