@@ -21,11 +21,17 @@ Feature: Title of your feature
 	I want to use this template for my feature file
 
 Scenario: New member
-When Member enters username "bob" email "bob@yada.com"
-And Member joins rewards program
-Then Member is status "Red" and miles are equal to "0"
+When Member registers username "bob" yada
+Then Member status is "RED" and miles are equal to "0"
 
-Scenario: Uograde to Green
-Given Existing Member "bob" has "24000" miles
-When Member flies "1000" miles
-Then Member is status "Green" and miles are equal to "25000"
+Scenario Outline: Upgrade to Green
+Given Existing Member <name> has <start> miles
+When Member <name> flies <flightMiles>
+Then Member status is <status> and miles are equal to <end>
+
+
+
+Examples:
+    | name  	|start	| flightMiles |  end	|  status		|
+    | "bob"		|0			|0						|	0			|"RED"			|
+    | "bob"		|24000	|1500					|25500	|"GREEN"		|
