@@ -18,6 +18,10 @@ public class Member {
 	{
 		return miles;
 	}
+	
+	public void addMiles(int newMiles) {
+		miles += newMiles;
+	}
 
 	public String getUserName() {
 		return username;

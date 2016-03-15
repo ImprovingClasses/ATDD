@@ -18,8 +18,17 @@ public class MemberRewardsTest {
 	@Test
 	public void VerifyAddMiles() {
 		Member member = new Member("bob@test.com","bob");
-		member.AddMiles(1000);
+		member.addMiles(1000);
 		Assert.assertEquals(1000, member.getMiles());
 		
 	}
+	
+	
+	@Test
+	public void verifyGreenStatus() {
+		Member member = new Member("bob@test.com","bob");
+		member.addMiles(25000);
+		Assert.assertEquals("Green", member.getStatus());
+	}
+	
 }
