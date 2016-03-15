@@ -21,6 +21,14 @@ public class Membership {
 
 	}
 	
+	public void addFlightForMember(Member member, Flight flight)
+	{
+		Member myMember = this.getMemberById(member.getUserName());
+		
+		myMember.addMiles(flight.getMileage());
+				
+	}
+	
 	
 	public void addMember(Member member) throws Exception {
 		
