@@ -31,4 +31,11 @@ public class MemberRewardsTest {
 		Assert.assertEquals("Green", member.getStatus());
 	}
 	
+	@Test
+	public void verifyBlueStatus() {
+		Member member = new Member("bob@test.com","bob");
+		member.addMiles(25000);
+		member.addMiles(25000);
+		Assert.assertEquals("Blue", member.getStatus());
+	}
 }

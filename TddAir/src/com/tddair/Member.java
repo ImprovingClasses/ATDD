@@ -21,6 +21,11 @@ public class Member {
 	
 	public void addMiles(int newMiles) {
 		miles += newMiles;
+		if (miles < 25000)
+			status = "Red";
+		else if (miles >= 25000 && miles < 50000)
+			status = "Green";
+		
 	}
 
 	public String getUserName() {
