@@ -18,7 +18,8 @@ public class Flight {
 		{
 			throw new IllegalArgumentException("Invalid destination code");
 		}
-		if(mileage < 100) {
+		if(mileage < 100) 
+		{
 			throw new IllegalArgumentException("Mileage muse be greater than 100");
 		}
 		this.origin = origin;
