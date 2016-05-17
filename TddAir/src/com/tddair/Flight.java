@@ -3,14 +3,15 @@ package com.tddair;
 
 public class Flight {
 	
-	private String origin;
+	private String  origin;
 	private String destination;
 	private String airline;
 	private int number;
 	private int mileage;
 
 	public Flight(String origin, String destination, int mileage, String airline, int number) {
-		if(origin == null || origin.length() != 3) {
+		if(origin == null || origin.length() != 3) 
+		{
 			throw new IllegalArgumentException("Invalid origin code");
 		}
 		if(destination == null || destination.length() != 3) {
