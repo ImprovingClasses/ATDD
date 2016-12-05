@@ -3,6 +3,7 @@ package com.tddair;
 
 public class Flight {
 	
+	// Team FT-ZJ
 	private String origin;
 	private String destination;
 	private String airline;
