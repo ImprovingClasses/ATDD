@@ -1,6 +1,10 @@
 package com.tddair;
 
-
+/**
+ * This is our Flight object. It represents a flight.
+ * @author Who knows!!
+ *
+ */
 public class Flight {
 	
 	private String origin;
