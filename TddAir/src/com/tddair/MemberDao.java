@@ -38,4 +38,9 @@ public class MemberDao {
 	public boolean doesEmailAddressExist(String emailAddress) {
 		return emailToUsers.containsKey(emailAddress);
 	}
+	
+	public int memberShipCount()
+	{
+		return members.size();
+	}
 }

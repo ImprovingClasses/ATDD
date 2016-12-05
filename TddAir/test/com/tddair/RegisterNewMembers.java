@@ -10,7 +10,8 @@ public class RegisterNewMembers
 	
 	MemberShip membership = null;
 	
-	@Before void setUp()
+	@Before 
+	public void setUp()
 	{
 		membership = new MemberShip();
 	}
@@ -18,5 +19,12 @@ public class RegisterNewMembers
 	@Test
 	public void initialMembershipCount() {
 		assertEquals(0, membership.getEnrollmentCount());
+	}
+	
+	@Test
+	public void oneMemberAdded() {
+		membership = new MemberShip();
+		membership.addNewMember();
+		assertEquals(1, membership.getEnrollmentCount());
 	}
 }
