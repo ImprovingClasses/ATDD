@@ -24,6 +24,8 @@ public class Flight {
 		this.mileage = mileage;
 		this.airline = airline;
 		this.number = number;
+		
+		//Adding a comment to this file.
 	}
 	
 	public Flight(String origin, String destination, int mileage) {
