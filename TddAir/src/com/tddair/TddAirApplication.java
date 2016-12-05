@@ -2,7 +2,7 @@ package com.tddair;
 
 
 public class TddAirApplication {
-	
+	// add comment
 	private FlightDao flights = new FlightDao();
 	
 	public TddAirApplication() {
