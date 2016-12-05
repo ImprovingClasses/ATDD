@@ -4,19 +4,18 @@ import java.util.*;
 
 public class Membership {
 	
-	private ArrayList<Member> myMembers;
+	//private ArrayList<Member> myMembers;
+	private int memberCount = 0;
 	
 	public Membership() {
-		myMembers = new ArrayList<>();
+		//myMembers = new ArrayList<>();
 	}
 	
 	public int getMemebersCount() {
-		return myMembers.size();
+		return memberCount;
 	}
 	
 	public void addMember(Member newMember){
-		if (newMember.getEmail() == null){
-			
-		}
+		memberCount++;
 	}
 }

@@ -2,6 +2,11 @@ package com.tddair;
 
 public class Member {
 
+	public Member(String userId, String email) {
+		setEmail(email);
+		setUserId(userId);
+	}
+	
 	private String email;
 	private String userId;
 	
