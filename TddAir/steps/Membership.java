@@ -5,7 +5,7 @@ import org.junit.Assert.*;
 
 public class Membership {
 
-	@When("^traveler registers with username \"([^\"]*)\" and email \"([^\"]*)\"$")
+/*	@When("^traveler registers with username \"([^\"]*)\" and email \"([^\"]*)\"$")
 	public void traveler_registers_with_username_and_email(String arg1, String arg2) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    // throw new PendingException();
@@ -16,7 +16,9 @@ public class Membership {
 	    // Write code here that turns the phrase above into concrete actions
 	   //    throw new PendingException();
 	}
-
+*/
+	
+	
 
 	
 }
