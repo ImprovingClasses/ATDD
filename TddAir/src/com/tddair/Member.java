@@ -10,4 +10,12 @@ public class Member
 		this.userId = userId;
 		this.emailAddress = emailAddress;
 	}
+	
+	public String getUserId() {
+		return this.userId;
+	}
+	
+	public String getEmailAddress() {
+		return this.emailAddress;
+	}
 }

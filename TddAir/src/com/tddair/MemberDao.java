@@ -1,16 +1,23 @@
 package com.tddair;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class UserDao {
+public class MemberDao {
 	
+	private ArrayList<Member> members = new ArrayList<Member>();
 	private Map<String, String> userToEmail = new HashMap<>();
 	private Map<String, Set<String>> emailToUsers = new HashMap<>();
 	
-	public void addUser(String userId, String emailAddress) {
+	public void addMember(Member member) {
+		members.add(member);
+		addUser(member.getUserId(), member.getEmailAddress());
+	}
+	
+	private void addUser(String userId, String emailAddress) {
 		if(doesUserIdExist(userId) == false) {
 			userToEmail.put(userId, emailAddress);
 			addUserToEmail(userId, emailAddress);

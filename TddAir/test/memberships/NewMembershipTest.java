@@ -2,7 +2,7 @@ package memberships;
 
 import java.util.regex.Pattern;
 
-import com.tddair.UserDao;
+import com.tddair.MemberDao;
 
 public class NewMembershipTest {
 	
@@ -11,7 +11,7 @@ public class NewMembershipTest {
 	private static final String userIdRegex = "[0-9A-Za-z]+";
 	private static final Pattern userIdPattern = Pattern.compile(userIdRegex);
 	
-	private static final UserDao userDao = new UserDao();
+	private static final MemberDao memberDao = new MemberDao();
 	
 	public static boolean isEmailAddressValid(String emailAddress) {
 		return emailAddressPattern.matcher(emailAddress.toLowerCase()).find();
@@ -22,10 +22,10 @@ public class NewMembershipTest {
 	}	
 	
 	public static boolean isEmailAddressUnique(String emailAddress) {
-		return userDao.doesEmailAddressExist(emailAddress) == false;
+		return memberDao.doesEmailAddressExist(emailAddress) == false;
 	}
 	
 	public static boolean isUserIdUnique(String userId) {
-		return userDao.doesUserIdExist(userId) == false;
+		return memberDao.doesUserIdExist(userId) == false;
 	}
 }
