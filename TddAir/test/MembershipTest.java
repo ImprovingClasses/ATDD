@@ -9,4 +9,6 @@ public class MembershipTest {
 		Membership testObj = new Membership();
 		assertEquals(testObj.getNumMembers(),0);
 	}
+	
+	@Test 
 }
