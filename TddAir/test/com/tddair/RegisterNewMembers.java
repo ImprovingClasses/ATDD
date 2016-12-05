@@ -16,5 +16,14 @@ public class RegisterNewMembers {
 		
 		assertEquals( 0, subject.enrollmentCount());
 	}
+	
+	public void whenOneMemberAddedCountShouldBeOne() {
+		Membership subject = new Membership();
+		
+		subject.enroll("bob", "bob@abc.com");
+		
+		assertEquals(1, subject.enrollmentCount());
+				 
+	}
 
 }
