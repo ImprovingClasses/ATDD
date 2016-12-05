@@ -26,3 +26,7 @@ Scenario: Register member that is already exist
 when user name "Aro" and email id "Aro@Aro.com"
 Then "Aro" is not added
 
+Scenario: Register member that is already exist
+when user name "Aro" and email id "Aro@Aro.com"
+Then "Aro" is not   added
+
