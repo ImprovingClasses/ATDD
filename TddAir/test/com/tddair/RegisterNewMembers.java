@@ -12,7 +12,9 @@ public class RegisterNewMembers {
 	
 	@Test 
 	public void whenNoMembershipCountIsZero() {
-		fail("No yet implemented");
+		Membership subject = new Membership();
+		
+		assertEquals( 0, subject.enrollmentCount());
 	}
 
 }
