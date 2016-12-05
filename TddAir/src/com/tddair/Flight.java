@@ -1,6 +1,7 @@
 package com.tddair;
 
 //this is an update
+// THis is another update
 public class Flight {
 	
 	private String origin;
