@@ -15,6 +15,11 @@ public class MemberShip
 	}
 
 	public void addNewMember(Member member) {
-		memberDao.addMember(member);
+		
+		if (MemberShipUtility.isValidMember(member))
+		{
+			memberDao.addMember(member);
+		}
 	}
+	
 }

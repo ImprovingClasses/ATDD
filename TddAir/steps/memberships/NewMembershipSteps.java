@@ -1,5 +1,7 @@
 package memberships;
 
+import com.tddair.MemberShipUtility;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,10 +13,10 @@ public class NewMembershipSteps {
 
 	@When("^the Traveler enters a unique combination of a valid userId \"([^\"]*)\" and a valid emailAddress \"([^\"]*)\"$")
 	public void the_Traveler_enters_a_unique_combination_of_a_valid_userId_and_a_valid_emailAddress(String userId, String emailAddress) throws Throwable {
-		if(	NewMembershipTest.isUserIdValid(userId) &&
-			NewMembershipTest.isEmailAddressValid(emailAddress) &&
-			NewMembershipTest.isUserIdUnique(userId) &&
-			NewMembershipTest.isEmailAddressUnique(emailAddress)) {
+		if(	MemberShipUtility.isUserIdValid(userId) &&
+			MemberShipUtility.isEmailAddressValid(emailAddress) &&
+			MemberShipUtility.isUserIdUnique(userId) &&
+			MemberShipUtility.isEmailAddressUnique(emailAddress)) {
 			the_Traveler_membership_status_is(REGISTERED);
 		}
 		else {

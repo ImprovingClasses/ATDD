@@ -1,12 +1,10 @@
-package memberships;
+package com.tddair;
 
 import java.util.regex.Pattern;
 
-import com.tddair.MemberDao;
-
-public class NewMembershipTest {
+public class MemberShipUtility {
 	
-	private static final String emailAddressRegex = "[0-9A-Za-z]+@[0-9A-Za-z]+.[0-9A-Za-z]+";
+	private static final String emailAddressRegex = "[0-9A-Za-z]+@[0-9A-Za-z]+\\.[0-9A-Za-z]+";
 	private static final Pattern emailAddressPattern = Pattern.compile(emailAddressRegex);
 	private static final String userIdRegex = "[0-9A-Za-z]+";
 	private static final Pattern userIdPattern = Pattern.compile(userIdRegex);
@@ -27,5 +25,10 @@ public class NewMembershipTest {
 	
 	public static boolean isUserIdUnique(String userId) {
 		return memberDao.doesUserIdExist(userId) == false;
+	}
+	
+	public static boolean isValidMember(Member member)
+	{
+		return isEmailAddressValid(member.getEmailAddress());
 	}
 }

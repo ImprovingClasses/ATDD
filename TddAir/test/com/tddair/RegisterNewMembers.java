@@ -37,4 +37,14 @@ public class RegisterNewMembers
 		
 		assertEquals(beforeAdd, afterAdd);
 	}
+	
+	@Test
+	public void cannotAddMemberWithDuplicateUserId() {
+		Member badMember = new Member("testId", "test@email.com");
+		int beforeAdd = membership.getEnrollmentCount();
+		membership.addNewMember(badMember);
+		int afterAdd = membership.getEnrollmentCount();
+		
+		assertEquals(beforeAdd, afterAdd);
+	}
 }
