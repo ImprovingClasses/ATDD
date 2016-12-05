@@ -1,6 +1,7 @@
 package com.tddair;
 
 
+
 public class Flight {
 	
 	private String origin;
