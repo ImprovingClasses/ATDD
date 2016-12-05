@@ -19,4 +19,13 @@ public class Membership {
     	}
     	return false;
     }
+    
+    public Member getById(String id){
+    	for (Member member : members) {
+    		if (member.getId().equals(id)){
+    			return member;
+    		}
+    	}
+    	return null;
+    }
 }

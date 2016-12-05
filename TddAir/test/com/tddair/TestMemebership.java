@@ -28,6 +28,7 @@ public class TestMemebership {
 		members.addNewMember("bob", "bob@abc.com");
 		Member m = members.getById("bob");
 		assertEquals("Test successful member match",  "bob", m.getId());
+		assertEquals("Test successful email match", "bob@abc.com", m.getEmail());
 	}
 	
 }
