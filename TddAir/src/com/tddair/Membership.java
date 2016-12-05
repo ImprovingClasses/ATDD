@@ -9,4 +9,9 @@ public class Membership {
 	}
 	
 	public int getNumMembers() { return size; }
+	
+	public void addMember(String userID, String email)
+	{
+		
+	}
 }
