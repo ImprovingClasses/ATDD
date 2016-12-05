@@ -22,20 +22,6 @@ Feature: Membership
 	As a user I want to record my user details
 
 @tag1
-Scenario: Record user details
-Given userid	
-When userid
-	And email	
-Then I record the userid
-	And email
-
-@tag2
-Scenario Outline: Title of your scenario outline
-Given I want to write a step with <name>
-When I check for the <value> in step
-Then I verify the <status> in step
-
-Examples:
-    | name  |value | status |
-    | name1 |  5   | success|
-    | name2 |  7   | Fail   |
+Scenario: Register a new member not having conflicts
+When the traveler registers with a userid "bob" and the email "bob@abc.com"
+Then the traveler is "registered" as a member 
