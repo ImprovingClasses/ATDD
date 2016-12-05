@@ -27,4 +27,14 @@ public class RegisterNewMembers
 		membership.addNewMember(testMember);
 		assertEquals(1, membership.getEnrollmentCount());
 	}
+	
+	@Test
+	public void cannotAddMemberWithInvalidEmail() {
+		Member badMember = new Member("validId", "invalid@email");
+		int beforeAdd = membership.getEnrollmentCount();
+		membership.addNewMember(badMember);
+		int afterAdd = membership.getEnrollmentCount();
+		
+		assertEquals(beforeAdd, afterAdd);
+	}
 }
