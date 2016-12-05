@@ -1,19 +1,20 @@
 package com.tddair;
 
-import java.util.ArrayList;
-
 public class MemberShip 
 {
-	private MemberDao members;
+	private MemberDao memberDao;
 	
 	public MemberShip()
 	{
-		members = new MemberDao();
+		memberDao = new MemberDao();
 	}
 	
 	public int getEnrollmentCount()
 	{
-		return members.memberShipCount();
+		return memberDao.memberShipCount();
 	}
 
+	public void addNewMember(Member member) {
+		memberDao.addMember(member);
+	}
 }

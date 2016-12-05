@@ -23,8 +23,8 @@ public class RegisterNewMembers
 	
 	@Test
 	public void oneMemberAdded() {
-		membership = new MemberShip();
-		membership.addNewMember();
+		Member testMember = new Member("testId", "test@email.com");
+		membership.addNewMember(testMember);
 		assertEquals(1, membership.getEnrollmentCount());
 	}
 }
