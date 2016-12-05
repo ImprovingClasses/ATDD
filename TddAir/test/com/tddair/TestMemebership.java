@@ -21,4 +21,13 @@ public class TestMemebership {
 		members.addNewMember("bob", "bob@abc.com");
 		assertEquals("Test successful count 1",  1, members.getMembershipCount());
 	}
+
+	@Test
+	public void whenMemberRetreavedByMemberThenMemberAttributesShouldMatch(){
+		Membership members = new Membership();
+		members.addNewMember("bob", "bob@abc.com");
+		Member m = members.getById("bob");
+		assertEquals("Test successful member match",  "bob", m.getId());
+	}
+	
 }

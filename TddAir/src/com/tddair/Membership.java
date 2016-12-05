@@ -8,6 +8,15 @@ public class Membership {
     
     public int getMembershipCount()
     {
-    	return 0;
+    	return members.size();
+    }
+    
+    public boolean addNewMember(String Id, String email){
+    	Member m = new Member(Id,email);
+    	if(m != null){
+    		members.add(m);
+    		return true;
+    	}
+    	return false;
     }
 }
