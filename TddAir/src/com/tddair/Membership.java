@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public class Membership {
 
 	ArrayList<Member> memList;
+	int numOfEmail;
 	
 	public Membership() {
+		int numOfEmail = 0;
 		memList = new ArrayList<>();
 	}
 	
@@ -18,6 +20,16 @@ public class Membership {
 	public void addMember(String userID, String email)
 	{
 		memList.add(new Member(userID, email));
+		if (memList.size() == 0)
+			numOfEmail = 0;
+		else
+			for (Member member: memList) {
+				if (member.getEmail() != email) {
+					numOfEmail++;
+					break;
+				}
+			}
+					
 	}
 	
 	public Member getMember(String userID)
@@ -31,5 +43,7 @@ public class Membership {
 		return null;
 	}
 	
-	
+	public int getNumEmails() {
+		return numOfEmail;
+	}
 }
