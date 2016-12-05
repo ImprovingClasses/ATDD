@@ -7,7 +7,23 @@ public class Member {
 	private String email;
 	
 	public Member(String u, String e) {
-		userID = u;
-		email = e;
+		setUserID(u);
+		setEmail(e);
+	}
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

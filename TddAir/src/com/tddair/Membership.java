@@ -14,4 +14,9 @@ public class Membership {
 	{
 		size++;
 	}
+	
+	public Member getMember(String userID)
+	{
+		return null;
+	}
 }

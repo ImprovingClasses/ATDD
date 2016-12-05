@@ -18,4 +18,13 @@ public class MembershipTest {
 		testObj.addMember("userID", "email");
 		assertEquals(testObj.getNumMembers(),1);
 	}
+	
+	@Test public void whenMemberRetrievedByMemberThenMemberAttributesShouldMatch()
+	{
+		Membership testObj = new Membership();
+		testObj.addMember("userID", "email");
+		Member member = testObj.getMember("userID");
+		assertEquals(member.getUserID(), "userID");
+		assertEquals(member.getEmail(), "email");
+	}
 }
