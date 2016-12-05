@@ -17,6 +17,7 @@ public class RegisterNewMembers {
 		assertEquals( 0, subject.enrollmentCount());
 	}
 	
+	@Test
 	public void whenOneMemberAddedCountShouldBeOne() {
 		Membership subject = new Membership();
 		
