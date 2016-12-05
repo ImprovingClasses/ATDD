@@ -1,6 +1,6 @@
 package com.tddair;
 
-
+// The Flight Class TDD Team FT-ZJ
 public class Flight {
 	
 	private String origin;
