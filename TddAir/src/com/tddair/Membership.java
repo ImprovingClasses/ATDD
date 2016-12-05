@@ -13,4 +13,10 @@ public class Membership {
 	public int getMemebersCount() {
 		return myMembers.size();
 	}
+	
+	public void addMember(Member newMember){
+		if (newMember.getEmail() == null){
+			
+		}
+	}
 }
