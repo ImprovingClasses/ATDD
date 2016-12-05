@@ -20,9 +20,6 @@ public class Membership {
 	
 	public Member getMember(String userID)
 	{
-		
-		
 		return m1;
-		
 	}
 }

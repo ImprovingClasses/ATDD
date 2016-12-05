@@ -27,4 +27,14 @@ public class MembershipTest {
 		assertEquals(member.getUserID(), "userID");
 		assertEquals(member.getEmail(), "email");
 	}
+	
+	@Test public void whenTwoMembersAddedThenRetrieveMemberAttributesShouldMatch()
+	{
+		Membership testObj = new Membership();
+		testObj.addMember("userID", "email");
+		testObj.addMember("secondUser", "otherEmail");
+		Member member = testObj.getMember("userID");
+		assertEquals(member.getUserID(), "userID");
+		assertEquals(member.getEmail(), "email");
+	}
 }
