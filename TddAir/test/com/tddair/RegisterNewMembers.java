@@ -37,7 +37,8 @@ public class RegisterNewMembers {
 		subject.addNewMember("bob","bob@abc.com");
 		ArrayList<Member> memberList = subject.getMember("bob@abc.com");
 		
-		assertEquals(1, subject.enrollmentCount());
+		System.out.println(memberList);
+		assertEquals("bob",memberList.get(0).getUserId());
 	}
 
 }
