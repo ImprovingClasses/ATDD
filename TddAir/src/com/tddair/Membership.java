@@ -4,23 +4,20 @@ import java.util.ArrayList;
 
 public class Membership {
 
-	int size;
-	Member m1;
 	ArrayList<Member> memList;
 	
 	public Membership() {
-		size = 0;
-		m1 = null;
 		memList = new ArrayList<>();
 	}
 	
-	public int getNumMembers() { return size; }
+	public int getNumMembers() 
+	{ 
+		return memList.size(); 
+	}
 	
 	public void addMember(String userID, String email)
 	{
-		size++;
-		m1 = new Member(userID, email);
-		memList.add(m1);
+		memList.add(new Member(userID, email));
 	}
 	
 	public Member getMember(String userID)
@@ -31,7 +28,7 @@ public class Membership {
 					return member;
 		}
 		
-		return m1;
+		return null;
 	}
 	
 	

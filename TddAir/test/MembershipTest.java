@@ -37,4 +37,10 @@ public class MembershipTest {
 		assertEquals(member.getUserID(), "userID");
 		assertEquals(member.getEmail(), "email");
 	}
+	
+	@Test public void initialEmailCountShouldBeZero()
+	{
+		Membership testObj = new Membership();
+		assertEquals(testObj.getNumEmails(),0);
+	}
 }
