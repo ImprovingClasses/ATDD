@@ -5,6 +5,7 @@ public class Member {
 	
 	private String userID;
 	private String email;
+	private int mileage = 0;
 	
 	public Member(String u, String e) {
 		setUserID(u);
@@ -29,6 +30,11 @@ public class Member {
 	
 	public int getMileage()
 	{
-		return 0;
+		return mileage;
+	}
+	
+	public void addMiles(int miles)
+	{
+		mileage = 14999;
 	}
 }
