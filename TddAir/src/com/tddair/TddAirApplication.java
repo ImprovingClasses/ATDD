@@ -1,19 +1,24 @@
 package com.tddair;
 
+import java.util.List;
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
+//	private FlightDao flights = new FlightDao();
 	
+	private FlightList flights = new FlightList();
 	// Membership list variable
 	private Membership members = new Membership();
 	
 	public TddAirApplication() {
 	}
-	
-	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
-		flights.addFlight(origin, destination, mileage, airline, number);
-	}
+
+	public void addFlight(FlightData flightData) {
+	    flights.addFlight(flightData);
+    }
+//	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
+//		flights.addFlight(origin, destination, mileage, airline, number);
+//	}
 	
 	// Get the number of members
     public int getMembershipCount()
