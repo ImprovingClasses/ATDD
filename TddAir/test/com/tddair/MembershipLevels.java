@@ -63,5 +63,17 @@ public class MembershipLevels {
 		Status status = Membership.Status.Green;
 		assertEquals(membership.membershipLevel(member), status);
 	}
+	
+	@Test
+	public void testStatusFlights() {
+		Member member = new Member("Bob", "bob@abc.com", 24000);
+		Membership membership = new Membership();
+		membership.add(member);
+		
+		Flight flight = new Flight ("DFW", "ALB", 1000, "TD", 100);
+		Status status = Membership.Status.Green;
+		membership.userFlights(member.getUserID(), flight);
+		assertEquals(membership.membershipLevel(member), status);
+	}
 
 }

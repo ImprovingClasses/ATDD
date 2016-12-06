@@ -82,6 +82,24 @@ public class Membership {
 		
 	}
 	
+	public void userFlights(String user, Flight flight)
+	{
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 int memMiles = member.getMiles();
+				 int miles = flight.getMileage();
+				 memMiles = memMiles + miles;
+				 member.setMiles(memMiles);
+				 membershipLevel(member);
+				 
+			 }
+		}
+	}
+	
+	
+	
 	public Status getMemberStatus(){
 		return memStatus;
 	}
