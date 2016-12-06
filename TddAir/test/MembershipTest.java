@@ -51,4 +51,11 @@ public class MembershipTest {
 		assertEquals(testObj.getNumEmails(),1);
 		assertEquals(testObj.getNumMembers(),0);
 	}
+	@Test public void whenTwoOnlyEmailsEnteredBothEmailsRecorded()
+	{
+		Membership testObj = new Membership();
+		testObj.addMember("", "email1");
+		testObj.addMember("", "email2");
+		assertEquals(testObj.getNumEmails(),2);
+	}
 }
