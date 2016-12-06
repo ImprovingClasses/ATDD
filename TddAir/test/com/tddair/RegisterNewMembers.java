@@ -58,7 +58,7 @@ public class RegisterNewMembers {
 	}
 	
 	@Test
-	public void canAddMemberWithDuplicateUserId() {
+	public void cannotAddMemberWithDuplicateUserId() {
 		Member member = new Member("testId", "test@email.com");
 		Member duplicateMember = new Member("testId", "test2@email.com");
 		
@@ -67,7 +67,7 @@ public class RegisterNewMembers {
 		membership.addNewMember(duplicateMember);
 		int afterDuplicateAdd = membership.getEnrollmentCount();
 		
-		assertEquals(beforeDuplicateAdd + 1, afterDuplicateAdd);
+		assertEquals(beforeDuplicateAdd, afterDuplicateAdd);
 	}
 	
 	@Test

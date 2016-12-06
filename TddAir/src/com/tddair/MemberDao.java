@@ -7,7 +7,8 @@ import java.util.Set;
 
 public class MemberDao {
 	
-	private Map<MemberId, Member> members = new HashMap<MemberId, Member>();
+	private Map<String, Member> members = new HashMap<String, Member>();
+//	private Map<MemberId, Member> members = new HashMap<MemberId, Member>();
 	private Map<String, String> userToEmail = new HashMap<>();
 	private Map<String, Set<String>> emailToUsers = new HashMap<>();
 	
@@ -31,7 +32,8 @@ public class MemberDao {
 	}
 	
 	public void addMember(Member member) {
-		members.put(member.getMemberId(), member);
+//		members.put(member.getMemberId(), member);
+		members.put(member.getUserId(), member);
 		addUser(member.getUserId(), member.getEmailAddress());
 	}
 	
