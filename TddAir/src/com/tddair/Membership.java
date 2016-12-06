@@ -67,4 +67,13 @@ public class Membership {
     	}
     	return status;
     }
+    
+    public int getMilesFromId(String Id) {
+    	int miles = -1;
+    	Member m = getById(Id);
+    	if (m != null) {
+    		miles = m.getMiles();
+    	}
+    	return miles;
+    }
 }

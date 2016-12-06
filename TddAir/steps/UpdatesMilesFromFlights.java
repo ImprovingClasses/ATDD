@@ -10,6 +10,7 @@ import com.tddair.TddAirApplication;
 
 public class UpdatesMilesFromFlights {
 	TddAirApplication controller = new TddAirApplication();
+	String status = "Undefined";
 	
 	@Given("^these flights:$")
 	public void these_flights(List<FlightData> arg1) throws Throwable {
@@ -18,22 +19,28 @@ public class UpdatesMilesFromFlights {
 			controller.addFlight(flight);
 		}
 	}
+	
+	@Given("^Preflight miles (\\d+)$")
+	public void preflight_miles(int arg1) throws Throwable {
+		controller.addMember("bob", "bob@abc.com", arg1);
+	}
 
 	@When("^Flight \"([^\"]*)\"$")
 	public void flight(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		status = controller.sendOnFlight("bob",controller.getFlight(arg1));
 	}
 
 	@Then("^Member Miles (\\d+)$")
 	public void member_Miles(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    if (controller.getMemberMilesById("bob") != arg1) {
+	    	throw new AssertionError("Bad miles comparison: " + (controller.getMemberMilesById("bob")) + " and : " + arg1);
+	    }
 	}
 
 	@Then("^Member Status \"([^\"]*)\"$")
 	public void member_Status(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		if (!status.equalsIgnoreCase(arg1)){
+			throw new AssertionError("Invalid comparison between :" + status + " and :" + arg1);
+		}
 	}
 }

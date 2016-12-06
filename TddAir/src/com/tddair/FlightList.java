@@ -10,4 +10,13 @@ public class FlightList {
 	public void addFlight(FlightData flight){
 		flights.add(flight);
 	}
+	
+	public FlightData getFlight(String flightId) {
+    	for (FlightData flight: flights) {
+    		if (flight.getNumber().equals(flightId)){
+    			return flight;
+    		}
+    	}
+    	return null;
+    }
 }

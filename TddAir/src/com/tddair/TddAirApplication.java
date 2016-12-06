@@ -53,4 +53,20 @@ public class TddAirApplication {
     	return members.getStatusFromId(Id);
     }
     
+    public int getMemberMilesById(String Id) {
+    	return members.getMilesFromId(Id);
+    }
+    
+    public FlightData getFlight(String flightId) {
+    	return flights.getFlight(flightId);
+    }
+    
+    public String sendOnFlight(String memberId, FlightData flight){
+    	int tdMiles = 0;
+    	if (flight.getNumber().contains("TD")) {
+    		tdMiles = flight.getMiles();
+    	}
+    	return members.addMilesToMember(memberId, tdMiles);
+    }
+    
 }
