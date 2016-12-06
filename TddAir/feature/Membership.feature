@@ -25,3 +25,4 @@ Feature: Membership
 Scenario: Register a new member not having conflicts
 When the traveler registers with a userid "bob" and the email "bob@abc.com"
 Then the traveler is "registered" as a member 
+
