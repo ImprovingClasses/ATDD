@@ -53,4 +53,10 @@ public class TestMemebership {
 		assertEquals("Test successful email match", "sue@abc.com", sue2.getEmail());
 	}
 	
+	@Test
+	public void givenAnExistingMemberIdWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotAdded(){
+		Membership members = new Membership();
+		members.addNewMember("bob", "bob@abc.com");
+		assertFalse("memeber already enrolled! ",members.addNewMember("bob", "bob@abcd.com"));
+	}
 }

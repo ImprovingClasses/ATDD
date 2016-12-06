@@ -14,8 +14,11 @@ public class Membership {
     public boolean addNewMember(String Id, String email){
     	Member m = new Member(Id,email);
     	if(m != null){
+    		if (getById(Id) == null)
+    		{
     		members.add(m);
     		return true;
+    		}
     	}
     	return false;
     }
@@ -23,6 +26,15 @@ public class Membership {
     public Member getById(String id){
     	for (Member member : members) {
     		if (member.getId().equals(id)){
+    			return member;
+    		}
+    	}
+    	return null;
+    }
+    
+    public Member getByEmail(String email){
+    	for (Member member : members) {
+    		if (member.getEmail().equals(email)){
     			return member;
     		}
     	}
