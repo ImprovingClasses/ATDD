@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Membership {
 	
+	Member oneMember;
 	//private ArrayList<Member> myMembers;
 	private int memberCount = 0;
 	
@@ -17,5 +18,10 @@ public class Membership {
 	
 	public void addMember(Member newMember){
 		memberCount++;
+		oneMember = newMember;
+	}
+	
+	public Member getMemberById(String userId) {
+		return oneMember;
 	}
 }

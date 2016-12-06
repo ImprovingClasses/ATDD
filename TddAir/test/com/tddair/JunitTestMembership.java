@@ -31,9 +31,28 @@ public class JunitTestMembership {
 		Member chrisMember = ourMembership.getMemberById("Chris");
 		
 		assertEquals("Chris", chrisMember.getUserId());
-		assertEquals("Chris@email.net", chrisMember.getEmail());
+		assertEquals("Chris@Email.net", chrisMember.getEmail());
 		 
 	}
+	
+	@Test
+	public void whenTwoMembersAddedThenRetrieveMemberAttributesShouldMatch(){
+		Membership ourMembership = new Membership();
+		
+		//Add two Members
+		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
+		ourMembership.addMember(new Member("Nick", "Nick@Email.net"));
+		
+		
+		Member chrisMember = ourMembership.getMemberById("Chris");
+		Member nickMember = ourMembership.getMemberById("Nick");
+		 
+		assertEquals("Chris", chrisMember.getUserId());
+		assertEquals("Chris@Email.net", chrisMember.getEmail());
+		assertEquals("Nick", nickMember.getUserId());
+		assertEquals("Nick@Email.net", nickMember.getEmail());
+	}
+	
 	
 /*	@Test(expected=IllegalArgumentException.class)
 	public void userIdIsNotNull() {
