@@ -41,6 +41,7 @@ public class RegisterNewMembers {
 		assertEquals("bob",memberList.get(0).getUserId());
 	}
 	
+	
 	@Test
 	public void whenTwoMembersAddedThenRetrievedMemberAttributesShouldMatch() {
 		Membership subject = new Membership();
@@ -53,5 +54,16 @@ public class RegisterNewMembers {
 		assertEquals("sue",sueList.get(0).getUserId());
 	
 	}
+	
+	@Test
+	public void givenAnExistingMemberIdWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotAdded() {
+		Membership subject = new Membership();
+		subject.addNewMember("bob","bob@abc.com");
+		subject.addNewMember("bob","bob@abc.com");
+		ArrayList<Member> memberList = subject.getMember("bob@abc.com");
+		assertEquals(1,memberList.size());
+	}
+	
+	
 
 }
