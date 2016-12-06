@@ -28,8 +28,6 @@ public class UpdateMemberStatus {
 				assertEquals(0, member.getMileage());
 			}
 		}
-		
-		
 	}
 	
 	private void addMiles(Membership subject, String email, int miles) {
