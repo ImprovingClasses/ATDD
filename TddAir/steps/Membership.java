@@ -27,7 +27,7 @@ public class Membership {
 
 @When("^traveler registers with username \"([^\"]*)\" and email \"([^\"]*)\"$")
 public void traveler_registers_with_username_and_email(String arg1, String arg2) throws Throwable {
-	app.registerTraveller(arg1, arg2);
+	app.registerTraveller(arg1, arg2,100);
 }
 
 @Then("^the traveler is \"([^\"]*)\" as a member$")
@@ -38,7 +38,7 @@ public void the_traveler_is_as_a_member(String arg1) throws Throwable {
 
 @When("^traveler registers with username \"([^\"]*)\" and empty email \"([^\"]*)\"$")
 public void traveler_registers_with_username_and_empty_email(String arg1, String arg2) throws Throwable {
-	app.registerTraveller(arg1, arg2);
+	app.registerTraveller(arg1, arg2, 100);
 }
 
 @Then("^the traveler \"([^\"]*)\" is not registered as a member$")

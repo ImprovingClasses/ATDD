@@ -23,14 +23,14 @@ public class membershipTest {
 	@Test
 	public void whenMembershipCountIsOne(){
 		Membership mbr = new Membership();
-		mbr.addMember( "Bob", "bob@abc.com" );
+		mbr.addMember( "Bob", "bob@abc.com", 100 );
 		Assert.assertEquals( 1, mbr.enrollmentCount() );
 	}
 		
 	@Test
 	public void whenMemberMatched(){
 		Membership mbr = new Membership();
-		mbr.addMember( "Bob", "bob@abc.com" );
+		mbr.addMember( "Bob", "bob@abc.com", 500 );
 		Member m = mbr.getmemberByUserId( "Bob" );
 		Assert.assertNotNull( m );
 	}
@@ -38,7 +38,7 @@ public class membershipTest {
 	@Test
 	public void whenMemberAlreadyExistsWithTheGivenId(){
 		Membership mbr = new Membership();
-		mbr.addMember( "Bob", "bob@abc.com" );
+		mbr.addMember( "Bob", "bob@abc.com", 1200 );
 		//mbr.addMember( "Bob", "bob@abc.com" );
 		//Member m = mbr.getmemberByUserId("Bob");
 		Assert.assertTrue(mbr.isMember("Bob"));
