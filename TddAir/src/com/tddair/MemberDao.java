@@ -51,8 +51,7 @@ public class MemberDao {
 		return emailToUsers.containsKey(emailAddress);
 	}
 	
-	public int memberShipCount()
-	{
+	public int memberShipCount() {
 		return members.size();
 	}
 }

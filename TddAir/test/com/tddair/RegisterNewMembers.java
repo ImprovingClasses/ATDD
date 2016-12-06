@@ -6,8 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RegisterNewMembers 
-{
+public class RegisterNewMembers {
 	
 	MemberShip membership = null;
 	
@@ -25,6 +24,11 @@ public class RegisterNewMembers
 	@Test
 	public void initialMembershipCount() {
 		assertEquals(0, membership.getEnrollmentCount());
+	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void cannotCreateMemberWithNullValues() {
+		new Member(null, null);
 	}
 	
 	@Test
