@@ -15,6 +15,14 @@ public class TddAirApplication {
 		return membership.addNewMember(userId, emailAddress);
 	}
 	
+	public String registerMember(String userId, String emailAddress, int initialMiles) {
+		return membership.addNewMember(userId, emailAddress, initialMiles);
+	}
+	
+	public String getMemberStatus(String userId) {
+		return membership.getMemberStatus(userId);
+	}
+	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
 		flights.addFlight(origin, destination, mileage, airline, number);
 	}
