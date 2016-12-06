@@ -11,11 +11,11 @@ public class Membership {
     	return members.size();
     }
     
-    public boolean addNewMember(String Id, String email){
+    public boolean addNewMember(String Id, String email, int miles){
     	boolean added = false;
     	if (!email.isEmpty())
     	{
-    		Member m = new Member(Id,email);
+    		Member m = new Member(Id,email,miles);
     		if(m != null){
     			if (getById(Id) == null)
     			{
@@ -25,6 +25,10 @@ public class Membership {
     		}
     	}
     	return added;
+    }
+    
+    public boolean addNewMember(String Id, String email){
+    	return addNewMember(Id, email, 0);
     }
     
     public Member getById(String id){
