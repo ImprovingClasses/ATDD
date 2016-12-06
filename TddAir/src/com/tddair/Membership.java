@@ -7,6 +7,7 @@ public class Membership {
 
 	private HashMap<String, ArrayList<Member>> members = new HashMap<String, ArrayList<Member>>();
 	private int emailOnlyCount = 0; 
+	private int memberCount = 0;
 
 	public int enrollmentCount() {
 		return members.size();
@@ -21,6 +22,8 @@ public class Membership {
 		
 		if ( (userID == null) || (userID.trim().isEmpty())) {
 			emailOnlyCount+=1;
+		} else {
+			memberCount+=1;
 		}
 		
 		if (members.containsKey(emailAddress)) {
@@ -45,7 +48,11 @@ public class Membership {
 	public int getEmailOnlyCount() {
 		return this.emailOnlyCount;
 	}
-
+	
+	public int getMemberCount() {
+		return this.memberCount;
+	}
+	
 	private boolean containsID(ArrayList<Member> memberList, String memberID) {
 		boolean result = false;
 		for (Member member : memberList) {
