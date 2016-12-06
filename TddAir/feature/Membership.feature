@@ -13,7 +13,7 @@ Feature: Determine if the userId and email are registered.
 
   Scenario: Do not register a new user if the userId is not unique
     When the traveler registers with a username "bob" and the email "bob@avc.com"
-    When the traveler registers with a username "bob" and the email "bob@avc.com"
+    When the traveler registers with a username "bob" and the email "notbob@avc.com"
     Then the traveler is "not registered" as a member
 
 
