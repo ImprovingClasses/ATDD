@@ -1,5 +1,6 @@
 package com.tddair;
 
+import java.util.ArrayList;
 
 public class TddAirApplication {
 	
@@ -17,5 +18,22 @@ public class TddAirApplication {
 		boolean isAdded = subject.addNewMember(userId, email);
 		return isAdded;
 	}
+	
+	public boolean addMember(String userId, String email, int startingMiles) {
+		boolean isAdded = subject.addNewMember(userId, email, startingMiles);
+		return isAdded;
+	}
+	
+	public Member getMember(String userId, String email) {
+		Member response = null;
+		
+		ArrayList<Member> members = subject.getMember(email);
+		for (Member member : members) {
+			if (member.getUserId().endsWith(userId)) {
+				response = member;
+			}
+		}
+		return response;
+	} 
 	
 }

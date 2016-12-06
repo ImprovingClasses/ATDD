@@ -1,25 +1,34 @@
+import com.tddair.Member;
+import com.tddair.TddAirApplication;
+
+import static org.junit.Assert.*;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class MilageStatusSteps {
+	private final TddAirApplication controller = new TddAirApplication();
+	private static final String USER_ID = "bob";
+	private static final String EMAIL = "bob@abc.com";
+	
 	
 	@Given("^I have (\\d+) in my account$")
 	public void i_have_in_my_account(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		controller.addMember(USER_ID, EMAIL, arg1);
 	}
 
 	@When("^I travel (\\d+)$")
 	public void i_travel(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		Member member = controller.getMember(USER_ID, EMAIL);
+		member.addMiles(arg1);
 	}
 
 	@Then("^my status is RED$")
 	public void my_status_is_RED() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+		Member member = controller.getMember(USER_ID, EMAIL);
+		assertEquals("Red", member.getStatus());
 	    throw new PendingException();
 	}
 
