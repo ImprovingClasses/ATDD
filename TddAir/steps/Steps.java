@@ -17,13 +17,21 @@ public class Steps {
 	@When("^the traveler registers with a username \"([^\"]*)\" and the email \"([^\"]*)\"$")
 	public void the_traveler_registers_with_a_username_and_the_email(String userid, String email) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		tdd.addMember(userid, email);
+		results = tdd.addMember(userid, email);
 	   
 	}
 
 	@Then("^the traveler is \"([^\"]*)\" as a member$")
 	public void the_traveler_is_as_a_member(String arg1) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		assertTrue("registerd".equalsIgnoreCase(arg1) == results);
+		
+		if(arg1.equalsIgnoreCase("registered")) {
+			//Registered
+			assertTrue(results);
+		} else {
+			//Not-Registered
+			assertFalse(results);
+		}
+		
 	}
 }

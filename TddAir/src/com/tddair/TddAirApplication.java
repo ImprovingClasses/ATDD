@@ -12,7 +12,7 @@ public class TddAirApplication {
 		flights.addFlight(origin, destination, mileage, airline, number);
 	}
 	
-	public void addMember(String userId, String emailAddress){
-		membership.addMember(new Member(userId, emailAddress));
+	public Boolean addMember(String userId, String emailAddress){
+		return membership.addMember(new Member(userId, emailAddress));
 	}
 }
