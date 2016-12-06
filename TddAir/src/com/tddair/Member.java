@@ -47,9 +47,11 @@ public class Member {
 	
 	private void calcStatus()
 	{
-		if (mileage>=25000)
-			status = "Green";
-		else if (mileage >= 50000)
+		if (mileage >= 50000)
 			status = "Blue";
+		else if (mileage >= 25000)
+			status = "Green";
+		else
+			status = "Red";
 	}
 }
