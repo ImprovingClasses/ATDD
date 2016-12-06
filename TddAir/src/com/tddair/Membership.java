@@ -68,6 +68,72 @@ public class Membership {
 	  return email;
   }
   
+  public boolean addMileage(String username, int newMileage)
+  {
+	  if(doesUserExist(username))
+	  {
+		  Iterator <Member> it = members.iterator();
+		  while(it.hasNext())
+		  {
+			  Member retrievedMember = it.next();
+			  String retrievedUsername = retrievedMember.getUsername_();
+		  	if (retrievedUsername.equals(username))
+		  	{
+			  retrievedMember.addMileage(newMileage);
+			  return true;
+		  	}
+		  }
+	  }
+	  //user did not exist and cannot add mileage
+	  return false;
+  }
+  
+  public String getLevel(String username)
+  {
+	  String level = "USERNOTFOUND";
+	  //Get the mileage of the username
+	  Iterator <Member> it = members.iterator();
+	  while(it.hasNext())
+	  {
+		  Member retrievedMember = it.next();
+		  String retrievedUsername = retrievedMember.getUsername_();
+	  	  if (retrievedUsername.equals(username))
+	  	  {
+		     int mileage = retrievedMember.getMileage_();
+		     level = getLevel(mileage);
+	  	  }
+	  }
+	  
+	  return level;
+	  
+  }
+  
+  private String getLevel(int mileage)
+  {
+	String level = "";
+	//For mileage 0 to 24,999 return Red status
+	if(mileage <= 24999)
+	{
+		System.out.println("Returning Red Level Status");
+		return "Red";
+	}
+	else if(mileage <= 49999)
+	{
+		System.out.println("Returning Green Level Status");
+		return "Green";
+	}
+	else if(mileage <= 74999)
+	{
+		System.out.println("Returning Blue Level Status");
+		return "Blue";
+	}
+	else 
+	{
+		System.out.println("Returning Golden Level Status");
+		return "Golden";
+	}	
+  }
+  
   private boolean doesUserExist(String username)
   {
 	 

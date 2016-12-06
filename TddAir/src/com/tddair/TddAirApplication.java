@@ -16,6 +16,16 @@ public class TddAirApplication {
 	{
 		return membership_.enroll(username, email);
 	}
+	
+	public boolean addMileageToMember(String username, int mileage)
+	{
+		return membership_.addMileage(username, mileage);
+	}
+	
+	public String getMemberLevel(String username)
+	{
+		return membership_.getLevel(username);
+	}
 	private Membership membership_ = new Membership();
 	
 }

@@ -6,10 +6,13 @@
 	import static org.junit.Assert.*;
 
 public class TestLevel {
+	TddAirApplication tddAirController = new TddAirApplication();
+	String level = "";
 
 	@Given("^flyer has (\\d+) mileage$")
 	public void flyer_has_mileage(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+	    tddAirController.addNewMembers("bob", "bob@abc.com");
+	  //TODO
 	    throw new PendingException();
 	}
 
