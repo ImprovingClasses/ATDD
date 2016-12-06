@@ -1,14 +1,23 @@
 package com.tddair;
 
+import java.util.HashMap;
+
 public class Member {
 	
-	private String UserID;
+	private String userID;
 	private String email;
+	
+	
+	public Member(String email, String userID) {
+		this.userID = userID;
+		this.email = email;
+	}
+	
 	public String getUserID() {
-		return UserID;
+		return userID;
 	}
 	public void setUserID(String userID) {
-		UserID = userID;
+		userID = userID;
 	}
 	public String getEmail() {
 		return email;

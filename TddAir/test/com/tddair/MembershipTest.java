@@ -20,16 +20,32 @@ public class MembershipTest {
 	
 	@Test
 	public void oneMemberAddedCountShouldBeOne(){
-		Membership member = new Membership();
-		
-		member.add(new Member());
-		assertEquals(1, member.getEnrollmentCount());
+		Membership membership = new Membership();
+		Member member = new Member("bob@abc.com", "bob");
+		membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(1, membership.getEnrollmentCount());
 	}
 	
 	@Test
 	public void initialEmailOnlyCountShouldBeZero(){
 		Membership member = new Membership();
 		assertEquals(0, member.getEnrollmentCount());
+	}
+	
+	@Test
+	public void twoMembersAddedRetrieveMemberMatch() {
+		Membership membership = new Membership();
+		
+		Member member = new Member("sue@abc.com", "sue");
+		//membership.setMemberList(member);
+		membership.add(member);
+		
+		member = new Member("bob@abc.com", "bob");
+		membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(2, membership.getEnrollmentCount());
+		
 	}
 
 }

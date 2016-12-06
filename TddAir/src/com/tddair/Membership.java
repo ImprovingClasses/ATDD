@@ -1,25 +1,32 @@
 package com.tddair;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Membership {
-	//HashMap<String, String> members = new HashMap<String, String>();
+	HashMap<String, String> members = new HashMap<String, String>();
+	List<Member> memberlist = new ArrayList<Member>();
 
 	int membercount = 0;
 	public int getEnrollmentCount() {
-		return  membercount;
+		return  members.size();
 	}
 	
-	/*public void Memberhip(Member m){
-	 Member tDDMember = new Member();
-	 tDDMember.getUserID();
-	 tDDMember.getEmail();
-	}*/
 	
 	public void add(Member m){
-		//m.getUserID();
-		//m.getEmail();
-		membercount++; 
+		if (m.getEmail() != null && !members.containsKey(m.getEmail())){
+		members.put(m.getUserID(), m.getEmail()) ;
+		setMemberList (m);
+		}
+	}
+	
+	public List<Member> getMemberList() {
+		return memberlist;
+	}
+	
+	public void setMemberList(Member member) {
+			memberlist.add(member);
 	}
 
 
