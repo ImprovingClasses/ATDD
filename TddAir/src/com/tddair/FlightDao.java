@@ -17,8 +17,13 @@ public class FlightDao {
 		return flights.get(flightNumber);
 	}
 	
+	public int getFlightMileage(String flightNumber) {
+		return getFlightBy(flightNumber).getMileage();
+	}
+	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
 		Flight flight = new Flight(origin, destination, mileage, airline, number);
-		flights.put(flight.getFullFlightNumber(), flight);
+//		flights.put(flight.getFullFlightNumber(), flight);
+		flights.put(flight.getFlightNumber(), flight);
 	}
 }

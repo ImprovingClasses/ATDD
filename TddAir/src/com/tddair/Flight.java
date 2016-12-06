@@ -8,6 +8,13 @@ public class Flight {
 	private String airline;
 	private int number;
 	private int mileage;
+	
+	private String flightNumber;
+	
+	public Flight(String flightNumber, int mileage) {
+		this.flightNumber = flightNumber;
+		this.mileage = mileage;
+	}
 
 	public Flight(String origin, String destination, int mileage, String airline, int number) {
 		if(origin == null || origin.length() != 3) {
@@ -24,6 +31,10 @@ public class Flight {
 		this.mileage = mileage;
 		this.airline = airline;
 		this.number = number;
+	}
+	
+	public String getFlightNumber() {
+		return flightNumber;
 	}
 	
 	public Flight(String origin, String destination, int mileage) {

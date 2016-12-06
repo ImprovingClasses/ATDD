@@ -31,6 +31,10 @@ public class MemberShip
 		member.addMiles(mileage);
 	}
 	
+	public int getMemberMileage(String userId) {
+		return memberDao.getMemberByUserId(userId).getMiles();
+	}
+	
 	public String getMemberStatus(String userId)
 	{
 		String status = "";

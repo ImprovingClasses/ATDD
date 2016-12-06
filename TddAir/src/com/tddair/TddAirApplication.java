@@ -27,7 +27,15 @@ public class TddAirApplication {
 		return membership.getMemberStatus(userId);
 	}
 	
+	public int getMemberMileage(String userId) {
+		return membership.getMemberMileage(userId);
+	}
+	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
 		flights.addFlight(origin, destination, mileage, airline, number);
+	}
+	
+	public int getFlightMileage(String flightName) {
+		return flights.getFlightMileage(flightName);
 	}
 }
