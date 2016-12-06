@@ -53,14 +53,14 @@ public class JunitTestMembership {
 		assertEquals("Nick@Email.net", nickMember.getEmail());
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void givenAnExistingMemberIdWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotAdded(){
 		Membership ourMembership = new Membership();
 		
 		//Add two Members
-		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
-		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
-		
+		assertTrue(ourMembership.addMember(new Member("Chris", "Chris@Email.net")));
+		assertFalse(ourMembership.addMember(new Member("Chris", "Chris@Email.net")));
+		assertEquals(1,ourMembership.getMemebersCount());
 	}
 	
 	

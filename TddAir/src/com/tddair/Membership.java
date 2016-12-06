@@ -14,17 +14,18 @@ public class Membership {
 		return myMembers.size();
 	}
 	
-	public void addMember(Member newMember){
+	public boolean addMember(Member newMember){
 		//Loop though all of our current Members to check
 		//for a potential duplicate.
 		for(Member member : myMembers){
 			if(member.getUserId().equals(newMember.getUserId())) {
-				throw new IllegalArgumentException("Member already exists");
+				return false;
 			}
 		}
 		
 		//Add new member
 		myMembers.add(newMember);
+		return true;
 	}
 	
 	public Member getMemberById(String userId)throws Exception {
