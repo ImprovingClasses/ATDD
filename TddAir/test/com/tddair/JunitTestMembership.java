@@ -2,11 +2,48 @@ package com.tddair;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.*;
+import org.junit.runners.Parameterized.Parameters;
+
 import com.tddair.Membership;
 
+@RunWith(Parameterized.class)
 public class JunitTestMembership {
-
+	private String userId;
+	private String email;
+	private int miles;
+	private ColorStatusEnum expectedStatus = null;
+	private Member newMember;
+	
+	@Parameters
+	public static Collection<Object[]> data(){
+		return Arrays.asList(new Object[][]{
+			{"James", "James@Email.com", 0, ColorStatusEnum.RED}, {"Tom", "Tom@Email.com", 25000, ColorStatusEnum.GREEN},
+			{"Tina", "Tina@Email.com", 50000, ColorStatusEnum.BLUE}, {"Kim", "Kim@Email.com", 75000, ColorStatusEnum.GOLD}
+		});
+	}
+	
+	public JunitTestMembership(String userid, String email, int miles, ColorStatusEnum expectedStatus){
+		this.userId = userid;
+		this.email = email;
+		this.miles = miles;
+		this.expectedStatus = expectedStatus;
+	}
+	
+	@Test
+	public void testPassedInValues() throws Exception{
+		Membership ourMembership = new Membership();
+		ourMembership.addMember(new Member(userId, email, miles));
+		
+		assertEquals(expectedStatus, ourMembership.getMemberById(userId).getColorStatus());
+	}
+	
 	@Test
 	public void initialMemberCountShouldBeZero() {
 		Membership newMember = new Membership();
@@ -74,15 +111,27 @@ public class JunitTestMembership {
 	@Test
 	public void verifyUserGreenStatus() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 26000));
-		
-		String test = ourMembership.getMemberById("Chris").getColorStatus().toString();
-		String test2 = ColorStatusEnum.GREEN.toString();
-		Boolean testBool = test.equalsIgnoreCase(test2);
-		assertTrue(testBool);
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 25000));
+
+		assertEquals(ourMembership.getMemberById("Chris").getColorStatus(), ColorStatusEnum.GREEN );
 		
 	}
 	
-	
+	@Test
+	public void verifyUserBlueStatus() throws Exception{
+		Membership ourMembership = new Membership();
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 50000));
+
+		assertEquals(ColorStatusEnum.BLUE, ourMembership.getMemberById("Chris").getColorStatus());
+	}
+	 
+	@Test
+	public void verifyUserGoldStatus() throws Exception{
+		Membership ourMembership = new Membership();
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 75000));
+
+		assertEquals(ColorStatusEnum.GOLD, ourMembership.getMemberById("Chris").getColorStatus());
+		
+	}
 
 }

@@ -5,8 +5,8 @@ import java.util.*;
 public class Membership {
 	
 	//Map the number of miles to their color.
-	private Map<ColorStatusEnum,Integer> myColorStatusToMilesMap = 
-			new HashMap<>();
+	private LinkedHashMap<ColorStatusEnum,Integer> myColorStatusToMilesMap = 
+			new LinkedHashMap<>();
 	
 	private ArrayList<Member> myMembers;
 	
@@ -54,12 +54,12 @@ public class Membership {
 				
 				//Update the member status
 				for(ColorStatusEnum enumColor : myColorStatusToMilesMap.keySet()) {
-					
 					//Does the user have a greater amount
 					//of miles than this color?
 					if(myColorStatusToMilesMap.get(enumColor) <= newMember.getMiles()) {
 						//Yes, the user has at least this number of miles.
 						//Set its status to this color.
+						
 						newMember.setColorStatus(enumColor);
 					}
 					
