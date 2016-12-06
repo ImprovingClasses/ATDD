@@ -67,7 +67,8 @@ public class RegisterNewMembers {
 	@Test
 	public void initialEmailOnlyCountShouldBeZero() {
 		Membership subject = new Membership();
-		//assertEquals
+		assertEquals(0, subject.getEmailOnlyCount());
+		subject.addNewMember(null,"bob@abc.com");
 	}
 	
 	

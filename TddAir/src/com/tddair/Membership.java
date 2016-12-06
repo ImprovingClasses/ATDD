@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class Membership {
 
 	private HashMap<String, ArrayList<Member>> members = new HashMap<String, ArrayList<Member>>();
+	private int emailOnlyCount = 0; 
 
 	public int enrollmentCount() {
 		return members.size();
@@ -23,6 +24,9 @@ public class Membership {
 				result = false;
 			} else {
 				members.get(emailAddress).add(new Member(userID, emailAddress));
+				if ( (userID == null) || (userID.trim().isEmpty())) {
+					emailOnlyCount+=1;
+				}
 			}
 		} else {
 			ArrayList<Member> list = new ArrayList<Member>();
@@ -35,6 +39,10 @@ public class Membership {
 	public ArrayList<Member> getMember(String emailAddress) {
 		return members.get(emailAddress);
 	}
+	
+	public int getEmailOnlyCount() {
+		return this.emailOnlyCount;
+	}
 
 	private boolean containsID(ArrayList<Member> memberList, String memberID) {
 		boolean result = false;
@@ -45,6 +53,11 @@ public class Membership {
 			}
 		}
 		return result;
+	}
+
+	public Object emailOnlyCount() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
