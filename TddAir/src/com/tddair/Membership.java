@@ -47,7 +47,7 @@ public class Membership {
 					resultBool = false;
 				}
 			}
-			
+			 
 			//Are we okay to add this member?
 			if(resultBool) {
 				//Yes, its okay to add this member.
