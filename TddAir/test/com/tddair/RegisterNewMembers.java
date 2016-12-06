@@ -102,5 +102,13 @@ public class RegisterNewMembers {
 		assertTrue(allMembers.containsKey("bob@abc.com"));
 		assertTrue(allMembers.containsKey("sue@abc.com"));
 	}
+	
+	@Test 
+	public void whenUserIdentifiedAndEmailAreEmptyThenNoMemberIsAddedAndNoEmailsRecorded() {
+		Membership subject = new Membership();
+		subject.addNewMember(null,null);
+		assertEquals(0, subject.getEmailOnlyCount());
+		assertEquals(0, subject.getMemberCount());
+	}
 
 }
