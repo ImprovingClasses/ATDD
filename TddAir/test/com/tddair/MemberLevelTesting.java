@@ -79,5 +79,29 @@ public class MemberLevelTesting {
 		level = subject.getLevel("bob");
 		assertEquals( "Green", level);
 	}
+	@Test 
+	public void whenExistingMemberGoesFromGreenToBlue() {
+		Membership subject = new Membership();
+		subject.enroll("bob", "bob@abc.com");
+		subject.addMileage("bob", 49999);
+		String level = subject.getLevel("bob");
+		assertEquals( "Green", level);
+		subject.addMileage("bob", 500);
+		level = subject.getLevel("bob");
+		assertEquals( "Blue", level);
+	}
+	@Test 
+	public void whenExistingMemberGoesFromBlueToGolden() {
+		System.out.println("##########start whenExistingMemberGoesFromBlueToGolden");
+		Membership subject = new Membership();
+		subject.enroll("bob", "bob@abc.com");
+		subject.addMileage("bob", 74500);
+		String level = subject.getLevel("bob");
+		assertEquals( "Blue", level);
+		subject.addMileage("bob", 500);
+		level = subject.getLevel("bob");
+		assertEquals( "Golden", level);
+		System.out.println("##########end whenExistingMemberGoesFromBlueToGolden");
+	}
 
 }
