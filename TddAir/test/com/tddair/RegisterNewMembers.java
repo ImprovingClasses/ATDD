@@ -111,4 +111,12 @@ public class RegisterNewMembers {
 		assertEquals(0, subject.getMemberCount());
 	}
 
+	@Test
+	public void whenMemberWithUserIDAndEmailAddedThenEmailOnlyCountRemainsTheSame() {
+		Membership subject = new Membership();
+		subject.addNewMember("bob","bob@abc.com");
+		subject.addNewMember("sue","sue@abc.com");
+		assertEquals(0, subject.getEmailOnlyCount());
+	}
+
 }
