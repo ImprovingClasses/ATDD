@@ -26,11 +26,16 @@ public class MemberShip
 		return addNewMember(new Member(userId, emailAddress, initialMiles));
 	}
 	
+	public void addMileage(String userId, int mileage) {
+		Member member = memberDao.getMemberByUserId(userId);
+		member.addMiles(mileage);
+	}
+	
 	public String getMemberStatus(String userId)
 	{
 		String status = "";
 		Member member = memberDao.getMemberByUserId(userId);
-		if (0 < member.getMiles() && member.getMiles() < 25000)
+		if (0 <= member.getMiles() && member.getMiles() < 25000)
 		{
 			status = "Red";
 		}
@@ -50,8 +55,10 @@ public class MemberShip
 	}
 	
 	public String addNewMember(Member member) {
-		if (MemberShipUtility.isValidMember(member) && 
-			MemberShipUtility.isUniqueMember(member)) {
+		if(MemberShipUtility.isValidMember(member)) {
+			if(MemberShipUtility.isUniqueMember(member)) {
+				System.out.println("WARNING: Overwriting User with ID '" + member.getUserId() + "'");
+			}
 			memberDao.addMember(member);
 			return MemberShipUtility.REGISTERED;
 		}

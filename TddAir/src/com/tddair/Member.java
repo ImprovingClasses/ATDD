@@ -1,7 +1,7 @@
 package com.tddair;
 
-public class Member 
-{
+public class Member  {
+	private MemberId memberId;
 	private String userId;
 	private String emailAddress;
 	private int currentMiles;
@@ -12,6 +12,9 @@ public class Member
 		}
 		this.userId = userId;
 		this.emailAddress = emailAddress;
+		
+		memberId = new MemberId(userId, emailAddress);
+		
 		this.currentMiles = 0;
 	}
 	
@@ -23,6 +26,14 @@ public class Member
 		this.emailAddress = emailAddress;
 		this.currentMiles = miles;
 	}
+
+	public void addMiles(int mileage) {
+		this.currentMiles += mileage;
+	}
+	
+	public int getMiles() {
+		return this.currentMiles;
+	}
 	
 	public String getUserId() {
 		return this.userId;
@@ -32,8 +43,7 @@ public class Member
 		return this.emailAddress;
 	}
 	
-	public int getMiles()
-	{
-		return this.currentMiles;
+	public MemberId getMemberId() {
+		return this.memberId;
 	}
 }

@@ -19,6 +19,10 @@ public class TddAirApplication {
 		return membership.addNewMember(userId, emailAddress, initialMiles);
 	}
 	
+	public void addMileage(String userId, int mileage) {
+		membership.addMileage(userId, mileage);
+	}
+	
 	public String getMemberStatus(String userId) {
 		return membership.getMemberStatus(userId);
 	}

@@ -58,7 +58,7 @@ public class RegisterNewMembers {
 	}
 	
 	@Test
-	public void cannotAddMemberWithDuplicateUserId() {
+	public void canAddMemberWithDuplicateUserId() {
 		Member member = new Member("testId", "test@email.com");
 		Member duplicateMember = new Member("testId", "test2@email.com");
 		
