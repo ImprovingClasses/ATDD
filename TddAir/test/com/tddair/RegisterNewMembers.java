@@ -34,8 +34,10 @@ public class RegisterNewMembers {
 	@Test
 	public void oneMemberAdded() {
 		Member testMember = new Member("testId", "test@email.com");
+		int beforeAdd = membership.getEnrollmentCount();
 		membership.addNewMember(testMember);
-		assertEquals(1, membership.getEnrollmentCount());
+		int afterAdd = membership.getEnrollmentCount();
+		assertEquals(beforeAdd, afterAdd);
 	}
 	
 	@Test
@@ -67,7 +69,7 @@ public class RegisterNewMembers {
 		membership.addNewMember(duplicateMember);
 		int afterDuplicateAdd = membership.getEnrollmentCount();
 		
-		assertEquals(beforeDuplicateAdd, afterDuplicateAdd);
+		assertEquals(beforeDuplicateAdd + 1, afterDuplicateAdd);
 	}
 	
 	@Test

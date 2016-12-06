@@ -38,6 +38,6 @@ public class MemberShipUtility {
 	}
 	
 	public static boolean isUniqueMember(Member member) {
-		return !memberDao.doesUserIdExist(member.getUserId());
+		return !(memberDao.doesUserIdExist(member.getUserId()) && memberDao.doesEmailAddressExist(member.getEmailAddress()));
 	}
 }
