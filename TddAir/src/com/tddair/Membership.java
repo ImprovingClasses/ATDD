@@ -65,6 +65,27 @@ public class Membership {
 			
 	}
 	
+	public void addMiles(String user, int miles){
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 int memMiles = member.getMiles();
+				 memMiles = memMiles + miles;
+				 member.setMiles(memMiles);
+			 }
+			 
+			
+			
+				
+		}
+		
+	}
+	
+	public Status getMemberStatus(){
+		return memStatus;
+	}
+	
 	
 
 

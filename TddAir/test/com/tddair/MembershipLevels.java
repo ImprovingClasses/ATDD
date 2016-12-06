@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import com.tddair.Membership.Status;
 
 public class MembershipLevels {
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -18,6 +20,7 @@ public class MembershipLevels {
 		Member member = new Member();
 		assertEquals(0, member.getMiles());
 	}
+	
 	
 	@Test
 	public void testNumMilesBlue() {
