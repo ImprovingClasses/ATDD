@@ -13,6 +13,11 @@ public class Membership {
 		return members.size();
 	}
 
+	public  HashMap<String, ArrayList<Member>> getMembershipMap()
+	{
+		return members;
+	}	
+		
 	public boolean addNewMember(String userID, String emailAddress) {
 		boolean result = true;
 
