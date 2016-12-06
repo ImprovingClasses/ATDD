@@ -34,4 +34,10 @@ public class MileageTest {
 		memObj.addMiles(25000);
 		assertEquals(memObj.getStatus(),"Green");
 	}
+	
+	@Test public void checkStatusBlue() {
+		Member memObj = new Member("userID", "email");
+		memObj.addMiles(50000);
+		assertEquals(memObj.getStatus(),"Blue");
+	}
 }

@@ -37,12 +37,17 @@ public class Member {
 	public void addMiles(int miles)
 	{
 		mileage += miles;
-		if (mileage>=25000)
-			status = "Green";
+		calcStatus();
 	}
 	
 	public String getStatus()
 	{
 		return status;
+	}
+	
+	private void calcStatus()
+	{
+		if (mileage>=25000)
+			status = "Green";
 	}
 }
