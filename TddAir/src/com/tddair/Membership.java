@@ -4,24 +4,26 @@ import java.util.*;
 
 public class Membership {
 	
-	Member oneMember;
-	//private ArrayList<Member> myMembers;
-	private int memberCount = 0;
+	private ArrayList<Member> myMembers;
 	
 	public Membership() {
-		//myMembers = new ArrayList<>();
+		myMembers = new ArrayList<>();
 	}
 	
 	public int getMemebersCount() {
-		return memberCount;
+		return myMembers.size();
 	}
 	
 	public void addMember(Member newMember){
-		memberCount++;
-		oneMember = newMember;
+		myMembers.add(newMember);
 	}
 	
-	public Member getMemberById(String userId) {
-		return oneMember;
+	public Member getMemberById(String userId)throws Exception {
+		for(Member member : myMembers){
+			if (member.getUserId().equals(userId)){
+				return member;
+			}
+		}
+		throw new Exception("Member Id not Found");
 	}
 }

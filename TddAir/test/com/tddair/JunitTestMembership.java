@@ -25,7 +25,7 @@ public class JunitTestMembership {
 	}
 	
 	@Test
-	public void whenMemberRetrievedByMemberThenMemberAttributesShouldMatch(){
+	public void whenMemberRetrievedByMemberThenMemberAttributesShouldMatch() throws Exception{
 		Membership ourMembership = new Membership();
 		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
 		Member chrisMember = ourMembership.getMemberById("Chris");
@@ -36,7 +36,7 @@ public class JunitTestMembership {
 	}
 	
 	@Test
-	public void whenTwoMembersAddedThenRetrieveMemberAttributesShouldMatch(){
+	public void whenTwoMembersAddedThenRetrieveMemberAttributesShouldMatch()throws Exception{
 		Membership ourMembership = new Membership();
 		
 		//Add two Members
@@ -52,6 +52,17 @@ public class JunitTestMembership {
 		assertEquals("Nick", nickMember.getUserId());
 		assertEquals("Nick@Email.net", nickMember.getEmail());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void givenAnExistingMemberIdWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotAdded(){
+		Membership ourMembership = new Membership();
+		
+		//Add two Members
+		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
+		ourMembership.addMember(new Member("Chris", "Chris@Email.net"));
+		
+	}
+	
 	
 	
 /*	@Test(expected=IllegalArgumentException.class)
