@@ -32,8 +32,8 @@ public class Flight {
 		this(origin, destination, mileage, null, 0);
 	}
 
-	public Flight(String flightNumber, int mileage) {
-		this.mileage = mileage;
+	public Flight(String flightNumber, int miles) {
+		this.mileage = miles;
 		this.flightNumber = flightNumber;
 	}
 
