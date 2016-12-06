@@ -23,17 +23,23 @@ Feature: Add flight miles
 
 Background:
 Given these flights:
-| origin | destination | mileage | airline | number  |
-| AAA    | BBB         | 321     | TD      | 123     |
-| CCC    | DDD         | 456     | TD      | 654     |
-| EEE    | FFF         | 789     | XX      | 987     |
-
+| origin | destination | mileage | airline | number |
+| "AAA"    | "BBB"         | 10000   | "TD"      | 1234   |
+| "CCC"    | "DDD"         | 20000   | "TD"      | 1235   |
+| "EEE"    | "FFF"         | 50000   | "AA"      | 1000   |
+| "EEE"    | "FFF"         | 30000   | "MS"      | 4332   |
+| "EEE"    | "FFF"         | 50000   | "AA"      | 1236   |
 @tag1
 Scenario: Complete a flight
 Given a passenger with <initMiles>
 When complete a <flights>
 Then total <mileage> and <status>
-
-
-Examples:
-    
+| initMiles | flights | mileage | status |
+| 0 | "TD1234" | 10000 | "Red" |
+| 10000 | "TD1235" | 30000 | "Green" |
+| 10000 | "TD1234,TD1235,AA1000" | 40000 | "Green" |
+| 10000 | "AA1000" | 10000 | "Red" |
+| 30000 | "TD1235" | 50000 | "Blue" |
+| 60000 | "TD1235" | 80000 | "Gold" |
+| 20000 | "AA1000,TD1236,TD1234,MS4332,TD1235" | 100000 | "Gold" |
+| 60000 | "MS4332" | 60000 | "Blue" |
