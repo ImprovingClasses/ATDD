@@ -14,10 +14,15 @@ public class Membership {
 	}
 	
 	
-	public void add(Member m){
-		if (m.getEmail() != null && !members.containsKey(m.getEmail())){
+	public boolean add(Member m){
+		if (m.getEmail() != null && (m.getEmail() != "") && !members.containsValue(m.getEmail())){
 		members.put(m.getUserID(), m.getEmail()) ;
 		setMemberList (m);
+		return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	

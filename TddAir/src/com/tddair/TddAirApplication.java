@@ -15,8 +15,8 @@ public class TddAirApplication {
 	}
 	
 	public boolean addMembers(Member m) {
-		membership.add(m);
-		return true;
+		boolean result = membership.add(m);
+		return result;
 	}
 	
 	public int getEnrollmentCount() {

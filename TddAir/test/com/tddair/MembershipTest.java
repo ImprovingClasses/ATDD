@@ -22,7 +22,7 @@ public class MembershipTest {
 	public void oneMemberAddedCountShouldBeOne(){
 		Membership membership = new Membership();
 		Member member = new Member("bob@abc.com", "bob");
-		membership.setMemberList(member);
+		//membership.setMemberList(member);
 		membership.add(member);
 		assertEquals(1, membership.getEnrollmentCount());
 	}
@@ -37,15 +37,59 @@ public class MembershipTest {
 	public void twoMembersAddedRetrieveMemberMatch() {
 		Membership membership = new Membership();
 		
-		Member member = new Member("sue@abc.com", "sue");
-		//membership.setMemberList(member);
+		Member member = new Member("bob@abc.com", "sue");
 		membership.add(member);
 		
 		member = new Member("bob@abc.com", "bob");
-		membership.setMemberList(member);
+		//membership.setMemberList(member);
 		membership.add(member);
-		assertEquals(2, membership.getEnrollmentCount());
+		assertEquals(1, membership.getEnrollmentCount());
 		
+	}
+	
+	@Test
+	public void oneMemberAddedNoUserID(){
+		Membership membership = new Membership();
+		Member member = new Member("bob@abc.com", "");
+		//membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(1, membership.getEnrollmentCount());
+	}
+	
+	@Test
+	public void oneMemberAddedNoEmail(){
+		Membership membership = new Membership();
+		Member member = new Member("", "bob");
+		//membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(0, membership.getEnrollmentCount());
+	}
+	
+	@Test
+	public void oneMemberAddedNumericUserID(){
+		Membership membership = new Membership();
+		Member member = new Member("bob@abc.com", "123");
+		//membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(1, membership.getEnrollmentCount());
+	}
+	
+	@Test
+	public void oneMemberAddedinvalidEmail(){
+		Membership membership = new Membership();
+		Member member = new Member("abc.com", "sk");
+		//membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(1, membership.getEnrollmentCount());
+	}
+	
+	@Test
+	public void oneMemberAddedN0UserIDEmail(){
+		Membership membership = new Membership();
+		Member member = new Member("", "");
+		//membership.setMemberList(member);
+		membership.add(member);
+		assertEquals(0, membership.getEnrollmentCount());
 	}
 
 }
