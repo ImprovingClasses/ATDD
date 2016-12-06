@@ -40,5 +40,7 @@ public class RegisterNewMembers {
 		System.out.println(memberList);
 		assertEquals("bob",memberList.get(0).getUserId());
 	}
+	
+	
 
 }
