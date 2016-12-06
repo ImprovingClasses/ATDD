@@ -18,8 +18,8 @@
 
 #Sample Feature Definition Template
 @tag
-Feature: Milage status
-	As a user I want my status to reflect my milage
+Feature: Flight status
+	As a user I want to add miles based on flights
 
 @tag1
 Scenario Outline: Update Mileage
@@ -30,9 +30,8 @@ And my milage should be <total miles>
 
 
 
-Examples: Adding miles 
+Examples: Trips 
 |starting milage|added milage|status  |total miles|
-|0              |0           |"RED"   |0          |
 |24,999         |2           |"GREEN" |25,001     |
 |49,999         |2           |"BLUE"  |50,001     |
 |74,999         |2           |"GOLD"  |75,001     |
