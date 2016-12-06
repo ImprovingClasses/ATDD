@@ -35,3 +35,20 @@ Then the traveler is "registered" as a member
 Scenario: Do not register a new member without an email
 When the traveler registers with a userid "bob" 
 Then the traveler is not "registered" as a member
+
+@tag4
+Scenario: Register a new member with invalid email address
+When the traveler registers with a userid "bob" and the email "bob@abc"
+Then the traveler is "registered" as a member 
+
+@tag5
+Scenario: Register a member with conflicts
+When the traveler registers with a userid "bob" and the email "bob@abc.com"
+Then the traveler is not "registered" as a member
+
+@tag6
+Scenario: Register a new member with existing email address
+When the traveler registers with a userid "bob" and the email "bob@abc.com"
+Then the traveler is "registered" as a member
+ 
+ 
