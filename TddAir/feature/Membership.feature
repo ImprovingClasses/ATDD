@@ -50,5 +50,21 @@ Then the traveler is not "registered" as a member
 Scenario: Register a new member with existing email address
 When the traveler registers with a userid "bob" and the email "bob@abc.com"
 Then the traveler is "registered" as a member
+
+@tag8
+Scenario: Register a new member with numeric userId and valid email address
+When the traveler registers with a userid "123" and the email "bob@abc.com"
+Then the traveler is "registered" as a member
+
+@tag9
+Scenario: Do not register a new member with null userId and null email address
+When the traveler registers with a null userid and null email
+Then the traveler is not "registered" as a member
  
- 
+
+
+
+
+
+
+Exaamples 

@@ -31,4 +31,9 @@ public class RegisterUserSteps {
 		assertEquals(isMemberAdded,false);
 	    
 	}
+	
+	@When("^the traveler registers with a null userid and null email$")
+	public void the_traveler_registers_with_a_null_userid_and_null_email() throws Throwable {
+		isMemberAdded = controller.addMember(null, null);
+	}
 }
