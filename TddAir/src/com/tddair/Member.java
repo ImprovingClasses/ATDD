@@ -3,8 +3,14 @@ package com.tddair;
 public class Member {
 
 	public Member(String userId, String email) {
-		setEmail(email);
-		setUserId(userId);
+		this.userId = userId;
+		this.email = email;
+	}
+	
+	public Member(String userId, String email, int miles) {
+		this.userId = userId;
+		this.email = email;
+		this.miles = miles;
 	}
 	
 	private String email;

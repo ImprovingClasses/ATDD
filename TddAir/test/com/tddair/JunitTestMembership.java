@@ -64,11 +64,25 @@ public class JunitTestMembership {
 	}
 	
 	@Test
-	public void verifyUserRedStatus(){
+	public void verifyUserRedStatus() throws Exception{
 		Membership ourMembership = new Membership();
 		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 0));
 		
 		assertEquals(ColorStatusEnum.RED, ourMembership.getMemberById("Chris").getColorStatus());
 	}
+	
+	@Test
+	public void verifyUserGreenStatus() throws Exception{
+		Membership ourMembership = new Membership();
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 26000));
+		
+		String test = ourMembership.getMemberById("Chris").getColorStatus().toString();
+		String test2 = ColorStatusEnum.GREEN.toString();
+		Boolean testBool = test.equalsIgnoreCase(test2);
+		assertTrue(testBool);
+		
+	}
+	
+	
 
 }
