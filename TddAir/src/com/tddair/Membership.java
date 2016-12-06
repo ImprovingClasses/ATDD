@@ -49,4 +49,20 @@ public class Membership {
 	public int getNumEmails() {
 		return emailList.size();
 	}
+	
+	public void addMemberMiles(String userID, int miles)
+	{
+		Member member = getMember(userID);
+		if (member != null)
+			member.addMiles(miles);
+	}
+	
+	public String getMemberStatus(String userID)
+	{
+		Member member = getMember(userID);
+		if (member != null)
+			return member.getStatus();
+		else 
+			return "Unknown User";
+	}
 }

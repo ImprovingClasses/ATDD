@@ -17,4 +17,14 @@ public class TddAirApplication {
 	{
 		return membership.addMember(userID, email);
 	}
+	
+	public void addMemberMiles(String userID, int miles)
+	{
+		membership.addMemberMiles(userID, miles);
+	}
+	
+	public String getMemberStatus(String userID)
+	{
+		return membership.getMemberStatus(userID);
+	}
 }

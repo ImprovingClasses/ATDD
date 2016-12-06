@@ -49,8 +49,7 @@ public class Member {
 	{
 		if (mileage >= 75000)
 			status = "Gold";
-		else
-		if (mileage >= 50000)
+		else if (mileage >= 50000)
 			status = "Blue";
 		else if (mileage >= 25000)
 			status = "Green";
