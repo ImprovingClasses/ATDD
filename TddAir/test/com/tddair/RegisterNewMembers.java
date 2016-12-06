@@ -26,5 +26,36 @@ public class RegisterNewMembers {
 		assertEquals(1, subject.enrollmentCount());
 				 
 	}
+	@Test
+	public void whenMemberRetrievedByMemberThenMemberAttributesShouldMatch() {
+		Membership subject = new Membership();
 
+		subject.enroll("bob", "bob@abc.com");
+		
+		assertEquals("bob@abc.com", subject.getEmail("bob"));
+				 
+	}
+	@Test
+	public void whenTwoMembersAddedThenRetrieveMemberAttributeShouldMatch() {
+		Membership subject = new Membership();
+
+		subject.enroll("bob", "bob@abc.com");
+		subject.enroll("sue", "bob@abc.com");
+		
+		assertEquals("bob@abc.com", subject.getEmail("sue"));
+		assertEquals("bob@abc.com", subject.getEmail("bob"));
+				 
+	}
+	
+	@Test
+	public void givenAnExistingMemberIdWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotAdded() {
+		Membership subject = new Membership();
+
+		subject.enroll("bob", "bob@abc.com");
+		subject.enroll("sue", "bob@abc.com");
+		
+		assertEquals("bob@abc.com", subject.getEmail("sue"));
+		assertEquals("bob@abc.com", subject.getEmail("bob"));
+				 
+	}
 }
