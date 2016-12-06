@@ -12,15 +12,19 @@ public class Membership {
     }
     
     public boolean addNewMember(String Id, String email){
-    	Member m = new Member(Id,email);
-    	if(m != null){
-    		if (getById(Id) == null)
-    		{
-    		members.add(m);
-    		return true;
+    	boolean added = false;
+    	if (email.isEmpty())
+    	{
+    		Member m = new Member(Id,email);
+    		if(m != null){
+    			if (getById(Id) == null)
+    			{
+    				members.add(m);
+    				added = true;
+    			}
     		}
     	}
-    	return false;
+    	return added;
     }
     
     public Member getById(String id){
