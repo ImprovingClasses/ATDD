@@ -35,6 +35,6 @@ public class Member {
 	
 	public void addMiles(int miles)
 	{
-		mileage = 14999;
+		mileage += miles;
 	}
 }
