@@ -15,6 +15,15 @@ public class Membership {
 	}
 	
 	public void addMember(Member newMember){
+		//Loop though all of our current Members to check
+		//for a potential duplicate.
+		for(Member member : myMembers){
+			if(member.getUserId().equals(newMember.getUserId())) {
+				throw new IllegalArgumentException("Member already exists");
+			}
+		}
+		
+		//Add new member
 		myMembers.add(newMember);
 	}
 	
