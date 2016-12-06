@@ -43,4 +43,12 @@ public class MembershipTest {
 		Membership testObj = new Membership();
 		assertEquals(testObj.getNumEmails(),0);
 	}
+	
+	@Test public void whenOnlyEmailEnteredThenMembershipCountRemainsTheSame()
+	{
+		Membership testObj = new Membership();
+		testObj.addMember("", "email");
+		assertEquals(testObj.getNumEmails(),1);
+		assertEquals(testObj.getNumMembers(),0);
+	}
 }
