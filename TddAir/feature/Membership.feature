@@ -26,3 +26,7 @@ Scenario: Register a new member not having conflicts
 When the traveler registers with a userid "bob" and the email "bob@abc.com"
 Then the traveler is "registered" as a member 
 
+@tag2
+Scenario: Register a new member without a userid
+When the traveler registers with a userid "" and the email "bob@abc.com"
+Then the traveler is "registered" as a member 
