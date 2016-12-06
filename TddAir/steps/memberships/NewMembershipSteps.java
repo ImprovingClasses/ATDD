@@ -19,19 +19,19 @@ public class NewMembershipSteps {
 	}
 	
 	@When("^the Traveler enters a valid userId \"([^\"]*)\" and an empty emailAddress \"([^\"]*)\"$")
-	public void the_Traveler_enters_a_valid_userId_and_an_empty_emailAddress(String arg1, String arg2) throws Throwable {
+	public void the_Traveler_enters_a_valid_userId_and_an_empty_emailAddress(String userId, String emailAddress) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 	
 	@When("^the Traveler enters a duplicate combination of a valid userId \"([^\"]*)\" and a valid emailAddress \"([^\"]*)\"$")
-	public void the_Traveler_enters_a_duplicate_combination_of_a_valid_userId_and_a_valid_emailAddress(String arg1, String arg2) throws Throwable {
+	public void the_Traveler_enters_a_duplicate_combination_of_a_valid_userId_and_a_valid_emailAddress(String userId, String emailAddress) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 	
 	@Then("^the Traveler membership status is \"([^\"]*)\"$")
-	public void the_Traveler_membership_status_is(String arg1) throws Throwable {
+	public void the_Traveler_membership_status_is(String membershipStatus) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
