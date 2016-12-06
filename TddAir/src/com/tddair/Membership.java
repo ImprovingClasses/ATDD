@@ -49,13 +49,22 @@ public class Membership {
     	return null;
     }
     
-    public boolean addMilesToMember(String Id, int miles){
-    	boolean done=false;
+    public String addMilesToMember(String Id, int miles){
+    	String status = "Undefined Status";
     	Member m = getById(Id);
     	if (m != null){
     		m.addMiles(miles);
-    		done = true;
+    		status = m.getStatus();
     	}
-    	return done;
+    	return status;
+    }
+    
+    public String getStatusFromId(String Id) {
+    	String status = "Undefined Status";
+    	Member m = getById(Id);
+    	if (m != null) {
+    		status = m.getStatus();
+    	}
+    	return status;
     }
 }

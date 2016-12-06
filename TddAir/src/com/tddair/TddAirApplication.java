@@ -22,6 +22,12 @@ public class TddAirApplication {
     }
     
     // Add a new member
+    public boolean addMember(String Id, String email, int miles)
+    {
+    	return members.addNewMember(Id, email, miles);
+    }
+    
+    // Add a new member
     public boolean addMember(String Id, String email)
     {
     	return members.addNewMember(Id, email);
@@ -32,4 +38,14 @@ public class TddAirApplication {
     {
     	return (members.getById(Id) != null) ? true : false;
     }
+    
+    public String addMilesToMember(String Id, int miles){
+    	return members.addMilesToMember(Id, miles);
+
+    }
+    
+    public String getMemberStatusById(String Id) {
+    	return members.getStatusFromId(Id);
+    }
+    
 }
