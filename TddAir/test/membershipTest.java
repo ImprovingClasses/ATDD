@@ -35,4 +35,18 @@ public class membershipTest {
 		Assert.assertNotNull( m );
 	}
 	
+	@Test
+	public void whenMemberAlreadyExistsWithTheGivenId(){
+		Membership mbr = new Membership();
+		mbr.addMember( "Bob", "bob@abc.com" );
+		//mbr.addMember( "Bob", "bob@abc.com" );
+		//Member m = mbr.getmemberByUserId("Bob");
+		Assert.assertTrue(mbr.isMember("Bob"));
+	}
+	
+	@Test
+	public void initialEmailCountIsZero(){
+		//Membership mbr = new Membership();
+	}
+	
 }
