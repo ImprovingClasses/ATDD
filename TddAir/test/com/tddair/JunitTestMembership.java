@@ -63,16 +63,12 @@ public class JunitTestMembership {
 		assertEquals(1,ourMembership.getMemebersCount());
 	}
 	
-	
-	
-/*	@Test(expected=IllegalArgumentException.class)
-	public void userIdIsNotNull() {
-		Membership myMembership = new Membership();
-		Member nullMember = new Member();
+	@Test
+	public void verifyUserRedStatus(){
+		Membership ourMembership = new Membership();
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 0));
 		
-		//We should get an exception thrown here.
-		myMembership.addMember(nullMember);
-		
-	}*/
+		assertEquals(ColorStatusEnum.RED, ourMembership.getMemberById("Chris").getColorStatus());
+	}
 
 }
