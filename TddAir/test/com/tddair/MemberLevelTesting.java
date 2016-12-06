@@ -19,4 +19,22 @@ public class MemberLevelTesting {
 		assertEquals( "Red", level);
 	}
 
+	@Test 
+	public void whenMemberNewMemberGoesGreen() {
+		Membership subject = new Membership();
+		subject.enroll("bob", "bob@abc.com");
+		subject.addMileage("bob", 25000);
+		String level = subject.getLevel("bob");
+		assertEquals( "Green", level);
+	}
+
+	@Test 
+	public void whenMemberNewMemberGoesBlue() {
+		Membership subject = new Membership();
+		subject.enroll("bob", "bob@abc.com");
+		subject.addMileage("bob", 50000);
+		String level = subject.getLevel("bob");
+		assertEquals( "Blue", level);
+	}
+
 }
