@@ -13,7 +13,7 @@ public class Membership {
     
     public boolean addNewMember(String Id, String email){
     	boolean added = false;
-    	if (email.isEmpty())
+    	if (!email.isEmpty())
     	{
     		Member m = new Member(Id,email);
     		if(m != null){

@@ -17,7 +17,8 @@ public class AcceptanceCriteriaStep {
 	
 	@Then("^were travelers \"([^\"]*)\"$")
 	public void were_travelers(String arg1) throws Throwable {
-		System.out.println("received arg1: "+arg1);
-		assert("recorded".equalsIgnoreCase(arg1) == result);
+		if ("recorded".equalsIgnoreCase(arg1) != result) {
+			throw new AssertionError("test");
+		}
 	}
 }
