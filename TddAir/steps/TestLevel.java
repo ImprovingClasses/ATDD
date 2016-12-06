@@ -11,22 +11,18 @@ public class TestLevel {
 
 	@Given("^flyer has (\\d+) mileage$")
 	public void flyer_has_mileage(int arg1) throws Throwable {
-	    tddAirController.addNewMembers("bob", "bob@abc.com");
-	  //TODO
-	    throw new PendingException();
+	    tddAirController.addNewMembers("bob", "bob@abc.com");	   
+	    tddAirController.addMileageToMember("bob", arg1);
 	}
 
 	@When("^flyer travels (\\d+)$")
 	public void flyer_travels(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    tddAirController.addMileageToMember("bob", arg1);
 	}
 
 	@Then("^flyer status is \"([^\"]*)\"$")
 	public void flyer_status_is(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		level = tddAirController.getMemberLevel("bob");
+		assertEquals(arg1, level);
 	}
-
-
 }
