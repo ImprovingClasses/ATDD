@@ -37,4 +37,9 @@ public class Member {
 	{
 		mileage += miles;
 	}
+	
+	public String getStatus()
+	{
+		return "Red";
+	}
 }
