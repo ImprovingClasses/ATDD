@@ -61,4 +61,18 @@ public class MemberDao {
 	public int memberShipCount() {
 		return members.size();
 	}
+	
+	public Member getMemberByUserId(String userId)
+	{
+		for(Member member : members)
+		{
+			if (member.getUserId().equals(userId))
+			{
+				return member;
+			}
+		}
+		
+		// Return null if userId is not in membes list
+		return null;
+	}
 }
