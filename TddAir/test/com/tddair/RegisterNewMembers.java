@@ -52,10 +52,9 @@ public class RegisterNewMembers {
 		Membership subject = new Membership();
 
 		subject.enroll("bob", "bob@abc.com");
-		subject.enroll("sue", "bob@abc.com");
 		
-		assertEquals("bob@abc.com", subject.getEmail("sue"));
-		assertEquals("bob@abc.com", subject.getEmail("bob"));
+		assertFalse(subject.enroll("bob", "bob@abc.com"));
+		
 				 
 	}
 }

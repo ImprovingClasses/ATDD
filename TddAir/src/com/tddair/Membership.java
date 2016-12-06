@@ -7,9 +7,21 @@ public class Membership {
 	  return members.size();
   }
   
-  public void enroll(String username, String email) {
+  public boolean enroll(String username, String email) {
 	  Member newMember = new Member(username, email);
-	  members.add(newMember);
+	  if (getEmail(username).equals(""))
+	  {
+		  members.add(newMember);
+		  System.out.println("Username was not found, adding user " + username);
+		  return true;
+	  }
+	  else
+	  {
+		  //User was found so do not re-add
+		  System.out.println("Username was found for user " + username + ". Did not add.");
+
+		  return false;
+	  }
   }
   
   public String getEmail(String username){
