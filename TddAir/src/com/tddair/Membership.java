@@ -51,7 +51,9 @@ public class Membership {
 		
 	    if( members.get(userId) != null )
 	    {
+	    	 
 	    	miles = members.get(userId).getMiles();
+	    	System.out.println( "getRewardLevel -- user " + userId + " has " + miles + " miles" );
 	    
 	    if( miles >= 0 && miles < 25000 )
 	      retVal = REWARD_RED;

@@ -25,7 +25,7 @@ public class Member {
 	}
 	
 	public void addTravelMiles(int miles) {
-		this.miles = miles;
+		this.miles += miles;
 	}
 		
 //	public String getRewardLevel() {
@@ -44,7 +44,7 @@ public class Member {
 		this.miles = miles;
 	}
 
-	private int miles = 0;
+	private int miles;
 	private String user_id;
 	private String email;
 //	private String rewardLevel = "";
