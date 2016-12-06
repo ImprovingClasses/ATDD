@@ -6,6 +6,7 @@ public class Member {
 	private String userID;
 	private String email;
 	private int mileage = 0;
+	private String status = "Red";
 	
 	public Member(String u, String e) {
 		setUserID(u);
@@ -36,10 +37,12 @@ public class Member {
 	public void addMiles(int miles)
 	{
 		mileage += miles;
+		if (mileage>=25000)
+			status = "Green";
 	}
 	
 	public String getStatus()
 	{
-		return "Red";
+		return status;
 	}
 }
