@@ -12,6 +12,18 @@ public class MemberDao {
 	private Map<String, String> userToEmail = new HashMap<>();
 	private Map<String, Set<String>> emailToUsers = new HashMap<>();
 	
+	private static MemberDao instance = new MemberDao();
+	
+	private MemberDao() {
+		if(instance == null) { 
+			instance = this;
+		}
+	}
+	
+	public static MemberDao getInstance() {
+		return instance;
+	}
+	
 	public void addMember(Member member) {
 		members.add(member);
 		addUser(member.getUserId(), member.getEmailAddress());

@@ -6,7 +6,7 @@ public class MemberShip
 	
 	public MemberShip()
 	{
-		memberDao = new MemberDao();
+		memberDao = MemberDao.getInstance();
 	}
 	
 	public int getEnrollmentCount()
@@ -15,9 +15,8 @@ public class MemberShip
 	}
 
 	public void addNewMember(Member member) {
-		
-		if (MemberShipUtility.isValidMember(member))
-		{
+		if (MemberShipUtility.isValidMember(member) && 
+			MemberShipUtility.isUniqueMember(member)) {
 			memberDao.addMember(member);
 		}
 	}

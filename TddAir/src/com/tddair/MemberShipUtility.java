@@ -9,14 +9,14 @@ public class MemberShipUtility {
 	private static final String userIdRegex = "[0-9A-Za-z]+";
 	private static final Pattern userIdPattern = Pattern.compile(userIdRegex);
 	
-	private static final MemberDao memberDao = new MemberDao();
+	private static final MemberDao memberDao = MemberDao.getInstance();
 	
 	public static boolean isEmailAddressValid(String emailAddress) {
-		return emailAddressPattern.matcher(emailAddress.toLowerCase()).find();
+		return emailAddressPattern.matcher(emailAddress.toLowerCase()).matches();
 	}
 	
 	public static boolean isUserIdValid(String userId) {
-		return userIdPattern.matcher(userId.toLowerCase()).find();
+		return userIdPattern.matcher(userId.toLowerCase()).matches();
 	}	
 	
 	public static boolean isEmailAddressUnique(String emailAddress) {
@@ -29,6 +29,14 @@ public class MemberShipUtility {
 	
 	public static boolean isValidMember(Member member)
 	{
-		return isEmailAddressValid(member.getEmailAddress());
+		boolean isUserIdValid = isUserIdValid(member.getUserId());
+		boolean isEmailAddressValid = isEmailAddressValid(member.getEmailAddress());
+		return isUserIdValid && isEmailAddressValid;
+	}
+	
+	public static boolean isUniqueMember(Member member) {
+		boolean doesUserIdExist = memberDao.doesUserIdExist(member.getUserId());
+		boolean doesEmailAddressExist = memberDao.doesEmailAddressExist(member.getEmailAddress());
+		return (!doesUserIdExist) && (!doesEmailAddressExist);
 	}
 }
