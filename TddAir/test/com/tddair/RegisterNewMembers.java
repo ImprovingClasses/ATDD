@@ -69,4 +69,22 @@ public class RegisterNewMembers {
 		
 		assertEquals(beforeDuplicateAdd, afterDuplicateAdd);
 	}
+	
+	@Test
+	public void cannotAddMemberWithInvalidUserIdAndInvalidEmailAddress() {
+		Member badMember = new Member("", "");
+		int beforeAdd = membership.getEnrollmentCount();
+		membership.addNewMember(badMember);
+		int afterAdd = membership.getEnrollmentCount();
+		assertEquals(beforeAdd, afterAdd);
+	}
+	
+	@Test
+	public void addMemberWithNumericUserIdAndValidEmailAddress() {
+		Member numericMember = new Member("123", "123@gmail.com");
+		int beforeAdd = membership.getEnrollmentCount();
+		membership.addNewMember(numericMember);
+		int afterAdd = membership.getEnrollmentCount();
+		assertEquals(beforeAdd + 1, afterAdd);
+	}
 }
