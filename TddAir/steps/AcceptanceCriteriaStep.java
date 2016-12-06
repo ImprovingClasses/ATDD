@@ -3,8 +3,6 @@ import cucumber.api.java.en.Then;
 
 import com.tddair.TddAirApplication;
 
-import cucumber.api.PendingException;
-
 public class AcceptanceCriteriaStep {
 	
 	TddAirApplication controller = new TddAirApplication();
