@@ -8,6 +8,11 @@ public class MemberShip
 		memberDao = MemberDao.getInstance();
 	}
 	
+	public void cleanUp()
+	{
+		memberDao.cleanUp();
+	}
+	
 	public int getEnrollmentCount() {
 		return memberDao.memberShipCount();
 	}

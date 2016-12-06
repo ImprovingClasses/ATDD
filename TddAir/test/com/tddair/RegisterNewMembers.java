@@ -18,7 +18,7 @@ public class RegisterNewMembers {
 	
 	@After
 	public void tearDown() {
-		membership = null;
+		membership.cleanUp();
 	}
 	
 	@Test
@@ -34,10 +34,8 @@ public class RegisterNewMembers {
 	@Test
 	public void oneMemberAdded() {
 		Member testMember = new Member("testId", "test@email.com");
-		int beforeAdd = membership.getEnrollmentCount();
 		membership.addNewMember(testMember);
-		int afterAdd = membership.getEnrollmentCount();
-		assertEquals(beforeAdd, afterAdd);
+		assertEquals(1, membership.getEnrollmentCount());
 	}
 	
 	@Test

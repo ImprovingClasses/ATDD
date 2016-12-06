@@ -24,6 +24,13 @@ public class MemberDao {
 		return instance;
 	}
 	
+	void cleanUp()
+	{
+		members.clear();
+		userToEmail.clear();
+		emailToUsers.clear();
+	}
+	
 	public void addMember(Member member) {
 		members.add(member);
 		addUser(member.getUserId(), member.getEmailAddress());
