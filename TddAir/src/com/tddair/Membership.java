@@ -1,15 +1,16 @@
 package com.tddair;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Membership {
 
 	ArrayList<Member> memList;
-	int numOfEmail;
+	HashSet<String> emailList;
 	
 	public Membership() {
-		numOfEmail = 0;
 		memList = new ArrayList<>();
+		emailList = new HashSet<>();
 	}
 	
 	public int getNumMembers() 
@@ -19,20 +20,11 @@ public class Membership {
 	
 	public void addMember(String userID, String email)
 	{
-		memList.add(new Member(userID, email));
-		// This method is flawed - we should be incrementing the names of emails
-		// if the added email is completely new, not if it doesn't match any
-		// of the existing emails in the list. If we add a new email to a list of two
-		// distinct emails, this algorithm will increment numOfEmail twice.
-		if (memList.size() == 0)
-			numOfEmail = 0;
-		else
-			for (Member member: memList) {
-				if (member.getEmail() != email) {
-					numOfEmail++;
-					break;
-				}
-			}
+		if (!userID.equals(""))
+		{
+			memList.add(new Member(userID, email));
+		}
+		emailList.add(email);
 					
 	}
 	
@@ -48,6 +40,6 @@ public class Membership {
 	}
 	
 	public int getNumEmails() {
-		return numOfEmail;
+		return emailList.size();
 	}
 }
