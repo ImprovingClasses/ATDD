@@ -14,6 +14,10 @@ public class Membership {
 	public boolean addNewMember(String userID, String emailAddress) {
 		boolean result = true;
 
+		if (emailAddress == null) {
+			return false;
+		}
+		
 		if (members.containsKey(emailAddress)) {
 			if (containsID(members.get(emailAddress), userID)) {
 				result = false;

@@ -30,3 +30,8 @@ Then the traveler is "registered" as a member
 Scenario: Register a new member without a userid
 When the traveler registers with a userid "" and the email "bob@abc.com"
 Then the traveler is "registered" as a member 
+
+@tag3
+Scenario: Do not register a new member without an email
+When the traveler registers with a userid "bob" 
+Then the traveler is not "registered" as a member
