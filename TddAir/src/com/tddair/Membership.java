@@ -54,10 +54,4 @@ public class Membership {
 		}
 		return result;
 	}
-
-	public Object emailOnlyCount() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
