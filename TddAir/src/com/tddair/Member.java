@@ -5,7 +5,7 @@ public class Member
 	private String userId;
 	private String emailAddress;
 	
-	Member(String userId, String emailAddress) throws IllegalArgumentException {
+	public Member(String userId, String emailAddress) throws IllegalArgumentException {
 		if(userId == null || emailAddress == null) {
 			throw new IllegalArgumentException("Member userId or emailAddress cannot be null.");
 		}

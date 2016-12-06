@@ -6,8 +6,11 @@ public class MemberShipUtility {
 	
 	private static final String emailAddressRegex = "[0-9A-Za-z]+@[0-9A-Za-z]+\\.[0-9A-Za-z]+";
 	private static final Pattern emailAddressPattern = Pattern.compile(emailAddressRegex);
-	private static final String userIdRegex = "[0-9A-Za-z]+";
+	private static final String userIdRegex = "[0-9A-Za-z]*";
 	private static final Pattern userIdPattern = Pattern.compile(userIdRegex);
+	
+	public static final String REGISTERED = "registered";
+	public static final String NOT_REGISTERED = "not registered";
 	
 	private static final MemberDao memberDao = MemberDao.getInstance();
 	
@@ -35,8 +38,6 @@ public class MemberShipUtility {
 	}
 	
 	public static boolean isUniqueMember(Member member) {
-		boolean doesUserIdExist = memberDao.doesUserIdExist(member.getUserId());
-		boolean doesEmailAddressExist = memberDao.doesEmailAddressExist(member.getEmailAddress());
-		return (!doesUserIdExist) && (!doesEmailAddressExist);
+		return !memberDao.doesUserIdExist(member.getUserId());
 	}
 }
