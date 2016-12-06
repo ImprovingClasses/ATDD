@@ -26,6 +26,7 @@ public class Member {
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -34,5 +35,13 @@ public class Member {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getStatus(){
+		String status="Red";
+		if(miles >=75000) status = "Gold";
+		else if (miles >= 50000 ) status = "Blue";
+		else if (miles >= 25000 ) status = "Green";
+	return status;
 	}
 }

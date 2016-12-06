@@ -19,9 +19,10 @@ public class TestRewardMileage {
 	public void initialStatusCheck(){
 		Membership members = new Membership();
 		members.addNewMember("bob", "bob@abc.com");
-		assertEquals("Test successful initial miles ", 0, members.getById("bob").getStatus());
+		assertEquals("Test successful initial miles ", "Red", members.getById("bob").getStatus());
 		members.addNewMember("john", "john@abc.com",10000);
-		assertEquals("Test successful initial miles 10000", 10000,members.getById("john").getStatus());
+		assertEquals("Test successful initial miles 10000", "Red",members.getById("john").getStatus());
 	}
+	
 	
 }
