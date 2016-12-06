@@ -19,14 +19,16 @@ public class Membership {
 			return false;
 		}
 		
+		if ( (userID == null) || (userID.trim().isEmpty())) {
+			emailOnlyCount+=1;
+		}
+		
 		if (members.containsKey(emailAddress)) {
 			if (containsID(members.get(emailAddress), userID)) {
 				result = false;
 			} else {
 				members.get(emailAddress).add(new Member(userID, emailAddress));
-				if ( (userID == null) || (userID.trim().isEmpty())) {
-					emailOnlyCount+=1;
-				}
+				
 			}
 		} else {
 			ArrayList<Member> list = new ArrayList<Member>();
