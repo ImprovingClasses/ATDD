@@ -29,14 +29,56 @@ public class UpdateMemberStatus {
 			}
 		}
 	}
-	
-	private void addMiles(Membership subject, String email, int miles) {
+
+	@Test
+	public void whenUserHasRedStatusAndGainsTwoMilesStatusIsGreen() {
+		Membership subject = new Membership();
+		subject.addNewMember("bob","bob@abc.com", 24999);
+		addMiles(subject, "bob@abc.com", 2);
 		ArrayList<Member> members = subject.getMember("bob@abc.com");
 		for (Member member: members) {
 			if (member.getUserId().equals("bob")) {
-				member.addMiles(0);
+				assertEquals(STATUS_GREEN, member.getStatus());
+				assertEquals(25001, member.getMileage());
+			}
+		}
+	}
+	
+	@Test
+	public void whenUserHasGreenStatusAndGainsTwoMilesStatusIsBlue() {
+		Membership subject = new Membership();
+		subject.addNewMember("bob","bob@abc.com", 49999);
+		addMiles(subject, "bob@abc.com", 2);
+		ArrayList<Member> members = subject.getMember("bob@abc.com");
+		for (Member member: members) {
+			if (member.getUserId().equals("bob")) {
+				assertEquals(STATUS_BLUE, member.getStatus());
+				assertEquals(50001, member.getMileage());
 			}
 		}
 	}
 
+	@Test
+	public void whenUserHasBlueStatusAndGainsTwoMilesStatusIsGold() {
+		Membership subject = new Membership();
+		subject.addNewMember("bob","bob@abc.com", 74999);
+		addMiles(subject, "bob@abc.com", 2);
+		ArrayList<Member> members = subject.getMember("bob@abc.com");
+		for (Member member: members) {
+			if (member.getUserId().equals("bob")) {
+				assertEquals(STATUS_GOLD, member.getStatus());
+				assertEquals(75001, member.getMileage());
+			}
+		}
+	}
+
+	private void addMiles(Membership subject, String email, int miles) {
+		ArrayList<Member> members = subject.getMember("bob@abc.com");
+		for (Member member: members) {
+			if (member.getUserId().equals("bob")) {
+				member.addMiles(miles);
+			}
+		}
+	}
+	
 }
