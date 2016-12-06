@@ -1,12 +1,19 @@
 package com.tddair;
 
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
-
+@RunWith(Parameterized.class)
 
 
 public class UpdateMemberStatus {
@@ -15,61 +22,47 @@ public class UpdateMemberStatus {
 	private static final String STATUS_GREEN = "Green";
 	private static final String STATUS_BLUE = "Blue";
 	private static final String STATUS_GOLD = "Gold";
+	
+	
+	private int startingMiles;
 
-	@Test
-	public void whenUserHasZeroMilesAnddAddsZeroMilesStatusIsRed() {
-		Membership subject = new Membership();
-		subject.addNewMember("bob","bob@abc.com",0);
-		addMiles(subject, "bob@abc.com", 0);
-		ArrayList<Member> members = subject.getMember("bob@abc.com");
-		for (Member member: members) {
-			if (member.getUserId().equals("bob")) {
-				assertEquals(STATUS_RED, member.getStatus());
-				assertEquals(0, member.getMileage());
-			}
-		}
-	}
-
-	@Test
-	public void whenUserHasRedStatusAndGainsTwoMilesStatusIsGreen() {
-		Membership subject = new Membership();
-		subject.addNewMember("bob","bob@abc.com", 24999);
-		addMiles(subject, "bob@abc.com", 2);
-		ArrayList<Member> members = subject.getMember("bob@abc.com");
-		for (Member member: members) {
-			if (member.getUserId().equals("bob")) {
-				assertEquals(STATUS_GREEN, member.getStatus());
-				assertEquals(25001, member.getMileage());
-			}
-		}
+    private int addedMiles;
+    
+    private String status;
+	
+	@Parameters
+	    public static Collection<Object[]> data() {
+	        return Arrays.asList(new Object[][] {     
+	                 { 0, 0, STATUS_RED }, { 24999, 2, STATUS_GREEN }, { 49999, 2, STATUS_BLUE }, { 74999, 2, STATUS_GOLD }, 
+	                 { 20000, 30000, STATUS_BLUE }, { 20000, 55000, STATUS_GOLD }, { 30000, 45000, STATUS_GOLD }  
+	           });
+	    }
+	    
+	public UpdateMemberStatus(int startingMiles, int addedMiles, String status) {
+		this.startingMiles = startingMiles;
+		this.addedMiles = addedMiles;
+		this.status = status;
 	}
 	
 	@Test
-	public void whenUserHasGreenStatusAndGainsTwoMilesStatusIsBlue() {
+	public void checkStatusForMilage() {
 		Membership subject = new Membership();
-		subject.addNewMember("bob","bob@abc.com", 49999);
-		addMiles(subject, "bob@abc.com", 2);
-		ArrayList<Member> members = subject.getMember("bob@abc.com");
-		for (Member member: members) {
-			if (member.getUserId().equals("bob")) {
-				assertEquals(STATUS_BLUE, member.getStatus());
-				assertEquals(50001, member.getMileage());
-			}
-		}
+		subject.addNewMember("bob","bob@abc.com",startingMiles);
+		addMiles(subject, "bob@abc.com", addedMiles);
+		assertTrue(testMemberStatus(subject, "bob@abc.com", "bob", startingMiles+addedMiles, status ));
 	}
-
-	@Test
-	public void whenUserHasBlueStatusAndGainsTwoMilesStatusIsGold() {
-		Membership subject = new Membership();
-		subject.addNewMember("bob","bob@abc.com", 74999);
-		addMiles(subject, "bob@abc.com", 2);
-		ArrayList<Member> members = subject.getMember("bob@abc.com");
+	    
+	private boolean testMemberStatus(Membership subject, String email, String userId, int expectedMiles, String expectedStatus ) {
+		boolean result = false;
+		
+		ArrayList<Member> members = subject.getMember(email);
 		for (Member member: members) {
-			if (member.getUserId().equals("bob")) {
-				assertEquals(STATUS_GOLD, member.getStatus());
-				assertEquals(75001, member.getMileage());
+			if (member.getUserId().equals(userId)) {
+				result = ( (expectedStatus.equals(member.getStatus())) && (expectedMiles == member.getMileage()));
 			}
 		}
+		
+		return result;
 	}
 
 	private void addMiles(Membership subject, String email, int miles) {
