@@ -12,6 +12,7 @@ import com.tddair.TddAirApplication;
 
 public class Rewards {
 
+	
 	private TddAirApplication app = new TddAirApplication();
 	
 	@Given("^User \"([^\"]*)\" with email \"([^\"]*)\" has current miles (\\d+)$")
