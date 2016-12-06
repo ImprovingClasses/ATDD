@@ -15,3 +15,7 @@ Then the Traveler membership status is "not registered"
 Scenario: Traveler enters a duplicate combination of a valid user ID and a valid email address 
 When the Traveler enters a duplicate combination of a valid userId "Bob" and a valid emailAddress "bob@abc.com"
 Then the Traveler membership status is "not registered"
+
+Scenario: Traveler enters a unique combination of a valid user ID and an invalid email address 
+When the Traveler enters a duplicate combination of a valid userId "" and a valid emailAddress ""
+Then the Traveler membership status is "not registered"
