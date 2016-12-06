@@ -64,6 +64,12 @@ public class RegisterNewMembers {
 		assertEquals(1,memberList.size());
 	}
 	
+	@Test
+	public void initialEmailOnlyCountShouldBeZero() {
+		Membership subject = new Membership();
+		//assertEquals
+	}
+	
 	
 
 }
