@@ -3,6 +3,7 @@ package com.tddair;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -89,6 +90,17 @@ public class RegisterNewMembers {
 		
 		subject.addNewMember(null,"sue@abc.com");
 		assertEquals(0, subject.getMemberCount());
+	}
+	
+	@Test
+	public void whenTwoOnlyEmailsEnteredBothEmailsRecorded() {
+		Membership subject = new Membership();
+		subject.addNewMember("","bob@abc.com");
+		subject.addNewMember(null,"sue@abc.com");
+		assertEquals(2, subject.getEmailOnlyCount());
+		HashMap<String, ArrayList<Member>> allMembers = subject.getMembershipMap();
+		assertTrue(allMembers.containsKey("bob@abc.com"));
+		assertTrue(allMembers.containsKey("sue@abc.com"));
 	}
 
 }
