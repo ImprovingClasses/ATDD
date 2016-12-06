@@ -57,4 +57,42 @@ public class RegisterNewMembers {
 		
 				 
 	}
+	@Test
+	public void whenEmailOnlyEnteredThenMembershipCountShouldBeOne() {
+		Membership subject = new Membership();
+
+		subject.enroll("", "bob@abc.com");
+		
+		assertEquals(1, subject.enrollmentCount());
+				 
+	}
+	
+	@Test
+	public void whenTwoOnlyEmailsEnteredBothEmailsAreRecorded() {
+		Membership subject = new Membership();
+
+		subject.enroll("", "bob@abc.com");
+		subject.enroll("", "sue@abc.com");
+		
+		assertEquals(2, subject.enrollmentCount());
+				 
+	}
+	@Test
+	public void whenUserIdentifierAndEamilAreEmptyThenNoMemberIsAddedAndNoEamilsAreRecored() {
+		Membership subject = new Membership();
+
+		subject.enroll("", "");
+		
+		assertEquals(0, subject.enrollmentCount());				 
+	}
+	
+	@Test
+	public void whenUserEntersNumbersAsUsernameWithValidEmailAreRecored() {
+		Membership subject = new Membership();
+
+		subject.enroll("123", "bob@abc.com");
+		
+		assertEquals(1, subject.enrollmentCount());				 
+	}
+
 }
