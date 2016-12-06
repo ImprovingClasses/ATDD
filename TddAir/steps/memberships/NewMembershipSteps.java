@@ -2,19 +2,18 @@ package memberships;
 
 import static org.junit.Assert.assertEquals;
 
-import com.tddair.TddAirApplication;
+import com.tddair.AppManager;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class NewMembershipSteps {
+public class NewMembershipSteps extends AppManager {
 	
-	private TddAirApplication app = null;
 	private String registeredStatus = "";
 
 	public NewMembershipSteps() {
-		app = new TddAirApplication();
-	}
+		super();
+	}	
 	
 	@When("^the Traveler enters a unique combination of a valid userId \"([^\"]*)\" and a valid emailAddress \"([^\"]*)\"$")
 	public void the_Traveler_enters_a_unique_combination_of_a_valid_userId_and_a_valid_emailAddress(String userId, String emailAddress) throws Throwable {

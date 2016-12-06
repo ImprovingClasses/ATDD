@@ -1,6 +1,5 @@
 package com.tddair;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -8,7 +7,7 @@ import java.util.Set;
 
 public class MemberDao {
 	
-	private ArrayList<Member> members = new ArrayList<Member>();
+	private Map<MemberId, Member> members = new HashMap<MemberId, Member>();
 	private Map<String, String> userToEmail = new HashMap<>();
 	private Map<String, Set<String>> emailToUsers = new HashMap<>();
 	
@@ -32,7 +31,7 @@ public class MemberDao {
 	}
 	
 	public void addMember(Member member) {
-		members.add(member);
+		members.put(member.getMemberId(), member);
 		addUser(member.getUserId(), member.getEmailAddress());
 	}
 	
@@ -64,15 +63,6 @@ public class MemberDao {
 	
 	public Member getMemberByUserId(String userId)
 	{
-		for(Member member : members)
-		{
-			if (member.getUserId().equals(userId))
-			{
-				return member;
-			}
-		}
-		
-		// Return null if userId is not in membes list
-		return null;
-	}
+		return members.get(userId);
+	}	
 }
