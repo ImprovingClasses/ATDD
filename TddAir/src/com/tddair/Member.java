@@ -17,6 +17,10 @@ public class Member {
 		this.miles = miles;
 	}
 	
+	public void addMiles(int milesToAdd) {
+		this.miles += milesToAdd;
+	}
+	
 	public int getMiles() {
 		return miles;
 	}
@@ -26,7 +30,6 @@ public class Member {
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
