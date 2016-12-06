@@ -32,4 +32,6 @@ public class TestRewardMileage {
 		assertEquals("Test adding miles", 35000, members.getById("bob").getMiles());
 		assertEquals("Test transition from red to green", "Green", members.getById("bob").getStatus());
 	}
+	
+	
 }

@@ -48,4 +48,14 @@ public class Membership {
     	}
     	return null;
     }
+    
+    public boolean addMilesToMember(String Id, int miles){
+    	boolean done=false;
+    	Member m = getById(Id);
+    	if (m != null){
+    		m.addMiles(miles);
+    		done = true;
+    	}
+    	return done;
+    }
 }
