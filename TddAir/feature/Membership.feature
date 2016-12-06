@@ -61,10 +61,4 @@ Scenario: Do not register a new member with null userId and null email address
 When the traveler registers with a null userid and null email
 Then the traveler is not "registered" as a member
  
-
-
-
-
-
-
-Exaamples 
+ 
