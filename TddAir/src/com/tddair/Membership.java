@@ -18,14 +18,21 @@ public class Membership {
 		return memList.size(); 
 	}
 	
-	public void addMember(String userID, String email)
+	public boolean addMember(String userID, String email)
 	{
+		if (!email.equals(""))
+		{
+			emailList.add(email);
+		}
+		else
+		{
+			return false;
+		}
 		if (!userID.equals(""))
 		{
 			memList.add(new Member(userID, email));
 		}
-		emailList.add(email);
-					
+		return true;
 	}
 	
 	public Member getMember(String userID)
