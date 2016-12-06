@@ -101,7 +101,7 @@ public class RegisterNewMembers {
 		HashMap<String, ArrayList<Member>> allMembers = subject.getMembershipMap();
 		assertTrue(allMembers.containsKey("bob@abc.com"));
 		assertTrue(allMembers.containsKey("sue@abc.com"));
-	}
+	} 
 	
 	@Test 
 	public void whenUserIdentifiedAndEmailAreEmptyThenNoMemberIsAddedAndNoEmailsRecorded() {
