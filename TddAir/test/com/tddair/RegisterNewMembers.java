@@ -71,6 +71,15 @@ public class RegisterNewMembers {
 		subject.addNewMember(null,"bob@abc.com");
 	}
 	
+	@Test
+	public void whenOnlyEmailEnteredThenEmailCountIsOne() {
+		Membership subject = new Membership();
+		subject.addNewMember("","bob@abc.com");		
+		assertEquals(1, subject.getEmailOnlyCount());
+		
+		subject.addNewMember(null,"sue@abc.com");
+		assertEquals(2, subject.getEmailOnlyCount());
+	}
 	
 
 }
