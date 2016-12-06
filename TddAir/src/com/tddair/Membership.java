@@ -9,6 +9,15 @@ public class Membership {
 	List<Member> memberlist = new ArrayList<Member>();
 
 	int membercount = 0;
+	Status memStatus = Status.Red;
+	
+	public enum Status {
+		Red, 
+		Green, 
+		Blue, 
+		Gold
+	}
+	
 	public int getEnrollmentCount() {
 		return  members.size();
 	}
@@ -33,6 +42,30 @@ public class Membership {
 	public void setMemberList(Member member) {
 			memberlist.add(member);
 	}
+	
+	public Status membershipLevel(Member m)
+	{
+		if (m.getMiles() <25000)
+		{
+			memStatus = Status.Red;
+		}
+		else if (m.getMiles() >=25000 && m.getMiles() < 50000)
+		{
+			memStatus = Status.Green;
+		} 
+		else if (m.getMiles() >=50000 && m.getMiles() < 75000)
+		{
+			memStatus = Status.Blue;
+		}
+		else if (m.getMiles() >= 75000)
+		{
+			memStatus = Status.Gold;
+		}
+		 return memStatus;	
+			
+	}
+	
+	
 
 
 }
