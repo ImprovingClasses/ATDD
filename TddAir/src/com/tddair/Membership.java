@@ -68,6 +68,22 @@ public class Membership {
 	  return email;
   }
   
+  public int getMileage(String username)
+  {
+	  int mileage = 0;
+	  Iterator <Member> it = members.iterator();
+	  while(it.hasNext())
+	  {
+		  Member retrievedMember = it.next();
+		  String retrievedUsername = retrievedMember.getUsername_();
+	  	if (retrievedUsername.equals(username))
+	  	{
+	  		mileage = retrievedMember.getMileage_();
+	  	}
+	  }
+	  	return mileage;
+  }
+	  
   public boolean addMileage(String username, int newMileage)
   {
 	  if(doesUserExist(username))
@@ -86,6 +102,16 @@ public class Membership {
 	  }
 	  //user did not exist and cannot add mileage
 	  return false;
+  }
+  
+  public boolean addFlightMileage(String username, String flightNumber, int mileage)
+  {
+	  //FIrst check if flight number begins with TD
+	  if(flightNumber.startsWith("TD"))
+	  {
+		  return addMileage(username, mileage);
+	  }
+	  return false;	 
   }
   
   public String getLevel(String username)

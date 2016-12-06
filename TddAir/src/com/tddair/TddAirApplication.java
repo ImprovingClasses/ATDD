@@ -3,13 +3,14 @@ package com.tddair;
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
+	private FlightDao flights_ = new FlightDao();
 	
 	public TddAirApplication() {
 	}
 	
-	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
-		flights.addFlight(origin, destination, mileage, airline, number);
+	public void addFlight(String flightNumber, int mileage) {
+		System.out.println("Called TddAirApplication.addFlight(" + flightNumber +", " + mileage);
+		flights_.addFlight(flightNumber, mileage);
 	}
 	
 	public boolean addNewMembers(String username, String email)
@@ -26,6 +27,17 @@ public class TddAirApplication {
 	{
 		return membership_.getLevel(username);
 	}
+	public boolean addFlightMileage(String username, String flightNumber){
+		
+		int mileage = flights_.getMileage(flightNumber);
+		return membership_.addFlightMileage(username, flightNumber, mileage);
+	}
+	
+	public int getMileage(String username)
+	{
+		return membership_.getMileage(username);
+	}
 	private Membership membership_ = new Membership();
+	 
 	
 }
