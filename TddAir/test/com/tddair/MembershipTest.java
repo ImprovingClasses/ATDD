@@ -25,5 +25,11 @@ public class MembershipTest {
 		member.add(new Member());
 		assertEquals(1, member.getEnrollmentCount());
 	}
+	
+	@Test
+	public void initialEmailOnlyCountShouldBeZero(){
+		Membership member = new Membership();
+		assertEquals(0, member.getEnrollmentCount());
+	}
 
 }
