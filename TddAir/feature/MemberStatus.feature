@@ -30,20 +30,16 @@ And my milage should be <total miles>
 
 
 
-
-
-
 Examples: Adding miles 
-|starting milage|added milage|status|total miles|
-|0              |0           |RED   |0          |
-|24,999         |2           |GREEN |25,001     |
-|49,999         |2           |BLUE  |50,001     |
-|74,999         |2           |GOLD  |75,001     |
-|24,999         |0           |RED   |24,999     |
-|49,999         |0           |GREEN |49,999     |
-|74,999         |0           |BLUE  |74,999     |
-|30,000         |0           |GREEN |30,000     |
-|20,000         |30,000      |BLUE  |50,000     |
-|20,000         |55,000      |GOLD  |75,000     |
-|30,000         |45,000      |GOLD  |75,000     |
-
+|starting milage|added milage|status  |total miles|
+|0              |0           |"RED"   |0          |
+|24,999         |2           |"GREEN" |25,001     |
+|49,999         |2           |"BLUE"  |50,001     |
+|74,999         |2           |"GOLD"  |75,001     |
+|24,999         |0           |"RED"   |24,999     |
+|49,999         |0           |"GREEN" |49,999     |
+|74,999         |0           |"BLUE"  |74,999     |
+|30,000         |0           |"GREEN" |30,000     |
+|20,000         |30,000      |"BLUE"  |50,000     |
+|20,000         |55,000      |"GOLD"  |75,000     |
+|30,000         |45,000      |"GOLD"  |75,000     |

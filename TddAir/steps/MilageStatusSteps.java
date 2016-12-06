@@ -63,5 +63,10 @@ public class MilageStatusSteps {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
-
+	
+	@Then("^my status is \"([^\"]*)\"$")
+	public void my_status_is(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }
