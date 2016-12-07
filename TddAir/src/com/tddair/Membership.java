@@ -70,4 +70,27 @@ public class Membership {
 	{
 		getMember(userID).bookFlight(flight);
 	}
+	
+	public void yearOver()
+	{
+		for (Member member : memList)
+		{
+			member.yearOver();
+		}
+	}
+	
+	public int getMemberMiles(String userID)
+	{
+		return getMember(userID).getMileage();
+	}
+	
+	public int getMemberCurrentMiles(String userID)
+	{
+		return getMember(userID).getCurrentMileage();
+	}
+	
+	public void setMemberStatus(String user, String status)
+	{
+		getMember(user).setStatus(status);
+	}
 }

@@ -32,4 +32,24 @@ public class TddAirApplication {
 	{
 		membership.bookFlight(userID, flights.getFlightBy(flight));
 	}
+	
+	public void yearOver()
+	{
+		membership.yearOver();
+	}
+	
+	public int getMemberMiles(String userID)
+	{
+		return membership.getMemberMiles(userID);
+	}
+	
+	public int getMemberCurrentMiles(String userID)
+	{
+		return membership.getMemberCurrentMiles(userID);
+	}
+	
+	public void setMemberStatus(String user, String status)
+	{
+		membership.setMemberStatus(user, status);
+	}
 }
