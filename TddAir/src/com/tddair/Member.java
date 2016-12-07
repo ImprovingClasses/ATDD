@@ -4,6 +4,7 @@ public class Member {
 	private String userId = null;
 	private String emailAddress = null;
 	private int mileage = 0;
+	private int yrMileage = 0;
 	private String status = "Red";
 
 	public Member(String userId, String emailAddress, int miles) {
@@ -11,6 +12,7 @@ public class Member {
 		this.userId = userId;
 		this.emailAddress = emailAddress;
 		this.mileage = miles;
+		this.yrMileage = miles;
 		determineStatus();
 	}
 	
@@ -30,6 +32,7 @@ public class Member {
 
 	public void addMiles(int miles) {
 		mileage += miles;
+		yrMileage += miles;
 		determineStatus();
 	}
 
@@ -40,6 +43,7 @@ public class Member {
 	public String getEmailAddress() {
 		return emailAddress;
 	}
+
 
 	private void determineStatus() {
 		if (0 <= mileage && mileage <= 24999) {
