@@ -24,7 +24,7 @@ Feature: Title of your feature
 @tag1
 Scenario Outline: Mileagetransitions
 Given flyer has <Balance> mileage
-When flyer travels <flightmiles> 
+When flyer travels <flightmiles>
 Then flyer status is <Level>
 
 Examples:
