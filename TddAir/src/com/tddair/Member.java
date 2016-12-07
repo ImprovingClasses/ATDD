@@ -4,7 +4,11 @@ public class Member  {
 	private MemberId memberId;
 	private String userId;
 	private String emailAddress;
-	private int currentMiles;
+	
+	private MemberStatus status;
+	
+	private int currencyMiles;
+	private int yearlyMiles;
 	
 	public Member(String userId, String emailAddress) throws IllegalArgumentException {
 		this(userId, emailAddress, 0);
@@ -14,17 +18,25 @@ public class Member  {
 		if(userId == null || emailAddress == null) {
 			throw new IllegalArgumentException("Member userId or emailAddress cannot be null.");
 		}
+		
+		this.status = MemberStatus.RED;
 		this.userId = userId;
 		this.emailAddress = emailAddress;
-		this.currentMiles = miles;
+		this.currencyMiles = miles;
+		this.yearlyMiles = miles;
 	}
 
-	public void addMiles(int mileage) {
-		this.currentMiles += mileage;
+	public void addMilesFlown(int mileage) {
+		this.currencyMiles += mileage;
+		this.yearlyMiles += mileage;
 	}
 	
-	public int getMiles() {
-		return this.currentMiles;
+	public int getYearlyMiles() {
+		return this.yearlyMiles;
+	}
+	
+	public int getCurrencyMiles() {
+		return this.currencyMiles;
 	}
 	
 	public String getUserId() {
@@ -37,5 +49,17 @@ public class Member  {
 	
 	public MemberId getMemberId() {
 		return this.memberId;
+	}
+	
+	public MemberStatus getMemberStatus() {
+		return this.status;
+	}
+	
+	public void setMemberStatus(MemberStatus newStatus) {
+		this.status = newStatus;
+	}
+	
+	public void resetYearlyMiles() {
+		this.yearlyMiles = 0;
 	}
 }

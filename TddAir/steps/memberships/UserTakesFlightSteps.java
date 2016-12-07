@@ -32,7 +32,7 @@ public class UserTakesFlightSteps extends AppManager {
 	@When("^the Traveler \"([^\"]*)\" takes TD(\\d+)$")
 	public void the_Traveler_takes_TD(String userId, int mileage) throws Throwable {
 		app.userTakesFlight(userId, "TD" + mileage);
-		actualMileage = app.getMemberMileage(userId);
+		actualMileage = app.getYearlyMemberMileage(userId);
 	}
 	
 	@Then("^the Traveler status be <mileageStatus> and mileage should be (\\d+)$")
@@ -43,12 +43,12 @@ public class UserTakesFlightSteps extends AppManager {
 	@When("^the Traveler \"([^\"]*)\" takes AA(\\d+)$")
 	public void the_Traveler_takes_AA(String userId, int mileage) throws Throwable {
 		app.userTakesFlight(userId, "AA" + mileage);
-		actualMileage = app.getMemberMileage(userId);
+		actualMileage = app.getYearlyMemberMileage(userId);
 	}
 	
 	@When("^the Traveler \"([^\"]*)\" takes US(\\d+)$")
 	public void the_Traveler_takes_US(String userId, int mileage) throws Throwable {
 		app.userTakesFlight(userId, "US" + mileage);
-		actualMileage = app.getMemberMileage(userId);
+		actualMileage = app.getYearlyMemberMileage(userId);
 	}
 }

@@ -13,7 +13,7 @@ public class MemberShip  {
 		Flight flight = currentFlights.getFlightBy(flightName);
 		
 		if(flight.getFlightNumber().toLowerCase().contains("td")) {
-			memberDao.getMemberByUserId(userId).addMiles(flight.getMileage());
+			memberDao.getMemberByUserId(userId).addMilesFlown(flight.getMileage());
 		}
 	}
 	
@@ -35,44 +35,51 @@ public class MemberShip  {
 	
 	public void addMileage(String userId, int mileage) {
 		Member member = memberDao.getMemberByUserId(userId);
-		member.addMiles(mileage);
+		member.addMilesFlown(mileage);
 	}
 	
-	public int getMemberMileage(String userId) {
-		return memberDao.getMemberByUserId(userId).getMiles();
+	public int getYearlyMemberMileage(String userId) {
+		return memberDao.getMemberByUserId(userId).getYearlyMiles();
 	}
 	
-	public String getMemberStatus(String userId)
-	{
-		String status = "";
-		Member member = memberDao.getMemberByUserId(userId);
-		if (0 <= member.getMiles() && member.getMiles() < 25000)
-		{
-			status = "Red";
-		}
-		else if (25000 <= member.getMiles() && member.getMiles() < 50000)
-		{
-			status = "Green";
-		}
-		else if (50000 <= member.getMiles() && member.getMiles() < 75000)
-		{
-			status = "Blue";
-		}
-		else 
-		{
-			status = "Golden";
-		}
-		return status;
+	public MemberStatus getMemberStatus(String userId) {
+		return memberDao.getMemberByUserId(userId).getMemberStatus();
 	}
 	
 	public String addNewMember(Member member) {
+		String registeredStatus = MemberShipUtility.NOT_REGISTERED;
+		
 		if(MemberShipUtility.isValidMember(member)) {
 			if(MemberShipUtility.isUniqueMember(member)) {
 				System.out.println("WARNING: Overwriting User with ID '" + member.getUserId() + "'");
 			}
 			memberDao.addMember(member);
-			return MemberShipUtility.REGISTERED;
+			registeredStatus = MemberShipUtility.REGISTERED;
+			member.setMemberStatus(calculateStatus(member));
 		}
-		return MemberShipUtility.NOT_REGISTERED;
+		return registeredStatus;
+	}
+	
+	public void updateStatusAfterOneYear(String userId) {
+		Member member = memberDao.getMemberByUserId(userId);
+		member.setMemberStatus(calculateStatus(member));
+		member.resetYearlyMiles();
+	}
+	
+	private MemberStatus calculateStatus(Member member) {
+		int yearlyMiles = member.getYearlyMiles();
+		MemberStatus currentStatus = member.getMemberStatus();
+		
+		MemberStatus newStatus = MemberStatus.GOLDEN;
+		while(newStatus.previous != null && newStatus.inRange(yearlyMiles) == false) {
+			newStatus= newStatus.previous;
+		}
+		
+		int difference = currentStatus.differenceFrom(newStatus);
+		if(difference > 1) {
+			newStatus = currentStatus.previous;
+		}
+		
+		return newStatus;
 	}
 }

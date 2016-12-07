@@ -23,10 +23,12 @@ public class ExpiringMilesTest
 	@Test
 	public void statusAfterOneYearWithoutFlying()
 	{
-		Member member = new Member("testId", "test@gmail.com");
-		String memberStatusBeforeYearEnds = membership.getMemberStatus(member.getUserId());
-		membership.updateStatusAfterOneYear(member.getUserId());
+		Member member = new Member("testId", "test@gmail.com", 50000);
+		membership.addNewMember(member);
 		
-		assertEquals(memberStatusBeforeYearEnds, membership.getMemberStatus(member.getUserId()));
+		membership.updateStatusAfterOneYear(member.getUserId());
+		MemberStatus memberStatusBeforeYearEnds = membership.getMemberStatus(member.getUserId());
+		membership.updateStatusAfterOneYear(member.getUserId());
+		assertEquals(memberStatusBeforeYearEnds.previous, membership.getMemberStatus(member.getUserId()));
 	}
 }

@@ -24,11 +24,11 @@ public class TddAirApplication {
 	}
 	
 	public String getMemberStatus(String userId) {
-		return membership.getMemberStatus(userId);
+		return membership.getMemberStatus(userId).getName();
 	}
 	
-	public int getMemberMileage(String userId) {
-		return membership.getMemberMileage(userId);
+	public int getYearlyMemberMileage(String userId) {
+		return membership.getYearlyMemberMileage(userId);
 	}
 	
 	public void addFlight(String origin, String destination, int mileage, String flightNumber) {
