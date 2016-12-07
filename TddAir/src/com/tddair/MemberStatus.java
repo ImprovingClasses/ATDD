@@ -36,4 +36,20 @@ public enum MemberStatus {
 	public int differenceFrom(MemberStatus status) {
 		return priority - status.priority;
 	}
+	
+	public static MemberStatus getStatusByName(String name) {
+		if(MemberStatus.RED.getName().equalsIgnoreCase(name)) {
+			return MemberStatus.RED;
+		}
+		if(MemberStatus.GREEN.getName().equalsIgnoreCase(name)) {
+			return MemberStatus.GREEN;
+		}
+		if(MemberStatus.BLUE.getName().equalsIgnoreCase(name)) {
+			return MemberStatus.BLUE;
+		}
+		if(MemberStatus.GOLDEN.getName().equalsIgnoreCase(name)) {
+			return MemberStatus.GOLDEN;
+		}
+		return null;
+	}
 }
