@@ -201,4 +201,5 @@ public class JunitTestMembership {
 		assertEquals(ColorStatusEnum.BLUE, ourMembership.getMemberById("Chris").getColorStatus());
 		
 	}
+	
 }

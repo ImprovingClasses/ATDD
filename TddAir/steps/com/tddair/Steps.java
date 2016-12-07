@@ -111,4 +111,22 @@ public class Steps {
 		
 		assertEquals(newColorStatus, tdd.getMember("Chris").getColorStatus().toString());
 	}
+	
+	@Given("^A member with a status of \"([^\"]*)\" and has (\\d+) miles$")
+	public void a_member_with_a_status_of_and_has_miles(String arg1, int arg2) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^member purchases (\\d+) upgraded seat$")
+	public void member_purchases_upgraded_seat(int arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^member has (\\d+) upgrade and member status is still \"([^\"]*)\" and has (\\d+) miles left$")
+	public void member_has_upgrade_and_member_status_is_still_and_has_miles_left(int arg1, String arg2, int arg3) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }
