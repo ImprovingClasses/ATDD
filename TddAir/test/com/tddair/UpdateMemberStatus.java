@@ -21,7 +21,7 @@ public class UpdateMemberStatus {
 	private static final String STATUS_GREEN = "Green";
 	private static final String STATUS_BLUE = "Blue";
 	private static final String STATUS_GOLD = "Gold";
-	
+	   
 	
 	private int startingMiles;
 
