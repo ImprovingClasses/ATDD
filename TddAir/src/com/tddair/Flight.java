@@ -27,6 +27,14 @@ public class Flight {
 		this.number = number;
 	}
 	
+	public Flight(String airline, int mileage){
+		this.airline = airline;
+		this.mileage = mileage;
+		this.destination = "MDW";
+		this.origin = "DFW";
+		this.number = 2;
+    }
+	
 	public Flight(String origin, String destination, int mileage) {
 		this(origin, destination, mileage, null, 0);
 	}
@@ -46,6 +54,13 @@ public class Flight {
 	}
 	public int getMileage() {
 		return mileage;
+	}
+	public String getAirline() {
+		return airline;
+	}
+
+	public void setAirline(String airline) {
+		this.airline = airline;
 	}
 	
 }

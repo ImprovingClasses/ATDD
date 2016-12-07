@@ -70,7 +70,13 @@ public class Membership {
 		return members.containsKey(userId);
 	}
 
-
+	public int getMemberMiles(String userId){
+		int retVal = 0;
+		if( members.containsKey(userId) ){
+           retVal = members.get(userId).getMiles();
+		}
+		return retVal;
+	}
 	/*public Member getmemberByEmailId(String email){
 		//return members.values()getClass().;
 	}*/

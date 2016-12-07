@@ -12,6 +12,14 @@ public class TddAirApplication {
 		flights.addFlight(origin, destination, mileage, airline, number);
 	}
 	
+	public void addFlight(Flight flt) {
+		flights.addFlight(flt);
+	}
+	
+	 public Flight getFlight( String flightNum ) {
+		return flights.getFlightBy(flightNum);
+	}
+	
 	public boolean registerTraveller(String userId, String email, int miles){
 		System.out.println( "registerTraveller; user " + userId + " with email " + email + " and miles " + miles + " added" );
 		return mbr.addMember(userId,email, miles);
@@ -26,6 +34,10 @@ public class TddAirApplication {
 		String retVal = mbr.getRewardLevel(userId);
 		System.out.println( "getRewardLevel; user " + userId + " has reward level " + retVal );
 		return retVal;
+	}
+	
+	public int getUserMiles(String userId){
+		return mbr.getMemberMiles(userId);
 	}
 	
 	public boolean isMember(String userId){

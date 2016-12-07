@@ -17,6 +17,12 @@ public class FlightDao {
 		return flights.get(flightNumber);
 	}
 	
+	public void addFlight(Flight flt) {
+		if( flt != null && ! flights.containsKey(flt.getAirline() )){
+		   flights.put(flt.getAirline(), flt);	
+		}
+	}
+	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
 		Flight flight = new Flight(origin, destination, mileage, airline, number);
 		flights.put(flight.getFullFlightNumber(), flight);

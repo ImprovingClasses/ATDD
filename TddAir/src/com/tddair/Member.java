@@ -44,7 +44,7 @@ public class Member {
 		this.miles = miles;
 	}
 
-	private int miles;
+	private int miles = 0;
 	private String user_id;
 	private String email;
 //	private String rewardLevel = "";
