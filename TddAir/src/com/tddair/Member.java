@@ -8,7 +8,17 @@ public class Member {
 	public Member(String userId, String email, int initialMiles ){
 		this.user_id = userId;
 		this.email = email;
-		this.miles = initialMiles;
+		this.currentMiles = initialMiles;
+		this.points += initialMiles;
+	}
+	
+	public Member(String userId, String email, int initialMiles,
+			int points, String initialStatus ){
+		this.user_id = userId;
+		this.status = initialStatus;
+		this.email = email;
+		this.currentMiles = initialMiles;
+		this.points = points;
 	}
 	
 	public String getUser_id() {
@@ -25,28 +35,35 @@ public class Member {
 	}
 	
 	public void addTravelMiles(int miles) {
-		this.miles += miles;
+		this.currentMiles += miles;
 	}
 		
-//	public String getRewardLevel() {
-//		return rewardLevel;
-//	}
+	public String getStatus() {
+		return status;
+	}
 
-//	public void setRewardLevel(String rewardLevel) {
-//		this.rewardLevel = rewardLevel;
-//	}
+	public void setStatus(String rewardLevel) {
+		this.status = rewardLevel;
+	}
 
 	public int getMiles() {
-		return miles;
+		return currentMiles;
 	}
 
-	public void setMiles(int miles) {
-		this.miles = miles;
+	public void resetMiles() {
+		this.currentMiles = 0;
+
+	}
+	
+	public int getPoints() {
+		return points;
 	}
 
-	private int miles = 0;
+	private int currentMiles = 0;
+	private int points = 0;
 	private String user_id;
 	private String email;
+	private String status;
 //	private String rewardLevel = "";
 	
 	

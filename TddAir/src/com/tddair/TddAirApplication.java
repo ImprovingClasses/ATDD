@@ -20,9 +20,18 @@ public class TddAirApplication {
 		return flights.getFlightBy(flightNum);
 	}
 	
+    public void recalculateUserStatus( String userId ){
+    	mbr.recalculateUserStatus( userId );
+    }
 	public boolean registerTraveller(String userId, String email, int miles){
 		System.out.println( "registerTraveller; user " + userId + " with email " + email + " and miles " + miles + " added" );
 		return mbr.addMember(userId,email, miles);
+	}
+	
+	public boolean registerTraveller(String userId, 
+			            String email, int miles, int points, String initStatus){
+		System.out.println( "registerTraveller; user " + userId + " with email " + email + " and miles " + miles + " added" );
+		return mbr.addMember(userId,email, miles, points, initStatus);
 	}
 	
 	public void addTravelMiles(String userId, int miles){
@@ -36,6 +45,9 @@ public class TddAirApplication {
 		return retVal;
 	}
 	
+	public String getStatus(String userId){
+		return mbr.getMemberStatus(userId);
+	}
 	public int getUserMiles(String userId){
 		return mbr.getMemberMiles(userId);
 	}
