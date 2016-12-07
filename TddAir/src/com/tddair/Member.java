@@ -112,38 +112,60 @@ public class Member {
 	public void setNextYearStatus() {
 		int year = Year.now().getValue();
 		int month = MonthDay.now().getMonthValue();
-
+	
 		membershipLevel();
+			 
+			 if (previousStatus == Status.Gold && currentMiles < 75000 )
+			 {
+				 nextStatus=  Status.Blue;
+			 }
+			 else if (previousStatus == Status.Gold && currentMiles >= 75000 )
+			 {
+				 nextStatus=   Status.Gold;
+			 }
+			 else if (previousStatus == Status.Blue && currentMiles < 50000 )
+			 {
+				 nextStatus=   Status.Green;
+			 }
+			 else if (previousStatus == Status.Blue && currentMiles >= 50000 )
+			 {
+				 nextStatus=   Status.Blue;
+			 }
+			 else if (previousStatus == Status.Green && currentMiles < 25000 )
+			 {
+				 nextStatus=   Status.Red;
+			 }
+			 else if (previousStatus == Status.Green && currentMiles >= 25000 )
+			 {
+				 nextStatus=   Status.Green;
+			 }
+			 else if (previousStatus == Status.Red && currentMiles >=75000 )
+			 {
+				 nextStatus=   Status.Gold;
+			 }
+			 else if (previousStatus == Status.Red && (currentMiles >= 50000 && currentMiles < 75000))
+			 {
+				 nextStatus=   Status.Blue;
+			 }
 
-		if (previousStatus == Status.Gold && currentMiles < 75000 )
-		{
-			nextStatus=  Status.Blue;
-		}
-		else if (previousStatus == Status.Gold && currentMiles >= 75000 )
-		{
-			nextStatus=   Status.Gold;
-		}
-		else if (previousStatus == Status.Blue && currentMiles < 50000 )
-		{
-			nextStatus=   Status.Green;
-		}
-		else if (previousStatus == Status.Blue && currentMiles >= 50000 )
-		{
-			nextStatus=   Status.Blue;
-		}
-		else if (previousStatus == Status.Green && currentMiles < 25000 )
-		{
-			nextStatus=   Status.Red;
-		}
-		else if (previousStatus == Status.Green && currentMiles >= 25000 )
-		{
-			nextStatus=   Status.Green;
-		}
-		else 
-		{
-			nextStatus=   Status.Red;
-		}
-	}
+			 else if (previousStatus == Status.Green && (currentMiles >= 50000 && currentMiles < 75000 ))
+			 {
+				 nextStatus=   Status.Blue;
+			 }
+			 else if (previousStatus == Status.Green && currentMiles >= 75000)
+			 {
+				 nextStatus=   Status.Gold;
+			 }
+			 else if (previousStatus == Status.Blue && currentMiles >= 75000)
+			 {
+				 nextStatus=   Status.Gold;
+			 }
+			 else 
+			 {
+				 nextStatus=   Status.Red;
+			 }
+		 }
+
 
 
 
