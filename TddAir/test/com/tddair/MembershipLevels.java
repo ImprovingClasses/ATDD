@@ -98,5 +98,22 @@ public class MembershipLevels {
 		membership.userFlightMiles(member.getUserID(), uFlights);
 		assertEquals(membership.membershipLevel(member), status);
 	}
+	
+	@Test
+	public void testStatusFlightsRed() {
+		Member member = new Member("Bob", "bob@abc.com", 4000);
+		Membership membership = new Membership();
+		membership.add(member);
+		List<Flight> uFlights = new ArrayList<Flight>();
+		Flight flight1 = new Flight ("DFW", "ALB", 1000, "TD", 100);
+		
+		Flight flight2 = new Flight ("ALB", "LAX", 2000, "TD", 100);
+		uFlights.add(flight1);
+		uFlights.add(flight2);
+		Status status = Membership.Status.Red;
+		membership.userFlightMiles(member.getUserID(), uFlights);
+		assertEquals(membership.membershipLevel(member), status);
+	}
+	
 
 }

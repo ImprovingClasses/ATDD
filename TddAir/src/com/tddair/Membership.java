@@ -75,7 +75,7 @@ public class Membership {
 				 member.setMiles(memMiles);
 			 }
 			 
-			
+			// membershipLevel(member);
 			
 				
 		}
@@ -100,28 +100,43 @@ public class Membership {
 	
 	public void userFlightMiles(String user, List<Flight> flights)
 	{
-		for (int i =0; i < memberlist.size(); i++){
-			 Member member = memberlist.get(i);
-			 if (member.getUserID() == user)
-			 {
-				 int memMiles = member.getMiles();
+		
 				 for (Flight e:flights)
 				 {
 				 int miles = e.getMileage();
-				 memMiles = memMiles + miles;
-				 member.setMiles(memMiles);
+				 //String fName = e.getFullFlightNumber();
+				 
+				 addMiles(user,miles);
 				 
 				 }
-				 membershipLevel(member);
 				 
-			 }
-		}
+				 
+			 
+		
 	}
 	
 	
 	
 	public Status getMemberStatus(){
 		return memStatus;
+	}
+
+
+	public void getPreviousStatus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void getCurrentYearMiles() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setNextYearStatus() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
