@@ -11,6 +11,22 @@ public class Membership {
     	return members.size();
     }
     
+    public boolean addNewMember(String Id, String email, int miles, String status){
+    	boolean added = false;
+    	if (!email.isEmpty())
+    	{
+    		Member m = new Member(Id,email,miles,status);
+    		if(m != null){
+    			if (getById(Id) == null)
+    			{
+    				members.add(m);
+    				added = true;
+    			}
+    		}
+    	}
+    	return added;
+    }
+    
     public boolean addNewMember(String Id, String email, int miles){
     	boolean added = false;
     	if (!email.isEmpty())
@@ -53,8 +69,8 @@ public class Membership {
     	String status = "Undefined Status";
     	Member m = getById(Id);
     	if (m != null){
-    		m.addTotalMiles(miles);
-    		status = m.getStatus();
+    		m.addMiles(miles);
+    		status = m.calcStatus();
     	}
     	return status;
     }
@@ -63,7 +79,7 @@ public class Membership {
     	String status = "Undefined Status";
     	Member m = getById(Id);
     	if (m != null) {
-    		status = m.getStatus();
+    		status = m.calcStatus();
     	}
     	return status;
     }
@@ -79,7 +95,22 @@ public class Membership {
     
     public void newYearMemberUpdate(){
     	for (Member member : members) {
-           member.setyTDMiles(0);
+    		int yTDMiles = member.getyTDMiles();
+    		String curStatus = member.getStatus();
+    		if (curStatus.equals("Gold")) {
+    			if (yTDMiles < 75000) {
+    				member.setStatus("Blue");
+    			}
+    		} else if (curStatus.equals("Blue")) {
+    			if (yTDMiles < 50000) {
+    				member.setStatus("Green");
+    			}
+    		} else if (curStatus.equals("Green")) {
+    			if (yTDMiles < 25000) {
+    				member.setStatus("Red");
+    			}
+    		}
+            member.setyTDMiles(0);
     	}
     }
 }

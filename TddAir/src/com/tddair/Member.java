@@ -5,21 +5,35 @@ public class Member {
 	String email;
 	int totalMiles;
 	int yTDMiles;
+	String status;
 	
 	public Member(String id, String email){
 		this.id=id;
 		this.email= email;
 		this.totalMiles=0;
+		this.yTDMiles = 0;
+		this.status = calcStatus();
 	}
 	
 	public Member(String id, String email, int miles){
 		this.id=id;
 		this.email= email;
 		this.totalMiles = miles;
+		this.yTDMiles = miles;
+		this.status = calcStatus();
+	}
+
+	public Member(String id, String email, int miles, String status){
+		this.id=id;
+		this.email= email;
+		this.totalMiles = miles;
+		this.yTDMiles = miles;
+		this.status = status;
 	}
 	
-	public void addTotalMiles(int milesToAdd) {
+	public void addMiles(int milesToAdd) {
 		this.totalMiles += milesToAdd;
+		this.yTDMiles += milesToAdd;
 	}
 	
 	public int getTotalMiles() {
@@ -40,16 +54,21 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	public int getyTDMiles() {
 		return yTDMiles;
 	}
-
 	public void setyTDMiles(int yTDMiles) {
 		this.yTDMiles = yTDMiles;
 	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	public String getStatus() {
+		return this.status;
+	}
 
-	public String getStatus(){
+	public String calcStatus(){
 		String status="Red";
 		if(totalMiles >=75000) status = "Gold";
 		else if (totalMiles >= 50000 ) status = "Blue";
