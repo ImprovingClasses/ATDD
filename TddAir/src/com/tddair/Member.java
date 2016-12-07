@@ -22,6 +22,13 @@ public class Member {
 		this.emailAddress = emailAddress;
 	}
 
+	public Member(String userId, String emailAddress, StatusEnum currentStatus) {
+		super();
+		this.userId = userId;
+		this.emailAddress = emailAddress;
+		_status = currentStatus;
+	}
+
 	public int getMileage() {
 		return mileage;
 	}
