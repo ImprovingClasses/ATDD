@@ -4,7 +4,7 @@ package com.tddair;
 public class TddAirApplication {
 	// add comment
 	private FlightDao flights = new FlightDao();
-	private Membership membership = new Membership();
+	private Memberships memberships = new Memberships();
 	
 	public TddAirApplication() {
 	}
@@ -15,41 +15,51 @@ public class TddAirApplication {
 	
 	public boolean registerMember(String userID, String email)
 	{
-		return membership.addMember(userID, email);
+		return memberships.addMember(userID, email);
 	}
 	
 	public void addMemberMiles(String userID, int miles)
 	{
-		membership.addMemberMiles(userID, miles);
+		memberships.addMemberMiles(userID, miles);
 	}
 	
-	public String getMemberStatus(String userID)
+	public Status getMemberStatus(String userID)
 	{
-		return membership.getMemberStatus(userID);
+		return memberships.getMemberStatus(userID);
 	}
 	
 	public void bookFlight(String userID, String flight)
 	{
-		membership.bookFlight(userID, flights.getFlightBy(flight));
+		memberships.bookFlight(userID, flights.getFlightBy(flight));
 	}
 	
 	public void yearOver()
 	{
-		membership.yearOver();
+		memberships.yearOver();
 	}
 	
 	public int getMemberMiles(String userID)
 	{
-		return membership.getMemberMiles(userID);
+		return memberships.getMemberMiles(userID);
 	}
 	
 	public int getMemberCurrentMiles(String userID)
 	{
-		return membership.getMemberCurrentMiles(userID);
+		return memberships.getMemberCurrentMiles(userID);
 	}
 	
 	public void setMemberStatus(String user, String status)
 	{
-		membership.setMemberStatus(user, status);
+		memberships.setMemberStatus(user, status);
+	}
+	
+	public int buyUpgrades(String user, int count)
+	{
+		return memberships.buyUpgrades(user, count);
+	}
+	
+	public int getUpgrades(String user)
+	{
+		return memberships.getUpgrades(user);
 	}
 }

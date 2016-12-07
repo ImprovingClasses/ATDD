@@ -1,96 +1,89 @@
 package com.tddair;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 public class Membership {
 
-	ArrayList<Member> memList;
-	HashSet<String> emailList;
+	private Member member;
+	private int mileage = 0;
+	private int currentMileage = 0;
+	private Status status = new RedStatus();
+	private StatusCalc calc = StatusCalc.getInstance();
+	private int upgrades = 0;
 	
-	public Membership() {
-		memList = new ArrayList<>();
-		emailList = new HashSet<>();
-	}
-	
-	public int getNumMembers() 
-	{ 
-		return memList.size(); 
-	}
-	
-	public boolean addMember(String userID, String email)
+	public Membership(String userId, String email)
 	{
-		if (!email.equals(""))
-		{
-			emailList.add(email);
-		}
-		else
-		{
-			return false;
-		}
-		if (!userID.equals(""))
-		{
-			memList.add(new Member(userID, email));
-		}
-		return true;
+		member = new Member(userId, email);
 	}
 	
-	public Member getMember(String userID)
-	{	
-		for (Member member : memList)
-		{
-			if (member.getUserID() == userID)
-					return member;
-		}
-		
-		return null;
-	}
-	
-	public int getNumEmails() {
-		return emailList.size();
-	}
-	
-	public void addMemberMiles(String userID, int miles)
+	public void setUserId(String userId)
 	{
-		Member member = getMember(userID);
-		if (member != null)
-			member.addMiles(miles);
+		member.setUserID(userId);
 	}
 	
-	public String getMemberStatus(String userID)
+	public void setEmail(String email)
 	{
-		Member member = getMember(userID);
-		if (member != null)
-			return member.getStatus();
-		else 
-			return "Unknown User";
+		member.setEmail(email);
 	}
 	
-	public void bookFlight(String userID, Flight flight)
+	public String getUserId()
 	{
-		getMember(userID).bookFlight(flight);
+		return member.getUserID();
+	}
+	
+	public String getEmail()
+	{
+		return member.getEmail();
+	}
+	
+	public int getMileage()
+	{
+		return mileage;
+	}
+	
+	public int getCurrentMileage()
+	{
+		return currentMileage;
+	}
+	
+	public void addMiles(int miles)
+	{
+		mileage += miles;
+		currentMileage += miles;
+		status = calc.calcStatus(currentMileage, status);
+	}
+	
+	public Status getStatus()
+	{
+		return status;
 	}
 	
 	public void yearOver()
 	{
-		for (Member member : memList)
-		{
-			member.yearOver();
-		}
+		status = calc.recalcStatus(currentMileage, status);
+		currentMileage = 0;
 	}
 	
-	public int getMemberMiles(String userID)
+	
+	public void setStatus(String status)
 	{
-		return getMember(userID).getMileage();
+		this.status = calc.provideStatus(status);
 	}
 	
-	public int getMemberCurrentMiles(String userID)
+	public void bookFlight(Flight f)
 	{
-		return getMember(userID).getCurrentMileage();
+		if (f.getFullFlightNumber().startsWith("TD"))
+			addMiles(f.getMileage());
 	}
 	
-	public void setMemberStatus(String user, String status)
+	public int buyUpgrades(int amount)
 	{
-		getMember(user).setStatus(status);
+		UpgradeTransaction transaction = status.buyUpgrades(amount, mileage);
+		upgrades += transaction.getBought();
+		mileage -= transaction.getSpent();
+		return transaction.getBought();
+	}
+	
+	public int getUpgrades()
+	{
+		return upgrades;
 	}
 }

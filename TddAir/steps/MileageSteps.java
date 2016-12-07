@@ -21,7 +21,7 @@ public class MileageSteps {
 
 	@Then("^his flyer status should be \"([^\"]*)\"$")
 	public void his_flyer_status_should_be(String arg1) throws Throwable {
-	    assert(arg1.equals(airApp.getMemberStatus("Member")));
+	    assert(arg1.equals(airApp.getMemberStatus("Member").getLevel()));
 	}
 	
 }

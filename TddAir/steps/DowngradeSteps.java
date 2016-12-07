@@ -27,6 +27,6 @@ public class DowngradeSteps {
 	public void he_should_have_and(int arg1, int arg2, String arg3) throws Throwable {
 	    assertEquals(airApp.getMemberCurrentMiles("user"), arg1);
 	    assertEquals(airApp.getMemberMiles("user"), arg2);
-	    assertEquals(airApp.getMemberStatus("user"), arg3);
+	    assertEquals(airApp.getMemberStatus("user").getLevel(), arg3);
 	}
 }

@@ -2,12 +2,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.tddair.Member;
+import com.tddair.Membership;
 
 public class DowngradeTest {
 	@Test public void currentMileage()
 	{
-		Member testObj = new Member("user", "email");
+		Membership testObj = new Membership("user", "email");
 		testObj.addMiles(10000);
 		assertEquals(testObj.getMileage(), 10000);
 		assertEquals(testObj.getCurrentMileage(), 10000);
@@ -15,7 +15,7 @@ public class DowngradeTest {
 	
 	@Test public void resetMileage()
 	{
-		Member testObj = new Member("user", "email");
+		Membership testObj = new Membership("user", "email");
 		testObj.addMiles(10000);
 		testObj.yearOver();
 		assertEquals(testObj.getMileage(), 10000);
@@ -24,21 +24,21 @@ public class DowngradeTest {
 	
 	@Test public void downgradeStatus()
 	{
-		Member testObj = new Member("user", "email");
+		Membership testObj = new Membership("user", "email");
 		testObj.addMiles(80000);
-		assertEquals(testObj.getStatus(), "Gold");
+		assertEquals(testObj.getStatus().getLevel(), "Gold");
 		testObj.yearOver();
 		testObj.yearOver();
-		assertEquals(testObj.getStatus(), "Blue");
+		assertEquals(testObj.getStatus().getLevel(), "Blue");
 	}
 	
 	@Test public void keepHigherStatus()
 	{
-		Member testObj = new Member("user", "email");
+		Membership testObj = new Membership("user", "email");
 		testObj.addMiles(30000);
-		assertEquals(testObj.getStatus(), "Green");
+		assertEquals(testObj.getStatus().getLevel(), "Green");
 		testObj.yearOver();
 		testObj.addMiles(5000);
-		assertEquals(testObj.getStatus(), "Green");
+		assertEquals(testObj.getStatus().getLevel(), "Green");
 	}
 }
