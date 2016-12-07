@@ -27,4 +27,9 @@ public class TddAirApplication {
 	{
 		return membership.getMemberStatus(userID);
 	}
+	
+	public void bookFlight(String userID, String flight)
+	{
+		membership.bookFlight(userID, flights.getFlightBy(flight));
+	}
 }

@@ -1,3 +1,8 @@
+import java.util.List;
+
+import com.tddair.Flight;
+import com.tddair.TddAirApplication;
+
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -6,8 +11,10 @@ import cucumber.api.java.en.When;
 
 public class FlightMilesSteps {
 
+	TddAirApplication testApp = new TddAirApplication();
+	
 	@Given("^these flights:$")
-	public void these_flights(DataTable arg1) throws Throwable {
+	public void these_flights(List<Flight> arg1) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    // For automatic transformation, change DataTable to one of
 	    // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.

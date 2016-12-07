@@ -56,4 +56,10 @@ public class Member {
 		else
 			status = "Red";
 	}
+	
+	public void bookFlight(Flight f)
+	{
+		if (f.getFullFlightNumber().startsWith("TD"))
+			addMiles(f.getMileage());
+	}
 }

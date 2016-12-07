@@ -65,4 +65,9 @@ public class Membership {
 		else 
 			return "Unknown User";
 	}
+	
+	public void bookFlight(String userID, Flight flight)
+	{
+		getMember(userID).bookFlight(flight);
+	}
 }

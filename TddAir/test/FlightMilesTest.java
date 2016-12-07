@@ -1,3 +1,5 @@
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import com.tddair.Flight;
@@ -17,7 +19,7 @@ public class FlightMilesTest {
 	{
 		Member memObj = new Member("user", "email");
 		Flight flight = new Flight("AAA","BBB", 123, "AA", 123);
-		memObj.bookFlight(flight);
+		memObj.bookFlight(flight);	
 		assertEquals(memObj.getMileage(), 0);
 	}
 }
