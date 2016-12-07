@@ -11,6 +11,22 @@ public class Membership {
     	return members.size();
     }
     
+    public boolean addNewMember(String Id, String email, int yTDMiles, String status, int totalMiles){
+    	boolean added = false;
+    	if (!email.isEmpty())
+    	{
+    		Member m = new Member(Id,email,yTDMiles,status,totalMiles);
+    		if(m != null){
+    			if (getById(Id) == null)
+    			{
+    				members.add(m);
+    				added = true;
+    			}
+    		}
+    	}
+    	return added;
+    }
+    
     public boolean addNewMember(String Id, String email, int miles, String status){
     	boolean added = false;
     	if (!email.isEmpty())

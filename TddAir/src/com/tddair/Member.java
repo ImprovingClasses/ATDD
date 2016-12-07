@@ -31,6 +31,14 @@ public class Member {
 		this.status = status;
 	}
 	
+	public Member(String id, String email, int yTDMiles, String status, int totalMiles){
+		this.id=id;
+		this.email= email;
+		this.totalMiles = totalMiles;
+		this.yTDMiles = yTDMiles;
+		this.status = status;
+	}
+	
 	public void addMiles(int milesToAdd) {
 		this.totalMiles += milesToAdd;
 		this.yTDMiles += milesToAdd;
@@ -86,7 +94,12 @@ public class Member {
 	public String getStatus() {
 		return this.status;
 	}
-
+	
+	public int buyUpgrades(String id, int buy)
+	{ int result = 0;
+	
+		return result;
+	}
 	private String calcStatus(){
 		String status="Red";
 		if(this.yTDMiles >=75000) status = "Gold";
