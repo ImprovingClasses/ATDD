@@ -44,7 +44,16 @@ public class Member {
 		return emailAddress;
 	}
 
-
+	public void resetYrMiles()
+	{
+		yrMileage = 0;
+	}
+	
+	public int getYrMiles()
+	{
+		return yrMileage;
+	}
+	
 	private void determineStatus() {
 		if (0 <= mileage && mileage <= 24999) {
 			status = "Red";
