@@ -11,9 +11,8 @@ public class RegisterNewMembers {
 	MemberShip membership = null;
 	
 	@Before 
-	public void setUp()
-	{
-		membership = new MemberShip();
+	public void setUp() {
+		membership = new MemberShip(new FlightDao());
 	}
 	
 	@After

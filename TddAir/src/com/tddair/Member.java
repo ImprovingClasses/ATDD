@@ -7,15 +7,7 @@ public class Member  {
 	private int currentMiles;
 	
 	public Member(String userId, String emailAddress) throws IllegalArgumentException {
-		if(userId == null || emailAddress == null) {
-			throw new IllegalArgumentException("Member userId or emailAddress cannot be null.");
-		}
-		this.userId = userId;
-		this.emailAddress = emailAddress;
-		
-		memberId = new MemberId(userId, emailAddress);
-		
-		this.currentMiles = 0;
+		this(userId, emailAddress, 0);
 	}
 	
 	public Member(String userId, String emailAddress, int miles) throws IllegalArgumentException {

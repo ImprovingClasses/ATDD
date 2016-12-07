@@ -8,7 +8,6 @@ import java.util.Set;
 public class MemberDao {
 	
 	private Map<String, Member> members = new HashMap<String, Member>();
-//	private Map<MemberId, Member> members = new HashMap<MemberId, Member>();
 	private Map<String, String> userToEmail = new HashMap<>();
 	private Map<String, Set<String>> emailToUsers = new HashMap<>();
 	
@@ -24,15 +23,13 @@ public class MemberDao {
 		return instance;
 	}
 	
-	void cleanUp()
-	{
+	void cleanUp() {
 		members.clear();
 		userToEmail.clear();
 		emailToUsers.clear();
 	}
 	
 	public void addMember(Member member) {
-//		members.put(member.getMemberId(), member);
 		members.put(member.getUserId(), member);
 		addUser(member.getUserId(), member.getEmailAddress());
 	}
@@ -63,8 +60,7 @@ public class MemberDao {
 		return members.size();
 	}
 	
-	public Member getMemberByUserId(String userId)
-	{
+	public Member getMemberByUserId(String userId) {
 		return members.get(userId);
 	}	
 }

@@ -8,7 +8,7 @@ public class TddAirApplication {
 	
 	public TddAirApplication() {
 		flights = new FlightDao();
-		membership = new MemberShip();
+		membership = new MemberShip(flights);
 	}
 	
 	public String registerMember(String userId, String emailAddress) {
@@ -31,11 +31,15 @@ public class TddAirApplication {
 		return membership.getMemberMileage(userId);
 	}
 	
-	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
-		flights.addFlight(origin, destination, mileage, airline, number);
+	public void addFlight(String origin, String destination, int mileage, String flightNumber) {
+		flights.addFlight(origin, destination, mileage, flightNumber);
 	}
 	
 	public int getFlightMileage(String flightName) {
 		return flights.getFlightMileage(flightName);
+	}
+	
+	public void userTakesFlight(String userId, String flightName) {
+		membership.userTakesFlight(userId, flightName);
 	}
 }

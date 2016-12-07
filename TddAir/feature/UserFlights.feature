@@ -7,6 +7,7 @@ Given these flights:
 |TD25					|25000			|
 |TD50					|50000			|
 |AA50					|50000			|
+|US1					|1000				|
 
 Scenario Outline: User takes flight
 Given the Traveler enters a unique combination of a valid userId "Bob" and a valid emailAddress "bob@abc.com" and mileage of <initalMileage>

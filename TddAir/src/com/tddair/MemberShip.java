@@ -1,15 +1,23 @@
 package com.tddair;
 
-public class MemberShip 
-{
+public class MemberShip  {
 	private MemberDao memberDao;
+	private FlightDao currentFlights;
 	
-	public MemberShip() {
+	public MemberShip(FlightDao flights) {
 		memberDao = MemberDao.getInstance();
+		currentFlights = flights;
 	}
 	
-	public void cleanUp()
-	{
+	public void userTakesFlight(String userId, String flightName) {
+		Flight flight = currentFlights.getFlightBy(flightName);
+		
+		if(flight.getFlightNumber().toLowerCase().contains("td")) {
+			memberDao.getMemberByUserId(userId).addMiles(flight.getMileage());
+		}
+	}
+	
+	public void cleanUp() {
 		memberDao.cleanUp();
 	}
 	
@@ -18,11 +26,10 @@ public class MemberShip
 	}
 
 	public String addNewMember(String userId, String emailAddress) {
-		return addNewMember(new Member(userId, emailAddress));
+		return addNewMember(new Member(userId, emailAddress, 0));
 	}
 	
-	public String addNewMember(String userId, String emailAddress, int initialMiles)
-	{
+	public String addNewMember(String userId, String emailAddress, int initialMiles) {
 		return addNewMember(new Member(userId, emailAddress, initialMiles));
 	}
 	
