@@ -70,7 +70,7 @@ public class Membership {
     	Member m = getById(Id);
     	if (m != null){
     		m.addMiles(miles);
-    		status = m.calcStatus();
+    		status = m.getStatus();
     	}
     	return status;
     }

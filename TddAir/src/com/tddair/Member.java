@@ -34,6 +34,25 @@ public class Member {
 	public void addMiles(int milesToAdd) {
 		this.totalMiles += milesToAdd;
 		this.yTDMiles += milesToAdd;
+		if (this.status.equals("Blue")) {
+			if (this.yTDMiles >= 75000) {
+				this.status = "Gold";
+			}
+		} else if (this.status.equals("Green")) {
+			if (this.yTDMiles >= 75000) {
+				this.status = "Gold";
+			} else if (this.yTDMiles >= 50000) {
+				this.status = "Blue";
+			}
+		} else if (this.status.equals("Red")) {
+			if (this.yTDMiles >= 75000) {
+				this.status = "Gold";
+			} else if (this.yTDMiles >= 50000) {
+				this.status = "Blue";
+			} else if (this.yTDMiles >= 25000) {
+				this.status = "Green";
+			}
+		}
 	}
 	
 	public int getTotalMiles() {
@@ -68,11 +87,11 @@ public class Member {
 		return this.status;
 	}
 
-	public String calcStatus(){
+	private String calcStatus(){
 		String status="Red";
-		if(totalMiles >=75000) status = "Gold";
-		else if (totalMiles >= 50000 ) status = "Blue";
-		else if (totalMiles >= 25000 ) status = "Green";
-	return status;
+		if(this.yTDMiles >=75000) status = "Gold";
+		else if (this.yTDMiles >= 50000 ) status = "Blue";
+		else if (this.yTDMiles >= 25000 ) status = "Green";
+	    return status;
 	}
 }
