@@ -1,5 +1,7 @@
 package com.tddair;
 
+import java.time.MonthDay;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,11 +9,16 @@ import java.util.List;
 public class Membership {
 	HashMap<String, String> members = new HashMap<String, String>();
 	List<Member> memberlist = new ArrayList<Member>();
+	HashMap<String, Integer> userCurrentMiles = new HashMap<String, Integer>();
+	HashMap<String, Status> userPreviousStatus = new HashMap<String, Status>();
+	HashMap<String, Status> userNextStatus = new HashMap<String, Status>();
 
 	int membercount = 0;
 	Status memStatus = Status.Red;
+	Status previousYearStatus = Status.Red;
 	
-	public enum Status {
+	
+	public enum Status {						
 		Red, 
 		Green, 
 		Blue, 
@@ -100,13 +107,16 @@ public class Membership {
 	
 	public void userFlightMiles(String user, List<Flight> flights)
 	{
-		
+				int currentYearMiles = 0;
 				 for (Flight e:flights)
 				 {
 				 int miles = e.getMileage();
-				 //String fName = e.getFullFlightNumber();
+				 currentYearMiles += miles;
 				 
 				 addMiles(user,miles);
+				 userCurrentMiles.put(user, currentYearMiles);
+				 setNextYearStatus(user);
+				 
 				 
 				 }
 				 
@@ -122,24 +132,81 @@ public class Membership {
 	}
 
 
-	public void getPreviousStatus() {
-		// TODO Auto-generated method stub
+	public Status getPreviousStatus(String user) {
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 
+				 return userPreviousStatus.get(user);
+			 }
+		}
+		return Status.Red;
 		
 	}
 
 
-	public void getCurrentYearMiles() {
-		// TODO Auto-generated method stub
+	public int getCurrentYearMiles(String user) {
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 
+				 return userCurrentMiles.get(user);
+			 }
+		}
+		return 0;
+		
 		
 	}
 
 
-	public void setNextYearStatus() {
-		// TODO Auto-generated method stub
+	public void setNextYearStatus(String user) {
+		int year = Year.now().getValue();
+		int month = MonthDay.now().getMonthValue();
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 
+				 int currMiles =  userCurrentMiles.get(user);
+				 Status prevStatus = userPreviousStatus.get(user);
+				 int totMiles = member.getMiles();
+				 if (prevStatus == Status.Gold && currMiles < 75000 )
+				 {
+					 userNextStatus.put(user, Status.Blue);
+				 }
+				 else if (prevStatus == Status.Blue && currMiles < 50000 )
+				 {
+					 userNextStatus.put(user, Status.Green);
+				 }
+				 else if (prevStatus == Status.Green && currMiles < 25000 )
+				 {
+					 userNextStatus.put(user, Status.Red);
+				 }
+				 else 
+				 {
+					 userNextStatus.put(user, Status.Red);
+				 }
+			 }
 		
 	}
 	
 	
-
+	}
+	
+	public Status getNextYearStatus(String user) {
+		for (int i =0; i < memberlist.size(); i++){
+			 Member member = memberlist.get(i);
+			 if (member.getUserID() == user)
+			 {
+				 
+				 return userNextStatus.get(user);
+			 }
+		}
+		return Status.Red;
+		
+		
+	}
 
 }
