@@ -5,7 +5,7 @@ public class Member {
 	private String emailAddress = null;
 	private int mileage = 0;
 	private int yrMileage = 0;
-	private String status = "Red";
+	private StatusEnum _status = StatusEnum.Red;
 
 	public Member(String userId, String emailAddress, int miles) {
 		super();
@@ -27,7 +27,7 @@ public class Member {
 	}
 
 	public String getStatus() {
-		return status;
+		return _status.name();
 	}
 
 	public void addMiles(int miles) {
@@ -54,15 +54,24 @@ public class Member {
 		return yrMileage;
 	}
 	
+	
+	public void rollYear()
+	{
+		Status statusHelper = new Status();
+		_status = statusHelper.checkStatusForChange(statusHelper.getStatusForMiles(yrMileage), _status);
+		resetYrMiles();
+	}
+	
+	
 	private void determineStatus() {
 		if (0 <= mileage && mileage <= 24999) {
-			status = "Red";
+			_status = StatusEnum.Red;
 		} else if (25000 <= mileage && mileage <= 44999) {
-			status = "Green";
+			_status = StatusEnum.Green;
 		} else if (50000 <= mileage && mileage <= 74999) {
-			status = "Blue";
+			_status = StatusEnum.Blue;
 		} else if (75000 <= mileage) {
-			status = "Gold";
+			_status = StatusEnum.Gold;
 		}
 	}
 }
