@@ -79,7 +79,7 @@ public class Membership {
     	String status = "Undefined Status";
     	Member m = getById(Id);
     	if (m != null) {
-    		status = m.calcStatus();
+    		status = m.getStatus();
     	}
     	return status;
     }
@@ -89,6 +89,15 @@ public class Membership {
     	Member m = getById(Id);
     	if (m != null) {
     		miles = m.getTotalMiles();
+    	}
+    	return miles;
+    }
+    
+    public int getYTDMilesFromId(String Id) {
+    	int miles = -1;
+    	Member m = getById(Id);
+    	if (m != null) {
+    		miles = m.getyTDMiles();
     	}
     	return miles;
     }

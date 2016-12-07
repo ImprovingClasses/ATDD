@@ -7,30 +7,33 @@ import java.util.List;
 
 import com.tddair.TddAirApplication;
 
-public class ExpiringMiles {
-
+public class ExpiringMilesStep {
+	TddAirApplication controller = new TddAirApplication();
+	
 	@Given("^Member current miles (\\d+) and Member currentStatus \"([^\"]*)\"$")
 	public void member_current_miles_and_Member_currentStatus(int arg1, String arg2) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		controller.addMember("bob", "bob@abc.com", arg1,arg2);
 	}
 
 	@When("^New Year$")
 	public void new_Year() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+        controller.newYearMemberUpdate();
 	}
 
 	@Then("^Member new status will be \"([^\"]*)\"$")
 	public void member_new_status_will_be(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+        String status = controller.getMemberStatusById("bob");
+        if (!status.equalsIgnoreCase(arg1)){
+			throw new AssertionError("Invalid comparison of NewYear upgrades status between :" + status + " and :" + arg1);
+		}
 	}
 
 	@Then("^Member YTD miles (\\d+)$")
 	public void member_YTD_miles(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+      int yTDMiles = controller.getMemberYTDMilesById("bob");
+      if (yTDMiles != arg1){
+			throw new AssertionError("Invalid comparison of NewYear upgrades yTDMiles between :" + yTDMiles + " and :" + arg1);
+		}
 	}
 
 }

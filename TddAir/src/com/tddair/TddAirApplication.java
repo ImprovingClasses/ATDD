@@ -27,6 +27,11 @@ public class TddAirApplication {
     }
     
     // Add a new member
+    public boolean addMember(String Id, String email, int miles, String status)
+    {
+    	return members.addNewMember(Id, email, miles,status);
+    }
+    // Add a new member
     public boolean addMember(String Id, String email, int miles)
     {
     	return members.addNewMember(Id, email, miles);
@@ -67,6 +72,14 @@ public class TddAirApplication {
     		tdMiles = flight.getMiles();
     	}
     	return members.addMilesToMember(memberId, tdMiles);
+    }
+ // New Year update   
+    public void newYearMemberUpdate(){
+    	members.newYearMemberUpdate();
+    }
+    
+    public int getMemberYTDMilesById(String Id){
+    	return members.getYTDMilesFromId(Id);
     }
     
 }
