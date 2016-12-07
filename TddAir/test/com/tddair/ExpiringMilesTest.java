@@ -31,4 +31,28 @@ public class ExpiringMilesTest
 		membership.updateStatusAfterOneYear(member.getUserId());
 		assertEquals(memberStatusBeforeYearEnds.previous, membership.getMemberStatus(member.getUserId()));
 	}
+	
+	@Test
+	public void statusOfARedMemberAfterOneYearWithoutFlying()
+	{
+		Member member = new Member("testId", "test@gmail.com", 0);
+		membership.addNewMember(member);
+		
+		membership.updateStatusAfterOneYear(member.getUserId());
+		MemberStatus memberStatusBeforeYearEnds = membership.getMemberStatus(member.getUserId());
+		membership.updateStatusAfterOneYear(member.getUserId());
+		assertEquals(memberStatusBeforeYearEnds, membership.getMemberStatus(member.getUserId()));
+	}
+	
+	@Test
+	public void statusOfARedMemberAfterOneYearFlying()
+	{
+		Member member = new Member("testId", "test@gmail.com", 0);
+		membership.addNewMember(member);
+		
+		membership.updateStatusAfterOneYear(member.getUserId());
+		membership.addMileage("testId", 75000);
+		membership.updateStatusAfterOneYear(member.getUserId());
+		assertEquals(MemberStatus.GOLDEN, membership.getMemberStatus(member.getUserId()));
+	}
 }

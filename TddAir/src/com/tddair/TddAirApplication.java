@@ -42,4 +42,14 @@ public class TddAirApplication {
 	public void userTakesFlight(String userId, String flightName) {
 		membership.userTakesFlight(userId, flightName);
 	}
+	
+	public void updateStatusAfterOneYear(String userId)
+	{
+		membership.updateStatusAfterOneYear(userId);
+	}
+	
+	public void setMemberStatus(String userId, String memberShipStatus)
+	{
+		membership.setMemberShipStatus(userId, memberShipStatus);
+	}
 }

@@ -36,6 +36,7 @@ public class MemberShip  {
 	public void addMileage(String userId, int mileage) {
 		Member member = memberDao.getMemberByUserId(userId);
 		member.addMilesFlown(mileage);
+		member.setMemberStatus(calculateStatus(member));
 	}
 	
 	public int getYearlyMemberMileage(String userId) {
@@ -44,6 +45,12 @@ public class MemberShip  {
 	
 	public MemberStatus getMemberStatus(String userId) {
 		return memberDao.getMemberByUserId(userId).getMemberStatus();
+	}
+	
+	public void setMemberShipStatus(String userId, String memberShipStatus)
+	{
+		Member member = memberDao.getMemberByUserId(userId);
+		member.setMemberStatus(MemberStatus.getStatusByName(memberShipStatus));
 	}
 	
 	public String addNewMember(Member member) {
@@ -67,6 +74,7 @@ public class MemberShip  {
 	}
 	
 	private MemberStatus calculateStatus(Member member) {
+		System.out.println("Member yearly miles is " + member.getYearlyMiles());
 		int yearlyMiles = member.getYearlyMiles();
 		MemberStatus currentStatus = member.getMemberStatus();
 		
