@@ -39,6 +39,10 @@ public class Member  {
 		return this.currencyMiles;
 	}
 	
+	public void setCurrencyMiles(int newAmount) {
+		this.currencyMiles = newAmount;
+	}
+	
 	public String getUserId() {
 		return this.userId;
 	}

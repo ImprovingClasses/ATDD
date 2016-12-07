@@ -43,6 +43,14 @@ public class TddAirApplication {
 		membership.userTakesFlight(userId, flightName);
 	}
 	
+	public int memberMakesPurchase(String userId, int purchases) {
+		return membership.makePurchases(userId, purchases);
+	}
+	
+	public int getCurrencyMileage(String userId) {
+		return membership.getCurrencyMiles(userId);
+	}
+	
 	public void updateStatusAfterOneYear(String userId)
 	{
 		membership.updateStatusAfterOneYear(userId);

@@ -21,6 +21,17 @@ public class MemberShip  {
 		memberDao.cleanUp();
 	}
 	
+	public int makePurchases(String userId, int purchases) {
+		Member member = memberDao.getMemberByUserId(userId);
+		int currencyMiles = member.getCurrencyMiles();
+		
+		int successfuPurchases = currencyMiles / (member.getMemberStatus().getUpgradePrice());
+		int remainingCurrency = currencyMiles % (member.getMemberStatus().getUpgradePrice());
+		
+		member.setCurrencyMiles(remainingCurrency);
+		return successfuPurchases;
+	}
+	
 	public int getEnrollmentCount() {
 		return memberDao.memberShipCount();
 	}
@@ -31,6 +42,10 @@ public class MemberShip  {
 	
 	public String addNewMember(String userId, String emailAddress, int initialMiles) {
 		return addNewMember(new Member(userId, emailAddress, initialMiles));
+	}
+	
+	public int getCurrencyMiles(String userId) {
+		return memberDao.getMemberByUserId(userId).getCurrencyMiles();
 	}
 	
 	public void addMileage(String userId, int mileage) {
