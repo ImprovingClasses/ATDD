@@ -69,6 +69,10 @@ public class Member {
 		resetYrMiles();
 	}
 	
+	public void setStatus(StatusEnum status)
+	{
+		_status = status;
+	}
 	
 	private void determineStatus() {
 		if (0 <= mileage && mileage <= 24999) {
