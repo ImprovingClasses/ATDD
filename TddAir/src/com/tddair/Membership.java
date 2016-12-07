@@ -125,15 +125,18 @@ public class Membership {
 		  String retrievedUsername = retrievedMember.getUsername_();
 	  	  if (retrievedUsername.equals(username))
 	  	  {
-		     int mileage = retrievedMember.getMileage_();
-		     level = getLevel(mileage);
+		     //int mileage = retrievedMember.getMileage_();
+		     //level = getLevel(mileage);
+	  		  level = retrievedMember.getStatus();
+	  		  System.out.println("Found user " + username + " found level to be " + level);
+	  		  return level;
 	  	  }
 	  }
 	  
 	  return level;
 	  
   }
-  
+  /*
   private String getLevel(int mileage)
   {
 	String level = "";
@@ -159,7 +162,7 @@ public class Membership {
 		return "Golden";
 	}	
   }
-  
+  */
   private boolean doesUserExist(String username)
   {
 	 

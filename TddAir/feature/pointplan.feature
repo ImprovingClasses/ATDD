@@ -22,7 +22,7 @@ Feature: testing annual point/status processing
 Scenario Outline: Annual point processing
 Given member "bob" flew <milesflown> this year
 	And member finished with <totalpoints>
-	And current status is <red>
+	And current status is <status>
 Then new status is <newstatus>
 
 Examples:

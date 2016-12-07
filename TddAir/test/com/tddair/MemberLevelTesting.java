@@ -1,5 +1,6 @@
 package com.tddair;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +15,10 @@ public class MemberLevelTesting {
 	public void whenMemberIsRedAndGainsToStayRed() {
 		Membership subject = new Membership();
 		subject.enroll("bob", "bob@abc.com");
-		subject.addMileage("bob", 24999);
 		String level = subject.getLevel("bob");
+		assertEquals( "Red", level);
+		assertTrue(subject.addMileage("bob", 24999));
+		level = subject.getLevel("bob");
 		assertEquals( "Red", level);
 	}
 
