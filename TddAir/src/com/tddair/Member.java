@@ -3,29 +3,30 @@ package com.tddair;
 public class Member {
 	String id;
 	String email;
-	int miles;
+	int totalMiles;
+	int yTDMiles;
 	
 	public Member(String id, String email){
 		this.id=id;
 		this.email= email;
-		this.miles=0;
+		this.totalMiles=0;
 	}
 	
 	public Member(String id, String email, int miles){
 		this.id=id;
 		this.email= email;
-		this.miles = miles;
+		this.totalMiles = miles;
 	}
 	
-	public void addMiles(int milesToAdd) {
-		this.miles += milesToAdd;
+	public void addTotalMiles(int milesToAdd) {
+		this.totalMiles += milesToAdd;
 	}
 	
-	public int getMiles() {
-		return miles;
+	public int getTotalMiles() {
+		return totalMiles;
 	}
-	public void setMiles(int miles) {
-		this.miles = miles;
+	public void setTotalMiles(int miles) {
+		this.totalMiles = miles;
 	}
 	public String getId() {
 		return id;
@@ -40,11 +41,19 @@ public class Member {
 		this.email = email;
 	}
 	
+	public int getyTDMiles() {
+		return yTDMiles;
+	}
+
+	public void setyTDMiles(int yTDMiles) {
+		this.yTDMiles = yTDMiles;
+	}
+
 	public String getStatus(){
 		String status="Red";
-		if(miles >=75000) status = "Gold";
-		else if (miles >= 50000 ) status = "Blue";
-		else if (miles >= 25000 ) status = "Green";
+		if(totalMiles >=75000) status = "Gold";
+		else if (totalMiles >= 50000 ) status = "Blue";
+		else if (totalMiles >= 25000 ) status = "Green";
 	return status;
 	}
 }
