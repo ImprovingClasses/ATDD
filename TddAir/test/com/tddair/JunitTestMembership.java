@@ -44,6 +44,7 @@ public class JunitTestMembership {
 		Member ourMember = new Member(userId, email);
 		ourMember.setMiles(miles);
 		ourMembership.addMember(ourMember);
+		ourMembership.updateMembersStatus();
 		
 		assertEquals(expectedStatus, ourMembership.getMemberById(userId).getColorStatus());
 	}
@@ -184,5 +185,20 @@ public class JunitTestMembership {
 		assertEquals(12000, tempMember.getMiles());
 	}
 	
+	@Test
+	public void testGoldMemberDowngrade()throws Exception{
+		//Create Member 
+		Membership ourMembership = new Membership();	
+		Member tempMember = new Member("Chris", "Chris@Email.com");
 
+		//Update the status to Gold and update 
+		ourMembership.addMember(tempMember);
+		tempMember.setColorStatus(ColorStatusEnum.GOLD);
+		
+		//Run Update Status to make downgrade
+		ourMembership.updateMembersStatus();
+		
+		assertEquals(ColorStatusEnum.BLUE, ourMembership.getMemberById("Chris").getColorStatus());
+		
+	}
 }

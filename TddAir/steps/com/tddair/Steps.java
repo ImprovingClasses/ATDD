@@ -1,6 +1,7 @@
-
+package com.tddair;
 import cucumber.api.PendingException;
 
+import com.tddair.ColorStatusEnum;
 import com.tddair.Flight;
 import com.tddair.TddAirApplication;
 
@@ -92,20 +93,22 @@ public class Steps {
 	}
 
 	@Given("^Last year status of \"([^\"]*)\"$")
-	public void last_year_status_of(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void last_year_status_of(String lastYearStatus) throws Throwable {
+		ColorStatusEnum previousYearStatus = ColorStatusEnum.valueOf(lastYearStatus);
+		tdd.addMember("Chris", "Chris@email.com");
+		tdd.updateMemberStatus("Chris", previousYearStatus);
+		
 	}
 
 	@When("^Member accrues (\\d+) points during the current year$")
-	public void member_accrues_points_during_the_current_year(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void member_accrues_points_during_the_current_year(int milesThisYear) throws Throwable {
+		tdd.getMember("Chris").setMiles(milesThisYear);
 	}
 
 	@Then("^Next year member status is \"([^\"]*)\"$")
-	public void next_year_member_status_is(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void next_year_member_status_is(String newColorStatus) throws Throwable {
+		tdd.updateMemberStatus();
+		
+		assertEquals(newColorStatus, tdd.getMember("Chris").getColorStatus().toString());
 	}
 }

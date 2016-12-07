@@ -29,7 +29,15 @@ public class TddAirApplication {
 		membership.updateMember(userId, flightPlan);
 	}
 	
+	public void updateMemberStatus() throws Exception{
+		membership.updateMembersStatus();
+	}
+	
 	public void updateMember(String userId, Flight flightId) throws Exception{
 		membership.updateMember(userId, flightId);
+	}
+	
+	void updateMemberStatus(String userId, ColorStatusEnum color)throws Exception{
+		membership.updateMembersStatus(userId, color);
 	}
 }

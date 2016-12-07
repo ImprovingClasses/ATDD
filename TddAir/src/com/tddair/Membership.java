@@ -30,7 +30,7 @@ public class Membership {
 	public boolean addMember(Member newMember){
 		
 		Boolean resultBool = true;
-		
+		newMember.setColorStatus(ColorStatusEnum.RED);
 		//If1 user id or email is blank then do not add
 		//this member.
 		//Is this user id or email invalid?
@@ -54,18 +54,6 @@ public class Membership {
 			if(resultBool) {
 				//Yes, its okay to add this member.
 				
-				//Update the member status
-				for(ColorStatusEnum enumColor : myColorStatusToMilesMap.keySet()) {
-					//Does the user have a greater amount
-					//of miles than this color?
-					if(myColorStatusToMilesMap.get(enumColor) <= newMember.getMiles()) {
-						//Yes, the user has at least this number of miles.
-						//Set its status to this color.
-						
-						newMember.setColorStatus(enumColor);
-					}
-					
-				}
 				//Add new member
 				myMembers.add(newMember);
 			}
@@ -109,5 +97,28 @@ public class Membership {
 		}
 		throw new Exception("Member Id not Found");
 	}
+	
+	public void updateMembersStatus() {
+		// Update the member status
+		for (Member newMember : myMembers) {
+			if (newMember.getMiles() >= myColorStatusToMilesMap.get(newMember.getColorStatus())) {
+				for (ColorStatusEnum enumColor : myColorStatusToMilesMap.keySet()) {
+					// Does the user have a greater amount
+					// of miles than this color?
+					if (myColorStatusToMilesMap.get(enumColor) <= newMember.getMiles()) {
+						// Yes, the user has at least this number of miles.
+						// Set its status to this color.
+						newMember.setColorStatus(enumColor);
+					}
+				}
+			}else{
+				 newMember.setColorStatus(ColorStatusEnum.values()[newMember.getColorStatus().ordinal()-1]);
+			}
+		}
+	}
 
+	void updateMembersStatus(String userId, ColorStatusEnum color)throws Exception {
+		getMemberById(userId).setColorStatus(color);
+		
+	}
 }
