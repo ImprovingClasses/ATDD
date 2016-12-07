@@ -21,10 +21,12 @@ public class Membership {
 		myColorStatusToMilesMap.put(ColorStatusEnum.GOLD,75000);
 	}
 	
+	//Tested
 	public int getMemebersCount() {
 		return myMembers.size();
 	}
 	
+	//Tested
 	public boolean addMember(Member newMember){
 		
 		Boolean resultBool = true;
@@ -73,6 +75,9 @@ public class Membership {
 		return resultBool;
 	}
 	
+	
+	
+	//Tested
 	public void updateMember(String userId, List<Flight> flightPlan)throws Exception{
 		Member modMember = getMemberById(userId);
 		
@@ -84,6 +89,7 @@ public class Membership {
 		}
 	}
 	
+	//Tested
 	public void updateMember(String userId, Flight flight) throws Exception {
 		Member modMember = getMemberById(userId);
 
@@ -94,6 +100,7 @@ public class Membership {
 		}
 	}
 	
+	//Tested
 	public Member getMemberById(String userId)throws Exception {
 		for(Member member : myMembers){
 			if (member.getUserId().equals(userId)){

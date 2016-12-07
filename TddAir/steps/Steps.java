@@ -1,10 +1,7 @@
-import cucumber.api.DataTable;
+
 import cucumber.api.PendingException;
 
-import com.tddair.ColorStatusEnum;
 import com.tddair.Flight;
-import com.tddair.Member;
-import com.tddair.Membership;
 import com.tddair.TddAirApplication;
 
 import cucumber.api.java.en.Given;
@@ -12,7 +9,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Steps {
@@ -26,7 +22,7 @@ public class Steps {
 	@When("^the traveler registers with a username \"([^\"]*)\" and the email \"([^\"]*)\"$")
 	public void the_traveler_registers_with_a_username_and_the_email(String userid, String email) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		results = tdd.addMember(userid, email, 0);
+		results = tdd.addMember(userid, email);
 	   
 	}
 
@@ -78,7 +74,7 @@ public class Steps {
 	public void flies_flight(String userId, String flightNumber) throws Throwable {
 		
 		//Add member to modify with new miles
-	   tdd.addMember("Chris", "Chris@email.com", 0);
+	   tdd.addMember("Chris", "Chris@email.com");
 	   //Add single flight and update member miles
 	   tdd.updateMember(userId, tdd.getFlight(flightNumber));
 	   

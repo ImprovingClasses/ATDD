@@ -41,7 +41,9 @@ public class JunitTestMembership {
 	@Test
 	public void testPassedInValues() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member(userId, email, miles));
+		Member ourMember = new Member(userId, email);
+		ourMember.setMiles(miles);
+		ourMembership.addMember(ourMember);
 		
 		assertEquals(expectedStatus, ourMembership.getMemberById(userId).getColorStatus());
 	}
@@ -105,7 +107,10 @@ public class JunitTestMembership {
 	@Test
 	public void verifyUserRedStatus() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 0));
+		ourMembership.addMember(new Member("Chris", "Chris@Email.com"));
+		
+		//It's time to update our Members Color Status.
+		ourMembership.updateMembersStatus();
 		
 		assertEquals(ColorStatusEnum.RED, ourMembership.getMemberById("Chris").getColorStatus());
 	}
@@ -113,8 +118,11 @@ public class JunitTestMembership {
 	@Test
 	public void verifyUserGreenStatus() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 25000));
-
+		Member myMember = new Member("Chris", "Chris@Email.com");
+		myMember.setMiles(25000);
+		ourMembership.addMember(myMember);
+		//It's time to update our Members Color Status.
+		ourMembership.updateMembersStatus();
 		assertEquals(ourMembership.getMemberById("Chris").getColorStatus(), ColorStatusEnum.GREEN );
 		
 	}
@@ -122,32 +130,35 @@ public class JunitTestMembership {
 	@Test
 	public void verifyUserBlueStatus() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 50000));
-
+		Member myMember = new Member("Chris", "Chris@Email.com");
+		myMember.setMiles(50000);
+		ourMembership.addMember(myMember);
+		//It's time to update our Members Color Status.
+        ourMembership.updateMembersStatus();
 		assertEquals(ColorStatusEnum.BLUE, ourMembership.getMemberById("Chris").getColorStatus());
 	}
 	 
 	@Test
 	public void verifyUserGoldStatus() throws Exception{
 		Membership ourMembership = new Membership();
-		ourMembership.addMember(new Member("Chris", "Chris@Email.com", 75000));
-
+		Member myMember = new Member("Chris", "Chris@Email.com");
+		myMember.setMiles(75000);
+		ourMembership.addMember(myMember);
+		//It's time to update our Members Color Status.
+        ourMembership.updateMembersStatus();
 		assertEquals(ColorStatusEnum.GOLD, ourMembership.getMemberById("Chris").getColorStatus());
-		
 	}
+	
 	@Test
 	public void verifyMemberMilesUpdateSingleFlight() throws Exception{
-		Membership ourMembership = new Membership();
-		List<Flight> flightPlan = new ArrayList<>();
-		
+		Membership ourMembership = new Membership();	
 		Flight flight1 = new Flight("DEX", "HOU", 5000, "TD101");
-		flightPlan.add(flight1);
 		
-		Member tempMember = new Member("Chris", "Chris@Email.com", 0);
+		Member tempMember = new Member("Chris", "Chris@Email.com");
 		ourMembership.addMember(tempMember);
 		
 		
-		ourMembership.updateMember("Chris", flightPlan);
+		ourMembership.updateMember("Chris", flight1);
 		
 		assertEquals(5000, tempMember.getMiles());
 	}
@@ -164,7 +175,7 @@ public class JunitTestMembership {
 		flightPlan.add(flight2);
 		flightPlan.add(flight3);
 		
-		Member tempMember = new Member("Chris", "Chris@Email.com", 0);
+		Member tempMember = new Member("Chris", "Chris@Email.com");
 		ourMembership.addMember(tempMember);
 		
 		
@@ -172,4 +183,6 @@ public class JunitTestMembership {
 		
 		assertEquals(12000, tempMember.getMiles());
 	}
+	
+
 }

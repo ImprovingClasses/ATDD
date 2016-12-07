@@ -17,8 +17,8 @@ public class TddAirApplication {
 		return flights.getFlightBy(flightNumber);
 	}
 	
-	public Boolean addMember(String userId, String emailAddress, int miles){
-		return membership.addMember(new Member(userId, emailAddress, miles));
+	public Boolean addMember(String userId, String emailAddress){
+		return membership.addMember(new Member(userId, emailAddress));
 	}
 	
 	public Member getMember(String userId)throws Exception{

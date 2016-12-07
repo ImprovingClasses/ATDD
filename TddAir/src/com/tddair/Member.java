@@ -7,15 +7,9 @@ public class Member {
 		this.email = email;
 	}
 	
-	public Member(String userId, String email, int miles) {
-		this.userId = userId;
-		this.email = email;
-		this.miles = miles;
-	}
-	
 	private String email;
 	private String userId;
-	private int miles;
+	private int miles=0;
 	private ColorStatusEnum colorStatus;
 	
 	public int getMiles() {
