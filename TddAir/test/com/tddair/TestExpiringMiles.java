@@ -20,6 +20,46 @@ public class TestExpiringMiles {
 	}
 	
 	@Test
+	public void newYearStatusUpdateFromGoldToBlue(){
+		Membership members = new Membership();
+		members.addNewMember("bob", "bob@abc.com", 10000, "Gold"); // Testing going from Gold to Blue
+		members.newYearMemberUpdate();
+		assertEquals("Test NewYear status update", "Blue",  members.getById("bob").getStatus());
+	}
+	
+	@Test
+	public void newYearStatusUpdateFromBlueToGreen(){
+		Membership members = new Membership();
+		members.addNewMember("sue", "sue@abc.com", 30000, "Blue"); // Testing going from Blue to Green
+		members.newYearMemberUpdate();
+		assertEquals("Test NewYear status update", "Green", members.getById("sue").getStatus());
+	}
+	
+	@Test
+	public void newYearStatusUpdateFromGreenToRed(){
+		Membership members = new Membership();
+		members.addNewMember("andy", "andy@abc.com", 10000, "Green"); // Testing going from Green to Red
+		members.newYearMemberUpdate();
+		assertEquals("Test NewYear status update", "Red",   members.getById("andy").getStatus());
+	}
+	
+	@Test
+	public void newYearStatusUpdateFromRedToRed(){
+		Membership members = new Membership();
+		members.addNewMember("sarah",  "sarah@abc.com", 0, "Red"); // Testing going from Red to Red
+		members.newYearMemberUpdate();
+		assertEquals("Test NewYear status update", "Red",   members.getById("sarah").getStatus());
+	}
+	
+	@Test
+	public void newYearStatusUpdateStayingAtCurrentStatus(){
+		Membership members = new Membership();
+		members.addNewMember("hello", "hello@abc.com", 60000, "Blue"); // Testing staying at a status
+		members.newYearMemberUpdate();
+		assertEquals("Test NewYear status update", "Blue",  members.getById("hello").getStatus());
+	}
+	
+	@Test
 	public void newYearStatusUpdate(){
 		Membership members = new Membership();
 		members.addNewMember("bob", "bob@abc.com", 10000, "Gold"); // Testing going from Gold to Blue
