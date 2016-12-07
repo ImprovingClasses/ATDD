@@ -18,6 +18,11 @@ public class TddAirApplication {
 		return membership_.enroll(username, email);
 	}
 	
+	public boolean addCurrentMembers(String username, String email, String currentStatus, int points)
+	{
+		return membership_.registerCurrent(username, email, currentStatus, points);
+	}
+	
 	public boolean addMileageToMember(String username, int mileage)
 	{
 		return membership_.addMileage(username, mileage);
@@ -38,6 +43,20 @@ public class TddAirApplication {
 		return membership_.getMileage(username);
 	}
 	private Membership membership_ = new Membership();
-	 
+	
+	public boolean downgradeMemberStatus(String username)
+	{
+		return membership_.downgradeMemberStatus(username);
+	}
+	
+	public String getMemberStatus(String username)
+	{
+		return membership_.getLevel(username);
+	}
+	
+	public int getMemberPoints(String username)
+	{
+		return membership_.getPoints(username);
+	}
 	
 }

@@ -49,6 +49,49 @@ public class Membership {
 	  }
   }
   
+  
+
+  public boolean registerCurrent(String username, String email, String currentStatus, int points)
+  {
+	  //If email is empty, do not register
+	  if(email.isEmpty())
+	  {
+		  System.out.println("Email was found empty, returning false");
+		  return false;
+	  }
+	  
+	  //If username is empty and email is not, use email as the username
+	  if(username.isEmpty())
+	  {
+		  System.out.println("Username was found empty with a valid email.  Adding with email as username");
+		  //Check if a user exists with the username as email
+		  if(!(doesUserExist(email)))
+		  {  //Check if member already exists
+			 Member newMember = new Member(email, email, currentStatus, points);
+		     members.add(newMember);
+		     return true;
+		  }
+		  //else, the user existed and no not add
+		  return false;
+	  }
+	  	  
+	  
+	  //If you get here, username and email are not empty, check if username already exists
+	  if (!(doesUserExist(username)))
+	  {
+		  Member newMember = new Member(username, email, currentStatus, points);
+		  members.add(newMember);
+		  System.out.println("Username was not found, adding user " + username);
+		  return true;
+	  }
+	  else
+	  {
+		  //User was found so do not re-add
+		  System.out.println("Username was found for user " + username + ". Did not add.");
+
+		  return false;
+	  }
+  }
   public String getEmail(String username){
 	//  return "bob@abc.com";
 	  String email = "";
@@ -83,6 +126,23 @@ public class Membership {
 	  }
 	  	return mileage;
   }
+  
+  public int getPoints(String username)
+  {
+	  int points = 0;
+	  Iterator <Member> it = members.iterator();
+	  while(it.hasNext())
+	  {
+		  Member retrievedMember = it.next();
+		  String retrievedUsername = retrievedMember.getUsername_();
+	  	if (retrievedUsername.equals(username))
+	  	{
+	  		points = retrievedMember.getPoints();
+	  	}
+	  }
+	  	return points;
+  }
+  
 	  
   public boolean addMileage(String username, int newMileage)
   {
@@ -136,33 +196,24 @@ public class Membership {
 	  return level;
 	  
   }
-  /*
-  private String getLevel(int mileage)
+  public boolean downgradeMemberStatus(String username)
   {
-	String level = "";
-	//For mileage 0 to 24,999 return Red status
-	if(mileage <= 24999)
-	{
-		System.out.println("Returning Red Level Status");
-		return "Red";
-	}
-	else if(mileage <= 49999)
-	{
-		System.out.println("Returning Green Level Status");
-		return "Green";
-	}
-	else if(mileage <= 74999)
-	{
-		System.out.println("Returning Blue Level Status");
-		return "Blue";
-	}
-	else 
-	{
-		System.out.println("Returning Golden Level Status");
-		return "Golden";
-	}	
+	  if(doesUserExist(username))
+	  {
+		  Iterator <Member> it = members.iterator();
+		  while(it.hasNext())
+		  {
+			Member retrievedMember = it.next();
+			String retrievedUsername = retrievedMember.getUsername_();
+		  	if (retrievedUsername.equals(username))
+		  	{
+			  retrievedMember.downgradeStatus();
+			  return true;
+		  	}
+		  }
+	  }
+	  return false;
   }
-  */
   private boolean doesUserExist(String username)
   {
 	 

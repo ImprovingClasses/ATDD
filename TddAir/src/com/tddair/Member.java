@@ -1,5 +1,7 @@
 package com.tddair;
 
+
+import java.util.ArrayList;
 public class Member {
 	
 
@@ -44,6 +46,7 @@ public class Member {
 	public void addMileage(int newMileage)
 	{
 		mileage_ = mileage_ + newMileage;
+		points_ = points_ + newMileage;
 		updateStatus();
 	}
 	
@@ -51,32 +54,70 @@ public class Member {
 		return mileage_;
 	}
 	
+	public int getPoints() {
+		return points_;
+	}
+	
 	public String getStatus(){
 		return status_;
 	}
 
+	public void downgradeStatus()
+	{
+		System.out.println("Downgrading status " + status_);
+		String downgradedStatus = "";
+		ArrayList<String> statusList = new ArrayList<String>();
+		statusList.add(RED_);
+		statusList.add(GREEN_);
+		statusList.add(BLUE_);
+		statusList.add(GOLDEN_);
+		/*
+		 * Downgrade current status by one level
+		 */
+		//Search the statusList for our current status
+		//  get the index
+		//  if >0, subtract index by 1
+		//  set status_ to value at new index
+		int index = statusList.indexOf(status_);
+		if(index > 0 )
+		{
+			index--;
+		}
+		downgradedStatus = statusList.get(index);
+		
+		//Set status to downgraded status
+		status_ = downgradedStatus;
+		System.out.println("downgraded status to " + status_);
+		//Compare new downgraded status against the year earned status
+		updateStatus();
+		System.out.println("After updateStatus " + status_);
+		
+		//Reset miles to 0 
+	    mileage_ = 0;
+	}
+	
 	  public String calculateEarnedLevel()
 	  {
 		String level = "";
 		//For mileage 0 to 24,999 return Red status
 		if(mileage_ <= 24999)
 		{
-			System.out.println("Returning Red Level Status");
+			System.out.println("Returning Red Level Earned YTD Status");
 			return RED_;
 		}
 		else if(mileage_ <= 49999)
 		{
-			System.out.println("Returning Green Level Status");
+			System.out.println("Returning Green Level Earned YTD Status");
 			return GREEN_;
 		}
 		else if(mileage_ <= 74999)
 		{
-			System.out.println("Returning Blue Level Status");
+			System.out.println("Returning Blue Level Earned YTD Status");
 			return BLUE_;
 		}
 		else 
 		{
-			System.out.println("Returning Golden Level Status");
+			System.out.println("Returning Golden Level Earned YTD Status");
 			return GOLDEN_;
 		}	
 	  }
@@ -90,10 +131,52 @@ public class Member {
 		String earnedStatus = calculateEarnedLevel();
 		//Check to see if "earned status is better than current status,
 		//  If so update status
-		
-		
-		//Set status to earned status
-		status_ = earnedStatus;
+		//IF current status = earned status, do nothing.
+		if(earnedStatus.equals(currentStatus))
+		{
+			return;
+		}
+		else if(earnedStatus.equals(RED_))
+		{
+			//do nothing because Red is the lowest and current status is that or better
+			return;
+		}
+		else if(earnedStatus.equals(GREEN_)){
+			if (currentStatus.equals(BLUE_) || currentStatus.equals(GOLDEN_))
+			{
+				//no change
+				return;
+			}
+			else
+			{
+				//Current status is either green or red...safe to change 
+				//  status to earned status
+				status_ = earnedStatus;
+				return;
+			}
+		}
+		else if (earnedStatus.equals(BLUE_)){
+			if(currentStatus.equals(GOLDEN_))
+			{
+				//do nothing
+				return;
+			}
+			else
+			{
+				//Current status is either blue, green or red...safe to change 
+				//  status to earned status
+				status_ = earnedStatus;
+				return;
+			}
+		}
+		else
+		{
+			//earned status is golden, set earned status to status_
+			//Set status to earned status
+			status_ = earnedStatus;
+		}
+		//else do nothing
+
 	}
 	
 	private void setStatus(String status) {
@@ -101,6 +184,8 @@ public class Member {
 				" to" + status);
 		status_ = status;
 	}
+	
+	
 
 	private String username_ = "";
 	private String email_ = "";
