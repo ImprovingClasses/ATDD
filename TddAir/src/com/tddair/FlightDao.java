@@ -8,17 +8,17 @@ public class FlightDao {
 	private Map<String, Flight> flights = new HashMap<>();
 	
 	public FlightDao() {
-		addFlight("DFW", "ORD", 924, "AA", 242);
-		addFlight("LGA", "CDG", 3620, "AF", 38);
-		addFlight("LAX", "SYD", 7490, "QF", 191);
+		addFlight("DFW", "ORD", 924, "AA242");
+		addFlight("LGA", "CDG", 3620, "AF38");
+		addFlight("LAX", "SYD", 7490, "QF191");
 	}
 	
 	public Flight getFlightBy(String flightNumber) {
 		return flights.get(flightNumber);
 	}
 	
-	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
-		Flight flight = new Flight(origin, destination, mileage, airline, number);
+	public void addFlight(String origin, String destination, int mileage, String airline) {
+		Flight flight = new Flight(origin, destination, mileage, airline);
 		flights.put(flight.getFullFlightNumber(), flight);
 	}
 }

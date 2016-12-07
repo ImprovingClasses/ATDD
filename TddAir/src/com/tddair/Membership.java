@@ -73,6 +73,27 @@ public class Membership {
 		return resultBool;
 	}
 	
+	public void updateMember(String userId, List<Flight> flightPlan)throws Exception{
+		Member modMember = getMemberById(userId);
+		
+		for(Flight flight : flightPlan){
+			//This checks to make sure that this is TD Airline
+			if(flight.getFullFlightNumber().contains("TD")){
+				modMember.setMiles(modMember.getMiles() + flight.getMileage());
+			}
+		}
+	}
+	
+	public void updateMember(String userId, Flight flight) throws Exception {
+		Member modMember = getMemberById(userId);
+
+		// This checks to make sure that this is TD Airline
+		if (flight.getFullFlightNumber().contains("TD")) {
+			modMember.setMiles(modMember.getMiles() + flight.getMileage());
+
+		}
+	}
+	
 	public Member getMemberById(String userId)throws Exception {
 		for(Member member : myMembers){
 			if (member.getUserId().equals(userId)){
@@ -81,4 +102,5 @@ public class Membership {
 		}
 		throw new Exception("Member Id not Found");
 	}
+
 }

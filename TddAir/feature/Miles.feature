@@ -1,6 +1,7 @@
 
 Feature:  Set the miles for users and display their Miles Group Status
-
+Background:
+Given airline "TD" flight number 100 distance is 1000 miles
 Scenario Outline: Set the miles for users and display their Miles Group Status
 Given I want to check miles <currentMiles> miles
 When I want to add miles <addedMiles>

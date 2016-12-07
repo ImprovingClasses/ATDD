@@ -2,9 +2,11 @@ package com.tddair;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -133,5 +135,41 @@ public class JunitTestMembership {
 		assertEquals(ColorStatusEnum.GOLD, ourMembership.getMemberById("Chris").getColorStatus());
 		
 	}
+	@Test
+	public void verifyMemberMilesUpdateSingleFlight() throws Exception{
+		Membership ourMembership = new Membership();
+		List<Flight> flightPlan = new ArrayList<>();
+		
+		Flight flight1 = new Flight("DEX", "HOU", 5000, "TD101");
+		flightPlan.add(flight1);
+		
+		Member tempMember = new Member("Chris", "Chris@Email.com", 0);
+		ourMembership.addMember(tempMember);
+		
+		
+		ourMembership.updateMember("Chris", flightPlan);
+		
+		assertEquals(5000, tempMember.getMiles());
+	}
 
+	@Test
+	public void verifyMemberMilesUpdateMultiFlight() throws Exception{
+		Membership ourMembership = new Membership();
+		List<Flight> flightPlan = new ArrayList<>();
+		
+		Flight flight1 = new Flight("DEX", "HOU", 5000, "TD101");
+		Flight flight2 = new Flight("DEX", "HOU", 5000, "AA101");
+		Flight flight3 = new Flight("DEX", "HOU", 7000, "TD101");
+		flightPlan.add(flight1);
+		flightPlan.add(flight2);
+		flightPlan.add(flight3);
+		
+		Member tempMember = new Member("Chris", "Chris@Email.com", 0);
+		ourMembership.addMember(tempMember);
+		
+		
+		ourMembership.updateMember("Chris", flightPlan);
+		
+		assertEquals(12000, tempMember.getMiles());
+	}
 }
