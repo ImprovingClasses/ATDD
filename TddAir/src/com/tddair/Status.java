@@ -19,12 +19,15 @@ public class Status {
 	
 	public StatusEnum checkStatusForChange(StatusEnum startingStatus, StatusEnum endOfYearStatus) {
 		StatusEnum status = null;
-		
+		System.out.println(startingStatus + " " + endOfYearStatus);
 		if (endOfYearStatus.ordinal() >= startingStatus.ordinal()) {
 			status = endOfYearStatus;
 		}
 		
 		else if (endOfYearStatus.ordinal() < startingStatus.ordinal()) {
+			System.out.println(StatusEnum.values());
+			System.out.println(startingStatus.ordinal()-1 + " " + StatusEnum.values()[startingStatus.ordinal()-1]);
+			
 			status = StatusEnum.values()[startingStatus.ordinal()-1];
 		}
 		

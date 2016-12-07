@@ -24,16 +24,17 @@ public class TddAirApplication {
 		return isAdded;
 	}
 	
+	public boolean addMember(String userId, String email, StatusEnum status) {
+		boolean isAdded = subject.addNewMember(userId, email, status);
+		return isAdded;
+	}
+	
 	public Member getMember(String userId, String email) {
-		Member response = null;
-		
-		ArrayList<Member> members = subject.getMember(email);
-		for (Member member : members) {
-			if (member.getUserId().endsWith(userId)) {
-				response = member;
-			}
-		}
-		return response;
-	} 
+		return subject.getMember(userId, email);
+	}
+	
+	public void rollYear() {
+		subject.rollYear();
+	}
 	
 }

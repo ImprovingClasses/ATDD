@@ -40,7 +40,6 @@ public class Member {
 	public void addMiles(int miles) {
 		mileage += miles;
 		yrMileage += miles;
-		determineStatus();
 	}
 
 	public String getUserId() {
@@ -65,7 +64,7 @@ public class Member {
 	public void rollYear()
 	{
 		Status statusHelper = new Status();
-		_status = statusHelper.checkStatusForChange(statusHelper.getStatusForMiles(yrMileage), _status);
+		_status = statusHelper.checkStatusForChange(_status, statusHelper.getStatusForMiles(yrMileage));
 		resetYrMiles();
 	}
 	

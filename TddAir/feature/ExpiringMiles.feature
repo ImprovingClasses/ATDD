@@ -25,8 +25,8 @@ Feature: Expiring miles
 Scenario Outline: Determine Status
 Given I have <starting status> and my miles flown current year <current year milage> 
 When One year passes 
-Then my status is <status>
-And my current year milage is 0  
+Then my new year status is <new year status> 
+  
 
 
 

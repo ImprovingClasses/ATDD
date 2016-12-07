@@ -1,6 +1,7 @@
 package com.tddair;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,6 +32,22 @@ public class Membership {
 			return false;
 		}
 	}
+	
+	public boolean addNewMember(String userID, String emailAddress, StatusEnum status) {
+		if (addNewMember(userID, emailAddress)) {
+			List<Member> members = getMember(emailAddress);
+			
+			for (Member member : members) {
+				if (member.getUserId().equals(userID)) {
+					member.setStatus(status);
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 
 	public boolean addNewMember(String userID, String emailAddress) {
 		boolean result = true;
@@ -63,6 +80,18 @@ public class Membership {
 	public ArrayList<Member> getMember(String emailAddress) {
 		return members.get(emailAddress);
 	}
+	
+	public Member getMember(String userId, String email) {
+		Member response = null;
+		
+		ArrayList<Member> memberList = members.get(email);
+		for (Member member : memberList) {
+			if (member.getUserId().equals(userId)) {
+				response = member;
+			}
+		}
+		return response;
+	} 
 
 	public int getEmailOnlyCount() {
 		return this.emailOnlyCount;
@@ -70,6 +99,16 @@ public class Membership {
 
 	public int getMemberCount() {
 		return this.memberCount;
+	}
+	
+	public void rollYear() {
+		Collection<ArrayList<Member>> allMembers = members.values();
+		for (ArrayList<Member> memberList : allMembers) {
+			for (Member member : memberList) {
+				member.rollYear();
+			}
+		}
+		
 	}
 
 	private boolean containsID(ArrayList<Member> memberList, String memberID) {
