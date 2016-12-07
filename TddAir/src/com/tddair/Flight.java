@@ -31,12 +31,18 @@ public class Flight {
 		this(origin, destination, mileage, null, 0);
 	}
 	
+	public Flight(Member member, String origin, String destination, int mileage) {
+		this(origin, destination, mileage, null, 0);
+	}
+	
 	public String getFullFlightNumber() {
 		if (airline == null || number == 0) {
 			return "UNKNOWN";
 		}
 		return airline + number;
 	}
+	
+	
 	
 	public String getDestination() {
 		return destination;

@@ -2,6 +2,9 @@ package com.tddair;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -69,10 +72,30 @@ public class MembershipLevels {
 		Member member = new Member("Bob", "bob@abc.com", 24000);
 		Membership membership = new Membership();
 		membership.add(member);
+		List<Flight> uFlights = new ArrayList<Flight>();
+		Flight flight1 = new Flight ("DFW", "ALB", 1000, "TD", 100);
 		
-		Flight flight = new Flight ("DFW", "ALB", 1000, "TD", 100);
+		Flight flight2 = new Flight ("ALB", "LAX", 2000, "TD", 100);
+		uFlights.add(flight1);
+		uFlights.add(flight2);
 		Status status = Membership.Status.Green;
-		membership.userFlights(member.getUserID(), flight);
+		membership.userFlightMiles(member.getUserID(), uFlights);
+		assertEquals(membership.membershipLevel(member), status);
+	}
+	
+	@Test
+	public void testStatusFlightsGold() {
+		Member member = new Member("Bob", "bob@abc.com", 74000);
+		Membership membership = new Membership();
+		membership.add(member);
+		List<Flight> uFlights = new ArrayList<Flight>();
+		Flight flight1 = new Flight ("DFW", "ALB", 1000, "TD", 100);
+		
+		Flight flight2 = new Flight ("ALB", "LAX", 2000, "TD", 100);
+		uFlights.add(flight1);
+		uFlights.add(flight2);
+		Status status = Membership.Status.Gold;
+		membership.userFlightMiles(member.getUserID(), uFlights);
 		assertEquals(membership.membershipLevel(member), status);
 	}
 
