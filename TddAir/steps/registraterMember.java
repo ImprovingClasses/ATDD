@@ -1,33 +1,30 @@
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Assert.*;
 
+import com.tddair.TddAirApplication;
+
 public class registraterMember {
+	private TddAirApplication app = new TddAirApplication();
 	
 	@When("^user \"([^\"]*)\" and email \"([^\"]*)\"$")
-	public void user_and_email(String arg1, String arg2) throws Throwable {
-		assert( ! arg1.isEmpty() );
-		assert( ! arg2.isEmpty() );
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void user_and_email(String userId, String email) throws Throwable {
+		app.registerTraveller(userId, email, 1000);
 	}
 
 	@Then("^\"([^\"]*)\" is added$")
-	public void is_added(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void is_added(String userId) throws Throwable { 
+		assertTrue(app.isMember(userId));
 	}
 
 	@Then("^\"([^\"]*)\" is not added$")
-	public void is_not_added(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void is_not_added(String userId) throws Throwable {
+		assertFalse(app.isMember(userId));
 	}
 
-	@Then("^user is not added$")
-	public void user_is_not_added() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
 }

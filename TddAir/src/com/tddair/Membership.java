@@ -25,8 +25,15 @@ public class Membership {
 		return members.size();
 	}
 
+	public boolean isEmailValid( String email ){
+	   boolean retVal = true;
+	   if( email == null || email.isEmpty() || ! email.contains( "@" ) ) {
+		  retVal = false;
+	   }
+	   return retVal;
+	}
 	public boolean addMember(String userId, String email, int initialMiles ){
-		if( email == null || email.isEmpty() )
+		if( ! isEmailValid( email ))
 			return false;
 
 		if(userId == null || userId.isEmpty())
@@ -38,7 +45,7 @@ public class Membership {
 	
 	public boolean addMember(String userId, String email, int initialMiles,
 			int points, String initStatus ){
-		if( email == null || email.isEmpty() )
+		if( ! isEmailValid( email ))
 			return false;
 
 		if(userId == null || userId.isEmpty())
