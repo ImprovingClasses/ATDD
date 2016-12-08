@@ -1,3 +1,4 @@
+package com.tddair;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 
 import com.tddair.TddAirApplication;
 
-public class Membership {
+public class AddMembers {
 	
   private TddAirApplication app = new TddAirApplication();
 

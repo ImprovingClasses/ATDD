@@ -1,15 +1,11 @@
-import static org.junit.Assert.*;
+package com.tddair;
 
-import java.util.HashMap;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
-import org.junit.*;
-import com.tddair.Member;
-import com.tddair.Membership;
+public class MembershipTest {
 
-
-
-public class membershipTest {
-	
 	@Before
 	public void setup() throws Exception{
 		
@@ -42,11 +38,6 @@ public class membershipTest {
 		//mbr.addMember( "Bob", "bob@abc.com" );
 		//Member m = mbr.getmemberByUserId("Bob");
 		Assert.assertTrue(mbr.isMember("Bob"));
-	}
-	
-	@Test
-	public void initialEmailCountIsZero(){
-		//Membership mbr = new Membership();
 	}
 	
 }

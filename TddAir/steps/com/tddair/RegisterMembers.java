@@ -1,3 +1,4 @@
+package com.tddair;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +10,7 @@ import org.junit.Assert.*;
 
 import com.tddair.TddAirApplication;
 
-public class registraterMember {
+public class RegisterMembers {
 	private TddAirApplication app = new TddAirApplication();
 	
 	@When("^user \"([^\"]*)\" and email \"([^\"]*)\"$")
