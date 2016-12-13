@@ -2,7 +2,13 @@ package com.tddair;
 
 public class MembershipManagmentCollection {
     
+    int memberCount = 0;
+    
     public int enrollmentCount(){
-        return 0;
+        return memberCount;
+    }
+
+    public void enroll(String string, String string2) {
+        memberCount++;
     }
 }
