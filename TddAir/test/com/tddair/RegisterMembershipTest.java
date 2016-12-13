@@ -18,5 +18,12 @@ public class RegisterMembershipTest {
         assertEquals(1, subject.enrollmentCount());
     }
 
+    @Test
+    public void givenOneMemberIsEnrolledwhenMemberIsRetrievedThenMemberAttributesShouldMatch(){
+        subject.enroll("bob", "bob@abc.com");
+        Member bob = subject.getMember("bob");
+        assertEquals("bob", bob.getIdentifier());
+        assertEquals("bob@abc.com", bob.getEmail());
+    }
 
 }

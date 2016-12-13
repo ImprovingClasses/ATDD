@@ -11,4 +11,11 @@ public class MembershipManagmentCollection {
     public void enroll(String string, String string2) {
         memberCount++;
     }
+
+    public Member getMember(String identifier) {
+        
+        return new Member();
+    }
+    
+    
 }
