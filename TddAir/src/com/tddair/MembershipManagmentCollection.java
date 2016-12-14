@@ -36,6 +36,10 @@ public class MembershipManagmentCollection {
         }
         
         if(members.get(identifier) == null){
+            if(emailList.contains(email)){
+                emailList.remove(email);
+            }
+            
             members.put(identifier, new Member(identifier, email));
             return true;
         }

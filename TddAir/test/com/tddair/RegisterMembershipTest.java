@@ -110,6 +110,16 @@ public class RegisterMembershipTest {
         subject.enroll("bob", "bob@abc.com");
         assertFalse(subject.enroll("", "bob@abc.com"));
     }
+    
+    @Test
+    public void givenEmailOnlyMemberEnteredWhenAMemberWithAnIdentifierAndIdenticalEmailIsEnteredShouldReplaceAnEmailOnlyMemberWithTheIdentifierAndEmailMember() {
+        subject.enroll("", "bob@abc.com");
+        assertTrue(subject.enroll("bob", "bob@abc.com"));
+        
+        assertFalse(subject.isEmailRecorded("bob@abc.com"));
+        
+        
+    }
 
 
 
