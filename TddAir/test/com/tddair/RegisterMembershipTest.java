@@ -63,5 +63,12 @@ public class RegisterMembershipTest {
     public void initialEmailOnlyMemberCountShouldBeZero() {
         assertEquals(0, subject.getEmailCount());
     }
+    
+    @Test
+    public void whenOneEmailOnlyMemberEnteredThenEmailOnlyCountShouldBeOne(){
+        subject.enroll("", "bob@abc.com");
+        
+        assertEquals(1,subject.getEmailCount());
+    }
 
 }
