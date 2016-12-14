@@ -31,18 +31,18 @@ public class TddAirApplication {
 	    return membershipCollection.getMember(identifier);
 	}
 
-    public void addMemberFlight(String identifier, int miles) {
+    public void addMemberFlightMiles(String identifier, int miles) {
         // TODO Auto-generated method stub
         
     }
 
     public String getStatusFor(String identifier) {
         // TODO Auto-generated method stub
-        return null;
+        return "";
     }
 
-    public Object getMilesFor(String identifier) {
+    public int getMilesFor(String identifier) {
         // TODO Auto-generated method stub
-        return null;
+        return 0;
     }
 }

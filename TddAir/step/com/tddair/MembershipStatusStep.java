@@ -21,7 +21,7 @@ public class MembershipStatusStep {
     
     @When("^A traveler earns (\\d+) miles$")
     public void a_traveler_earns_miles(int miles) throws Throwable {
-        app.addMemberFlight(identifier, miles);
+        app.addMemberFlightMiles(identifier, miles);
     }
     
     @Then("^A traveler is status \"([^\"]*)\" and total miles (\\d+)$")
