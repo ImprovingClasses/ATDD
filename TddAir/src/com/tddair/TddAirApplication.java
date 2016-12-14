@@ -30,4 +30,19 @@ public class TddAirApplication {
 	public Member getMember(String identifier){
 	    return membershipCollection.getMember(identifier);
 	}
+
+    public void addMemberFlight(String identifier, int miles) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public String getStatusFor(String identifier) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public Object getMilesFor(String identifier) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
