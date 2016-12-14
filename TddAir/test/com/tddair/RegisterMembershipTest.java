@@ -25,5 +25,20 @@ public class RegisterMembershipTest {
         assertEquals("bob", bob.getIdentifier());
         assertEquals("bob@abc.com", bob.getEmail());
     }
+    
+    @Test
+    public void givenTwoMembersAreEnrolledWhenEachIsRetrieveThenMemberAttributesShouldMatch(){
+        subject.enroll("bob", "bob@abc.com");
+        subject.enroll("sue", "sue@abc.com");
+        
+        Member bob = subject.getMember("bob");
+        assertEquals("bob", bob.getIdentifier());
+        assertEquals("bob@abc.com", bob.getEmail());
+        
+        Member sue = subject.getMember("sue");
+        assertEquals("sue", sue.getIdentifier());
+        assertEquals("sue@abc.com", sue.getEmail());
+    }
+
 
 }

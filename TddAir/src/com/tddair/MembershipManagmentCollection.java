@@ -1,20 +1,22 @@
 package com.tddair;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MembershipManagmentCollection {
     
-    int memberCount = 0;
+    Map<String, Member> members = new HashMap<String, Member>(); 
     
     public int enrollmentCount(){
-        return memberCount;
+        return members.size();
     }
 
-    public void enroll(String string, String string2) {
-        memberCount++;
+    public void enroll(String identifier, String email) {
+        members.put(identifier, new Member(identifier, email));
     }
 
     public Member getMember(String identifier) {
-        
-        return new Member();
+        return members.get(identifier);
     }
     
     
