@@ -11,12 +11,20 @@ public class MembershipManagmentCollection {
         return members.size();
     }
 
-    public void enroll(String identifier, String email) {
-        members.put(identifier, new Member(identifier, email));
+    public boolean enroll(String identifier, String email) {
+        if(members.get(identifier) == null){
+            members.put(identifier, new Member(identifier, email));
+            return true;
+        }
+        return false;
     }
 
     public Member getMember(String identifier) {
         return members.get(identifier);
+    }
+
+    public int getEmailCount() {
+        return 0;
     }
     
     

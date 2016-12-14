@@ -40,5 +40,28 @@ public class RegisterMembershipTest {
         assertEquals("sue@abc.com", sue.getEmail());
     }
 
+    @Test
+    public void givenAnExistingMemberWhenMemberWithMatchingIdIsEnrolledThenTheyAreNotRecorded() {
+        subject.enroll("bob", "bob@abc.com");
+        boolean result = subject.enroll("bob", "sue@abc.com");
+        
+        assertFalse(result);
+    }
+    
+    @Test
+    public void givenAnExistingMemberWhenMemberWithMatchingIdIsEnrolledThenExistingMemberNotChanged() {
+        subject.enroll("bob", "bob@abc.com");
+        boolean result = subject.enroll("bob", "sue@abc.com");
+        
+        Member bob = subject.getMember("bob");
+        assertEquals("bob", bob.getIdentifier());
+        assertEquals("bob@abc.com", bob.getEmail());
+        
+    }
+    
+    @Test
+    public void initialEmailOnlyMemberCountShouldBeZero() {
+        assertEquals(0, subject.getEmailCount());
+    }
 
 }
