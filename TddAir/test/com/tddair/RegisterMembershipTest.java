@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class RegisterMembershipTest {
 
-    MembershipManagmentCollection subject = new MembershipManagmentCollection();
+    MembershipManagementCollection subject = new MembershipManagementCollection();
     
     @Test
     public void initialMemberCountShouldBeZero() {

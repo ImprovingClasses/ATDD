@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MembershipManagmentCollection {
+public class MembershipManagementCollection {
     
     Map<String, Member> members = new HashMap<String, Member>(); 
     List<String> emailList = new ArrayList<String>();

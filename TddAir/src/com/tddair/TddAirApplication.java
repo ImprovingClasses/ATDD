@@ -4,7 +4,7 @@ package com.tddair;
 public class TddAirApplication {
 	
 	private FlightProvider flights;
-	private MembershipManagmentCollection membershipCollection = new MembershipManagmentCollection();
+	private MembershipManagementCollection membershipCollection = new MembershipManagementCollection();
 	
 	//The default Constructor is provided for the Classroom only 
 	//to give easy starter file for TddAirApplication
