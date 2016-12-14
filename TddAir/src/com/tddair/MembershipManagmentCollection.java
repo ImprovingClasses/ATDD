@@ -58,4 +58,19 @@ public class MembershipManagmentCollection {
     public boolean isEmailRecorded(String email) {
         return emailList.contains(email);
     }
+
+    public void addMemberFlightMiles(String identifier, int miles) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public String getStatusFor(String identifier) {
+        // TODO Auto-generated method stub
+        return "";
+    }
+
+    public int getMilesFor(String identifier) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

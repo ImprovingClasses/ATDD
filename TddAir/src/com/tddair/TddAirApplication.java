@@ -32,17 +32,15 @@ public class TddAirApplication {
 	}
 
     public void addMemberFlightMiles(String identifier, int miles) {
-        // TODO Auto-generated method stub
+        membershipCollection.addMemberFlightMiles(identifier, miles);
         
     }
 
     public String getStatusFor(String identifier) {
-        // TODO Auto-generated method stub
-        return "";
+        return membershipCollection.getStatusFor(identifier);
     }
 
     public int getMilesFor(String identifier) {
-        // TODO Auto-generated method stub
-        return 0;
+        return membershipCollection.getMilesFor(identifier);
     }
 }
