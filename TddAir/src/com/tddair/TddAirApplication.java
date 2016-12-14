@@ -8,7 +8,7 @@ public class TddAirApplication {
 	
 	//The default Constructor is provided for the Classroom only 
 	//to give easy starter file for TddAirApplication
-	//Better code would not make TddAirApplication dependent on a concrete FlightProvider
+	//Not classroom code would not make TddAirApplication dependent on a concrete FlightProvider
 	//and instead would use the other constructor to pass in the FlightProvider
 	//Otherwise violates open/close, and dependency inversion principles
 	TddAirApplication() {
