@@ -17,7 +17,7 @@ public class MembershipManagmentCollection {
     }
 
     public boolean enroll(String identifier, String email) {
-        if("".equals(identifier) && "".equals(email)){
+        if("".equals(identifier) && "".equals(email) || "".equals(email)){
             return false;
         }
         
@@ -36,6 +36,7 @@ public class MembershipManagmentCollection {
         }
         
         if(members.get(identifier) == null){
+
             if(emailList.contains(email)){
                 emailList.remove(email);
             }

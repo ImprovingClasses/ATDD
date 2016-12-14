@@ -120,6 +120,11 @@ public class RegisterMembershipTest {
         
         
     }
+    
+    @Test
+    public void givenMemberIdentifierWithNoEmailThenMemberShouldNotBeRecorded(){
+        assertFalse(subject.enroll("bob", ""));
+    }
 
 
 
