@@ -1,5 +1,7 @@
 package com.tddair;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,20 @@ public class MembershipManagmentCollection {
     }
 
     public boolean enroll(String identifier, String email) {
+        if("".equals(identifier) && "".equals(email)){
+            return false;
+        }
+        
         if("".equals(identifier)){
+            if( emailList.contains(email)) {
+                return false;
+            }
+            
+            for( Member mems : members.values()){
+                if(mems.getEmail().equals(email))
+                    return false;
+            }
+            
             emailList.add(email);
             return true;
         }
@@ -34,6 +49,8 @@ public class MembershipManagmentCollection {
     public int getEmailCount() {
         return emailList.size();
     }
-    
-    
+
+    public boolean isEmailRecorded(String email) {
+        return emailList.contains(email);
+    }
 }

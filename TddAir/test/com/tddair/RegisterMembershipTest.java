@@ -70,5 +70,49 @@ public class RegisterMembershipTest {
         
         assertEquals(1,subject.getEmailCount());
     }
+    
+    @Test
+    public void whenUserIdentifierAndEmailAreEmptyThenNoMemberIsAddedAndNoEmailIsRecorded(){
+        assertFalse(subject.enroll("", ""));
+    }
+    
+    
+    @Test
+    public void whenEmailOnlyMemberEnteredThenEmailInformationShouldBeRecoreded(){
+        subject.enroll("", "bob@abc.com");
+        assertTrue(subject.isEmailRecorded("bob@abc.com"));
+    }
+    
+    @Test
+    public void givenEmailOnlyMemberEnteredWhenIdenticalEmailOnlyMemberEnteredEmailShouldNotBeRecorded(){
+        subject.enroll("", "bob@abc.com");
+        assertFalse(subject.enroll("", "bob@abc.com"));
+    }
+ 
+    @Test
+    public void givenExistingMemberWithIdentifierAndEmailWhenEmailOnlyMemberEnteredCountOfMembersWithIdentiferShouldStayTheSame(){
+        subject.enroll("bob", "bob@abc.com");
+        int size = subject.enrollmentCount();
+        subject.enroll("", "bob@abc.com");
+        assertEquals(size, subject.enrollmentCount() );
+    }
+    
+    @Test
+    public void givenExistingMemberWithEmailOnlyWhenMemberWithIdentifierAndEmailEnteredCountOfMembersWithOnlyEmailShouldStayTheSame() {
+        subject.enroll("", "bob@abc.com");
+        int size = subject.getEmailCount();
+        subject.enroll("bob", "bob@abc.com");
+        assertEquals(size, subject.enrollmentCount() );
+    }
+
+    @Test
+    public void givenMemberEnrolledWithIdentifierAndEmailWhenEmailOnlyMemberWithIdenticalEmailEnteredEmailShouldNotBeRecorded(){
+        subject.enroll("bob", "bob@abc.com");
+        assertFalse(subject.enroll("", "bob@abc.com"));
+    }
+
+
+
+
 
 }
