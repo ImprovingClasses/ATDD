@@ -30,6 +30,8 @@ public class Member {
     }
 
     public String getStatus() {
+        if(miles >= 75000)
+            return "Gold";
         if(miles >= 50000)
             return "Blue";
         if(miles >= 25000)

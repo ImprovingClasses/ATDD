@@ -69,4 +69,23 @@ public class MembershipStatusInitializeTest {
         assertTrue("Blue".equalsIgnoreCase(mem.getStatusFor(identifier)));
         assertEquals(50000, mem.getMilesFor(identifier));
     }
+    
+    @Test
+    public void given24999when0MilesAddedStatusIsRedAndMilesMatch() {
+        mem.addMemberFlightMiles(identifier, 24999);
+        assertTrue("Red".equalsIgnoreCase(mem.getStatusFor(identifier)));
+        mem.addMemberFlightMiles(identifier, 0);
+        assertTrue("Red".equalsIgnoreCase(mem.getStatusFor(identifier)));
+        assertEquals(24999, mem.getMilesFor(identifier));
+    }
+
+    @Test
+    public void given24999when1MilesAddedStatusIsRedAndMilesMatch() {
+        mem.addMemberFlightMiles(identifier, 24999);
+        assertTrue("Red".equalsIgnoreCase(mem.getStatusFor(identifier)));
+        mem.addMemberFlightMiles(identifier, 1);
+        assertTrue("Green".equalsIgnoreCase(mem.getStatusFor(identifier)));
+        assertEquals(25000, mem.getMilesFor(identifier));
+    }
+    
 }

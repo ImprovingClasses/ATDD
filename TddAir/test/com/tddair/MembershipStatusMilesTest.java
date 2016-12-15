@@ -33,7 +33,9 @@ public class MembershipStatusMilesTest {
       return Arrays.asList(new Object[][] { 
          { 24999, "Red", 24999 }, 
          { 25000, "Green", 25000 }, 
-         { 50000, "Blue", 50000 },  
+         { 50000, "Blue", 50000 }, 
+         { 75000, "Gold", 75000 }, 
+         
       }); 
     } 
 
