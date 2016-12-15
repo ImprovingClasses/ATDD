@@ -1,6 +1,7 @@
 package com.tddair;
 
-import cucumber.api.PendingException;
+import static org.junit.Assert.assertTrue;
+
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,20 +21,19 @@ public class MembershipStatusExpiresStep {
     
     @Given("^A member flew (\\d+) with \"([^\"]*)\" level$")
     public void a_member_flew_with_level(int miles, String status) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        app.addMemberFlightMiles(identifier, miles);
+        app.setMemberStatus(identifier, status);
+        
     }
 
     @When("^the year passes$")
     public void the_year_passes() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        app.yearExpires();
     }
 
     @Then("^the members has \"([^\"]*)\"$")
     public void the_members_has(String status) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        assertTrue(status.equalsIgnoreCase(app.getStatusFor(identifier)));
     }
     
 }

@@ -43,4 +43,13 @@ public class TddAirApplication {
     public int getMilesFor(String identifier) {
         return membershipCollection.getMilesFor(identifier);
     }
+
+    void setMemberStatus(String identifier, String status) {
+        membershipCollection.setMemberStatus(identifier, status);
+        
+    }
+
+    public void yearExpires() {
+        membershipCollection.yearExpires();
+    }
 }
