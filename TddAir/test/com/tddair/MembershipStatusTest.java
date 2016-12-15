@@ -62,6 +62,14 @@ public class MembershipStatusTest {
         assertTrue("Green".equalsIgnoreCase(mem.getStatusFor(identifier)));
         assertEquals(25000, mem.getMilesFor(identifier));
     }
+    
+    @Test
+    public void when50000MilesAddedStatusIsGreenAndMilesMatch(){
+        mem.addMemberFlightMiles(identifier, 50000);
+        assertTrue("Blue".equalsIgnoreCase(mem.getStatusFor(identifier)));
+        assertEquals(50000, mem.getMilesFor(identifier));
+    }
+    
         
 
 }
