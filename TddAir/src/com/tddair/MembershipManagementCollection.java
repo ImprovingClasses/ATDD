@@ -60,17 +60,19 @@ public class MembershipManagementCollection {
     }
 
     public void addMemberFlightMiles(String identifier, int miles) {
-        // TODO Auto-generated method stub
-        
+        Member member = members.get(identifier);
+        if(member != null ){
+            member.addFlightMiles(miles);
+        }
     }
 
     public String getStatusFor(String identifier) {
-        // TODO Auto-generated method stub
-        return "";
+        Member member = members.get(identifier);
+        return member==null? null : member.getStatus();
     }
 
     public int getMilesFor(String identifier) {
-        // TODO Auto-generated method stub
-        return 0;
+        Member member = members.get(identifier);
+        return member==null ? 0 : member.getMiles();
     }
 }
