@@ -52,4 +52,14 @@ public class TddAirApplication {
     public void yearExpires() {
         membershipCollection.yearExpires();
     }
+
+    public void memberPuchaseUpgrades(String identifier, int upgrades) {
+        membershipCollection.memberPurchaseUpgrades(identifier, upgrades);
+        
+    }
+
+    public int getMemberUpgrades(String identifier) {
+        // TODO Auto-generated method stub
+        return membershipCollection.getMemberUpgrades(identifier);
+    }
 }

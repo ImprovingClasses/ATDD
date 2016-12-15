@@ -91,4 +91,14 @@ public class MembershipManagementCollection {
         
     }
 
+    public void memberPurchaseUpgrades(String identifier, int upgrades) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public int getMemberUpgrades(String identifier) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
  }
