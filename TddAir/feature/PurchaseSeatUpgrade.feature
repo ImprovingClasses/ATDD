@@ -11,7 +11,7 @@ Gold          7000
 
 
 Scenario Outline: Purchase upgrades
-Given A member <status> member with <purchasingMiles>
+Given A member <status> member with <purchasingMiles> 
 When the member purchases <upgrades> number of upgrade coupons
 Then the member has <coupons> and <remainingMiles> is still is <status>
 
@@ -27,3 +27,4 @@ Examples:
     |  "Blue" |   50000       |    2     |   2     |     34000      |
     |  "Gold" |   50000       |   10     |   7     |      1000      |
 
+#Could also have column for existing upgrades.

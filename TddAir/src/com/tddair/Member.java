@@ -7,6 +7,7 @@ public class Member {
     private int miles;
     private int yearlyMiles;
     private String status;
+    private int upgrades;
     
     public Member(String identifier, String email) {
         this.identifier = identifier;
@@ -93,6 +94,33 @@ public class Member {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void purchaseUpgrades(int upgrades) {
+        int cost = 10000;
+        if("Green".equalsIgnoreCase(status)){
+            cost = 9000;
+        }
+        else if("Blue".equalsIgnoreCase(status)){
+            cost = 8000;
+        }
+        else if("Gold".equalsIgnoreCase(status)){
+            cost = 7000;
+        }
+      
+        int maxUpgrades = miles/cost;
+        
+        int toBuy = Math.min(maxUpgrades, upgrades);
+        
+        this.upgrades += toBuy;
+        
+        this.miles -= cost*toBuy;
+               
+    }
+
+    public int getUpgrades() {
+        
+        return upgrades;
     }
 
 }

@@ -92,12 +92,18 @@ public class MembershipManagementCollection {
     }
 
     public void memberPurchaseUpgrades(String identifier, int upgrades) {
-        // TODO Auto-generated method stub
+        Member member = members.get(identifier);
+        if( member!=null) {
+            member.purchaseUpgrades(upgrades);
+        }
         
     }
 
     public int getMemberUpgrades(String identifier) {
-        // TODO Auto-generated method stub
+        Member member = members.get(identifier);
+        if( member!=null) {
+            return member.getUpgrades();
+        }
         return 0;
     }
 
