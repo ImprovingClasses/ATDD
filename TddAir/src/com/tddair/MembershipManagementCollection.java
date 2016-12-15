@@ -15,7 +15,7 @@ public class MembershipManagementCollection {
     public int enrollmentCount(){
         return members.size();
     }
-
+    
     public boolean enroll(String identifier, String email) {
         if("".equals(identifier) && "".equals(email) || "".equals(email)){
             return false;
@@ -75,4 +75,20 @@ public class MembershipManagementCollection {
         Member member = members.get(identifier);
         return member==null ? 0 : member.getMiles();
     }
-}
+
+    public void yearExpires() {
+        for(Member aMember : members.values()){
+            aMember.yearPasses();
+        }
+        // TODO Auto-generated method stub
+        
+    }
+
+    public void setMemberStatus(String identifier, String status) {
+        Member member = members.get(identifier);
+        if( member!=null)
+            member.setStatus(status);
+        
+    }
+
+ }
