@@ -33,11 +33,23 @@ public class MembershipStatusMilesTest {
     @Parameters 
     public static Collection<Object[]> data() { 
       return Arrays.asList(new Object[][] { 
-         { 0, "Red", 24999, "Red", 24999 }, 
-         { 0, "Red", 25000, "Green", 25000 }, 
-         { 0, "Red", 50000, "Blue", 50000 }, 
-         { 0, "Red", 75000, "Gold", 75000 }, 
-         
+         {      0,   "Red", 24999,   "Red", 24999 }, 
+         {      0,   "Red", 25000, "Green", 25000 }, 
+         {      0,   "Red", 50000,  "Blue", 50000 }, 
+         {      0,   "Red", 75000,  "Gold", 75000 }, 
+         {  24999,   "Red",     0,   "Red", 24999 }, 
+         {  24999,   "Red",     1, "Green", 25000 },
+         {  49999, "Green",     0, "Green", 49999 }, 
+         {  49999, "Green",     1,  "Blue", 50000 }, 
+         {  74999,  "Blue",     0,  "Blue", 74999 }, 
+         {  74999,  "Blue",     1,  "Gold", 75000 }, 
+         {  24999,   "Red", 25000, "Green", 49999 }, 
+         {  24999,   "Red", 25001,  "Blue", 50000 }, 
+         {  24999,   "Red", 50000,  "Blue", 74999 }, 
+         {  24999,   "Red", 50001,  "Gold", 75000 }, 
+         {  49999, "Green", 25000,  "Blue", 74999 },
+         {  49999, "Green", 25001,  "Gold", 75000 },
+            
       }); 
     } 
 
