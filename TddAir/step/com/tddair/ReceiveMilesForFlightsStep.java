@@ -1,46 +1,61 @@
 package com.tddair;
 
-import cucumber.api.DataTable;
-import cucumber.api.PendingException;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class ReceiveMilesForFlightsStep {
+    
+    TddAirApplication app = new TddAirApplication(new FlightDao());
+    String identifier = "bob";
+    String email = "bob@abc.com";
+    
+    @Before
+    public void before(){
+        app.enroll(identifier, email);
+    }
+    
+    
     @Given("^these Flights:$")
-    public void these_Flights(DataTable arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-        // E,K,V must be a scalar (String, Integer, Date, enum etc)
-        throw new PendingException();
+    public void these_Flights(List<Flight> flights) throws Throwable {
+        for(Flight flight: flights){
+            app.addFlight(flight.getOrigin(), 
+                    flight.getDestination(), 
+                    flight.getMileage(),
+                    flight.getAirline(),
+                    flight.getNumber() );
+        }
     }
 
     @Given("^A member with (\\d+) miles$")
-    public void a_member_with_miles(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void a_member_with_miles(int miles) throws Throwable {
+        app.addMemberFlightMiles(identifier, miles);
     }
 
     @When("^the member flights are:$")
-    public void the_member_flights_are(DataTable arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-        // E,K,V must be a scalar (String, Integer, Date, enum etc)
-        throw new PendingException();
-    }
-
-    @Then("^the members status is \"([^\"]*)\" and miles are (\\d+)$")
-    public void the_members_status_is_and_miles_are(String arg1, int arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void the_member_flights_are(List<String> flightNumbers) throws Throwable {
+        
+        for(String flightNumber : flightNumbers){
+            app.addMemberFlight(identifier, flightNumber);
+        }
+        
     }
 
     @Then("^the members miles are (\\d+)$")
-    public void the_members_miles_are(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void the_members_miles_are(int miles) throws Throwable {
+        assertEquals(miles, app.getMilesFor(identifier));
     }
 
+    // alternative if you need to check the status as well.
+    @Then("^the members status is \"([^\"]*)\" and miles are (\\d+)$")
+    public void the_members_status_is_and_miles_are(String status, int miles) throws Throwable {
+        assertEquals(status, app.getStatusFor(identifier));
+        assertEquals(miles, app.getMilesFor(identifier));
+    }
+    
 }

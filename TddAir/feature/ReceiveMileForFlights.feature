@@ -27,7 +27,7 @@ When the member flights are:
 |TD211  |
 Then the members miles are 13633
 
-Scenario: Two TDDAir flight
+Scenario: Three TDDAir flight
 Given A member with 10000 miles
 When the member flights are:
 |TD8344 |
@@ -36,7 +36,7 @@ When the member flights are:
 Then the members miles are 26666
 
 
-Scenario: Two TDDAir flight
+Scenario: Three Not TDDAir flight
 Given A member with 10000 miles
 When the member flights are:
 |SW3434 |
@@ -44,7 +44,7 @@ When the member flights are:
 |AA1211 |
 Then the members miles are 10000
 
-Scenario: Two TDDAir flight
+Scenario: One TDDAir flights out of three 
 Given A member with 10000 miles
 When the member flights are:
 |TD8344 |
@@ -52,7 +52,7 @@ When the member flights are:
 |AA1211 |
 Then the members miles are 10120
 
-Scenario: Two TDDAir flight
+Scenario: Two TDDAir flights out of three
 Given A member with 10000 miles
 When the member flights are:
 |TD8344 |

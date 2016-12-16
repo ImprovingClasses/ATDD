@@ -47,4 +47,9 @@ public class FlightDao implements FlightProvider {
 	    Flight flight = new Flight(origin, destination, mileage, airline, number);
 		flights.put(flight.getFullFlightNumber(), flight);
 	}
+	
+	@Override
+	public int getFlightMilesBy(String flightNumber){
+	   return 0;   
+	}
 }

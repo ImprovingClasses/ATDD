@@ -62,4 +62,12 @@ public class TddAirApplication {
         // TODO Auto-generated method stub
         return membershipCollection.getMemberUpgrades(identifier);
     }
+
+    public void addMemberFlight(String identifier, String flightNumber) {
+        
+        int miles = flights.getFlightMilesBy(flightNumber);
+        membershipCollection.addMemberFlightMiles(identifier, miles);
+        
+    }
+
 }
