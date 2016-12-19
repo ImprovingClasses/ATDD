@@ -107,4 +107,12 @@ public class MembershipManagementCollection {
         return 0;
     }
 
+    public void addMemberFlightMiles(String identifier, List<String> flightNumbers, FlightProvider flights) {
+        
+        
+        
+        return;
+        
+    }
+
  }

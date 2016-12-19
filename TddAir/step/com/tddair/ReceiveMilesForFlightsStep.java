@@ -39,11 +39,7 @@ public class ReceiveMilesForFlightsStep {
 
     @When("^the member flights are:$")
     public void the_member_flights_are(List<String> flightNumbers) throws Throwable {
-        
-        for(String flightNumber : flightNumbers){
-            app.addMemberFlight(identifier, flightNumber);
-        }
-        
+        app.addMemberFlights(identifier, flightNumbers);
     }
 
     @Then("^the members miles are (\\d+)$")

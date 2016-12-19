@@ -1,5 +1,6 @@
 package com.tddair;
 
+import java.util.List;
 
 public class TddAirApplication {
 	
@@ -63,10 +64,13 @@ public class TddAirApplication {
         return membershipCollection.getMemberUpgrades(identifier);
     }
 
-    public void addMemberFlight(String identifier, String flightNumber) {
+    public void addMemberFlights(String identifier, List<String> flightNumbers) {
         
-        int miles = flights.getFlightMilesBy(flightNumber);
-        membershipCollection.addMemberFlightMiles(identifier, miles);
+        // here could have pulled flight miles out of flights for each flight 
+        // number and passed the total in. Instead decided to pass in the flights.
+        // Either seems like it is ok.
+        
+        membershipCollection.addMemberFlightMiles(identifier, flightNumbers, flights);
         
     }
 
