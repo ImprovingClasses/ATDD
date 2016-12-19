@@ -46,5 +46,13 @@ public class Flight {
 	public int getMileage() {
 		return mileage;
 	}
+
+    public String getAirline() {
+        
+        return airline;
+    }
+    public int getNumber(){
+        return number;
+    }
 	
 }
