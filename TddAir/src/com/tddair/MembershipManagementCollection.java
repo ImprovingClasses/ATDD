@@ -113,7 +113,8 @@ public class MembershipManagementCollection {
         if( member!=null) {
             
             for(String flightNumber : flightNumbers){
-                member.addFlightMiles(1000);
+                int miles = flights.getFlightMilesBy(flightNumber);
+                member.addFlightMiles(miles);
             }
         }
         return;
