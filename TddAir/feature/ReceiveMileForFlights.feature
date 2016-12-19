@@ -50,7 +50,7 @@ When the member flights are:
 |TD8344 |
 |DA333  |
 |AA1211 |
-Then the members miles are 10120
+Then the members miles are 13233
 
 Scenario: Two TDDAir flights out of three
 Given A member with 10000 miles

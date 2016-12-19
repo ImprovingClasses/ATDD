@@ -50,6 +50,6 @@ public class FlightDao implements FlightProvider {
 	
 	@Override
 	public int getFlightMilesBy(String flightNumber){
-	   return 0;   
+	   return getFlightBy(flightNumber).getMileage();   
 	}
 }
