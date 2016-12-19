@@ -113,11 +113,12 @@ public class MembershipManagementCollection {
         if( member!=null) {
             
             for(String flightNumber : flightNumbers){
-                int miles = flights.getFlightMilesBy(flightNumber);
-                member.addFlightMiles(miles);
+                if(flightNumber.startsWith("TD")){
+                    int miles = flights.getFlightMilesBy(flightNumber);
+                    member.addFlightMiles(miles);
+                }
             }
         }
-        return;
     }
 
  }

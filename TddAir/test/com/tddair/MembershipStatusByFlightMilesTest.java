@@ -88,4 +88,24 @@ public class MembershipStatusByFlightMilesTest {
         assertEquals(2001, application.getMilesFor(identifier));
         
     }
+    
+    @Test
+    public void OneTDAndOneAAFlightAddesMiles () {
+        
+        TddAirApplication application = new TddAirApplication(new DefaultFlightProvider(){
+
+            @Override
+            public int getFlightMilesBy(String flightNumber) {
+                if("TD1000".equalsIgnoreCase(flightNumber))
+                    return 1000;
+                else return 1001;
+            }}
+        );
+    
+        application.enroll(identifier, email);
+        application.addMemberFlights(identifier, Arrays.asList(new String[]{"TD1000", "AA1001"}));
+
+        assertEquals(1000, application.getMilesFor(identifier));
+        
+    }
 }
