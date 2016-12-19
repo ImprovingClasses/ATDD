@@ -109,10 +109,14 @@ public class MembershipManagementCollection {
 
     public void addMemberFlightMiles(String identifier, List<String> flightNumbers, FlightProvider flights) {
         
-        
-        
+        Member member = members.get(identifier);
+        if( member!=null) {
+            
+            for(String flightNumber : flightNumbers){
+                member.addFlightMiles(1000);
+            }
+        }
         return;
-        
     }
 
  }
